@@ -16,7 +16,7 @@ namespace _.Net____PCCV
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmThongKeHieuSuat());
         }
     }
 }
