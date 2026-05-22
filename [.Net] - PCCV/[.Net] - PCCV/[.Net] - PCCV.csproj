@@ -52,8 +52,47 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmKanbanBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmKanbanBoard.Designer.cs">
+      <DependentUpon>frmKanbanBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmCalendarView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmCalendarView.Designer.cs">
+      <DependentUpon>frmCalendarView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmMainDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmMainDashboard.Designer.cs">
+      <DependentUpon>frmMainDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmTeamManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmTeamManager.Designer.cs">
+      <DependentUpon>frmTeamManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmMainDashboard.resx">
+      <DependentUpon>frmMainDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmTeamManager.resx">
+      <DependentUpon>frmTeamManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
