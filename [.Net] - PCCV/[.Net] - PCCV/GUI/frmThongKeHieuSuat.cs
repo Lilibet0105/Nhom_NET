@@ -16,6 +16,11 @@ namespace _.Net____PCCV
         {
             InitializeComponent();
         }
+
+        private void frmThongKeHieuSuat_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 //test git push

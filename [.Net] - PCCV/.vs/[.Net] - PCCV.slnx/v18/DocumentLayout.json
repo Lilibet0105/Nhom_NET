@@ -1,7 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\gui\\frmcalendarview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmcalendarview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\bangcongviec\\frmkanbanboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\bangcongviec\\frmkanbanboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\gui\\frmkanbanboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmkanbanboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\gui\\frmthongkehieusuat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmthongkehieusuat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\quanlyduan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\quanlyduan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\lichlamviec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\lichlamviec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +47,93 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmCalendarView.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmCalendarView.cs",
+              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmCalendarView.cs",
+              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmCalendarView.cs [Design]",
+              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmCalendarView.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-23T09:35:59.74Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmKanbanBoard.cs",
+              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmKanbanBoard.cs",
+              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmKanbanBoard.cs",
+              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmKanbanBoard.cs",
+              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmKanbanBoard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-23T09:34:14.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmKanbanBoard.cs",
+              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\BangCongViec\\frmKanbanBoard.cs",
+              "RelativeDocumentMoniker": "[.Net] - PCCV\\BangCongViec\\frmKanbanBoard.cs",
+              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\BangCongViec\\frmKanbanBoard.cs",
+              "RelativeToolTip": "[.Net] - PCCV\\BangCongViec\\frmKanbanBoard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-23T09:33:56.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frmThongKeHieuSuat.cs",
+              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmThongKeHieuSuat.cs",
+              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmThongKeHieuSuat.cs",
+              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmThongKeHieuSuat.cs",
+              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmThongKeHieuSuat.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-23T09:31:59.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "QuanLyDuAn.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\QuanLyDuAn.cs",
+              "RelativeDocumentMoniker": "[.Net] - PCCV\\QuanLyDuAn.cs",
+              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\QuanLyDuAn.cs [Design]",
+              "RelativeToolTip": "[.Net] - PCCV\\QuanLyDuAn.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-23T09:31:25.832Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LichLamViec.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\LichLamViec.cs",
+              "RelativeDocumentMoniker": "[.Net] - PCCV\\LichLamViec.cs",
+              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\LichLamViec.cs [Design]",
+              "RelativeToolTip": "[.Net] - PCCV\\LichLamViec.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-23T09:31:22.999Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "frmLogin.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmLogin.cs",
+              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmLogin.cs",
+              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmLogin.cs [Design]",
+              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmLogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-23T09:27:47.723Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
