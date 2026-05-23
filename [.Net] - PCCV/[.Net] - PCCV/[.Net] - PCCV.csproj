@@ -158,5 +158,8 @@
   <ItemGroup>
     <Folder Include="DAL\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\QuanLyCongViec.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
