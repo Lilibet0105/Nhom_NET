@@ -1,5 +1,8 @@
-namespace BangCongViec;
+using System.Drawing;
+using System.Windows.Forms;
 
+namespace GUI
+{
 partial class FrmTaoMoiGiaoCongViec
 {
     private System.ComponentModel.IContainer components = null;
@@ -314,4 +317,5 @@ partial class FrmTaoMoiGiaoCongViec
         pnlNutLenh.ResumeLayout(false);
         ResumeLayout(false);
     }
+}
 }

@@ -21,9 +21,11 @@ namespace GUI
         {
             if (txtUsername.Text == "admin" && txtPassword.Text == "123")
             {
-                frmMainDashboard mainForm = new frmMainDashboard();
                 this.Hide();
-                mainForm.ShowDialog();
+                using (frmMainDashboard mainForm = new frmMainDashboard())
+                {
+                    mainForm.ShowDialog(this);
+                }
                 this.Close();
             }
             else
@@ -35,6 +37,11 @@ namespace GUI
         private void frmLogin_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -72,6 +72,7 @@
             this.btnReport.TabIndex = 3;
             this.btnReport.Text = "Báo cáo thống kê";
             this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // btnCalendar
             // 
@@ -82,6 +83,7 @@
             this.btnCalendar.TabIndex = 2;
             this.btnCalendar.Text = "Lịch công việc";
             this.btnCalendar.UseVisualStyleBackColor = true;
+            this.btnCalendar.Click += new System.EventHandler(this.btnCalendar_Click);
             // 
             // btnTeam
             // 

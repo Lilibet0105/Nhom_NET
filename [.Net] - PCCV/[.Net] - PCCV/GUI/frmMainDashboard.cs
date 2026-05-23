@@ -15,12 +15,21 @@ namespace GUI
         public frmMainDashboard()
         {
             InitializeComponent();
+            OpenChildForm(new frmKanbanBoard());
         }
         // Biến dùng để lưu Form con đang hiển thị hiện tại
         private Form activeForm = null;
 
         private void OpenChildForm(Form childForm)
         {
+            if (activeForm != null && activeForm.GetType() == childForm.GetType())
+            {
+                childForm.Dispose();
+                return;
+            }
+
+            pnlContent.SuspendLayout();
+
             // Nếu đang có Form con mở sẵn thì đóng nó lại để giải phóng bộ nhớ
             if (activeForm != null)
                 activeForm.Close();
@@ -39,6 +48,7 @@ namespace GUI
             pnlContent.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+            pnlContent.ResumeLayout();
         }
 
         private void btnKanban_Click(object sender, EventArgs e)
@@ -49,6 +59,16 @@ namespace GUI
         private void btnTeam_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmTeamManager());
+        }
+
+        private void btnCalendar_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmCalendarView());
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new _.Net____PCCV.frmThongKeHieuSuat());
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1327, 736);
             this.Name = "frmCalendarView";
-            this.Text = "frmLogin";
+            this.Text = "Lịch công việc";
             this.ResumeLayout(false);
 
         }
