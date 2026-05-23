@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +48,93 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BangCongViec\frmKanbanBoard.cs" />
+    <Compile Include="BangCongViec\frmKanbanBoard.Designer.cs" />
+    <Compile Include="BangCongViec\FrmTaoMoiGiaoCongViec.cs" />
+    <Compile Include="BangCongViec\FrmTaoMoiGiaoCongViec.Designer.cs" />
+    <Compile Include="BangCongViec\Program.cs" />
+    <Compile Include="BUS\ThongKeBUS.cs" />
+    <Compile Include="DTO\ThongKeDTO.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmCalendarView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmCalendarView.Designer.cs">
+      <DependentUpon>frmCalendarView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmKanbanBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmKanbanBoard.Designer.cs">
+      <DependentUpon>frmKanbanBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmMainDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmMainDashboard.Designer.cs">
+      <DependentUpon>frmMainDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmTeamManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmTeamManager.Designer.cs">
+      <DependentUpon>frmTeamManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmThongKeHieuSuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmThongKeHieuSuat.Designer.cs">
+      <DependentUpon>frmThongKeHieuSuat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LichLamViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LichLamViec.Designer.cs">
+      <DependentUpon>LichLamViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="QuanLyDuAn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyDuAn.Designer.cs">
+      <DependentUpon>QuanLyDuAn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\frmCalendarView.resx">
+      <DependentUpon>frmCalendarView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmMainDashboard.resx">
+      <DependentUpon>frmMainDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmTeamManager.resx">
+      <DependentUpon>frmTeamManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmThongKeHieuSuat.resx">
+      <DependentUpon>frmThongKeHieuSuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LichLamViec.resx">
+      <DependentUpon>LichLamViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\GUI.frmLogin.resources" />
+    <EmbeddedResource Include="obj\Debug\GUI.frmMainDashboard.resources" />
+    <EmbeddedResource Include="obj\Debug\GUI.frmTeamManager.resources" />
+    <EmbeddedResource Include="obj\Debug\_.Net____PCCV.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +144,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QuanLyDuAn.resx">
+      <DependentUpon>QuanLyDuAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include=".vs\[.Net] - PCCV.csproj.dtbcache.json" />
+    <None Include="bin\Debug\[.Net] - PCCV.exe.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\[.Net] - PCCV.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\[.Net] - PCCV.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\[.Net] - PCCV.csproj.GenerateResource.cache" />
+    <None Include="obj\Release\[.Net] - PCCV.csproj.AssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +167,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="DAL\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\[.Net] - PCCV.exe" />
+    <Content Include="bin\Debug\[.Net] - PCCV.pdb" />
+    <Content Include="obj\Debug\[.Net] - PCCV.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\[.Net] - PCCV.exe" />
+    <Content Include="obj\Debug\[.Net] - PCCV.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
