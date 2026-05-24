@@ -56,6 +56,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\LichLamViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\LichLamViec.Designer.cs">
+      <DependentUpon>LichLamViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyDuAn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyDuAn.Designer.cs">
+      <DependentUpon>QuanLyDuAn.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmCalendarView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,18 +110,6 @@
     <Compile Include="GUI\frmThongKeHieuSuat.Designer.cs">
       <DependentUpon>frmThongKeHieuSuat.cs</DependentUpon>
     </Compile>
-    <Compile Include="LichLamViec.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LichLamViec.Designer.cs">
-      <DependentUpon>LichLamViec.cs</DependentUpon>
-    </Compile>
-    <Compile Include="QuanLyDuAn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QuanLyDuAn.Designer.cs">
-      <DependentUpon>QuanLyDuAn.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\frmCalendarView.resx">
@@ -127,8 +127,11 @@
     <EmbeddedResource Include="GUI\frmThongKeHieuSuat.resx">
       <DependentUpon>frmThongKeHieuSuat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LichLamViec.resx">
+    <EmbeddedResource Include="GUI\LichLamViec.resx">
       <DependentUpon>LichLamViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyDuAn.resx">
+      <DependentUpon>QuanLyDuAn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -139,9 +142,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="QuanLyDuAn.resx">
-      <DependentUpon>QuanLyDuAn.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
