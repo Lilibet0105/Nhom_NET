@@ -64,6 +64,17 @@ CREATE TABLE CongViec (
     CONSTRAINT FK_CongViec_NhanVien FOREIGN KEY (MaNguoiThucHien) REFERENCES NhanVien(MaNV),
     CONSTRAINT CK_TrangThaiKanban CHECK (TrangThai IN ('To Do', 'In Progress', 'Done'))
 );
+CREATE TABLE LichLamViec (
+    MaLich INT IDENTITY(1,1) PRIMARY KEY,
+    TieuDe NVARCHAR(200) NOT NULL,
+    DiaDiem NVARCHAR(255) NULL,
+    MoTa NVARCHAR(MAX) NULL,
+    ThoiGianBatDau DATETIME NOT NULL,
+    ThoiGianKetThuc DATETIME NOT NULL,
+    TrangThai NVARCHAR(30) NOT NULL DEFAULT N'Chưa Hoàn Thành', -- N'Chưa Hoàn Thành', N'Đang Tiến Hành', N'Hoàn Thành', N'Chậm Tiến Độ'
+    CONSTRAINT CK_LichLamViec_TrangThai CHECK (TrangThai IN (N'Chưa Hoàn Thành', N'Đang Tiến Hành', N'Hoàn Thành', N'Chậm Tiến Độ')),
+    CONSTRAINT CK_LichLamViec_ThoiGian CHECK (ThoiGianKetThuc >= ThoiGianBatDau)
+);
 CREATE TABLE BinhLuanTask (
     MaBL INT IDENTITY(1,1) PRIMARY KEY,
     MaTask INT NOT NULL,
@@ -284,3 +295,4 @@ INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline, MaDA, MaN
 INSERT INTO BinhLuanTask (MaTask, MaNV, NoiDung, LinkDinhKem) VALUES 
 (1, 2, N'Đã hoàn thành kéo thả UI, đẩy mã nguồn lên nhánh quangdo thành công!', 'https://github.com/quangdo/PCCV/pull/1'),
 (3, 3, N'Đang gặp chút vướng mắc về mã hóa chuỗi mật khẩu khi đối chiếu SQL, đang fix.', NULL);
+

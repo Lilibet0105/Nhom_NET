@@ -7,9 +7,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace DAL
+namespace _Net____PCCV.DAL
 {
-    internal class DataConnection
+    public class DataConnection
     {
         private static string connectionString = @"Data Source=G5\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;TrustServerCertificate=True";
 
@@ -43,7 +43,7 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " + ex.Message, "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Windows.Forms.MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " + ex.Message, "Hệ Thống Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 }
             }
             return dataTable;
@@ -51,7 +51,7 @@ namespace DAL
 
         // Hàm dùng chung để thực thi gọi các STORED PROCEDURE (Thêm, Sửa, Xóa, Đăng ký)
         // Trả về true nếu thực thi thành công, false nếu thất bại (Kích hoạt Trigger báo lỗi định dạng...)
-        public static bool ExecuteStoredProcedure(string spName, SqlParameter[] parameters)
+        public static bool ExecuteStoredProcedure(string query, SqlParameter[] parameters)
         {
             bool isSuccess = false;
             using (SqlConnection conn = GetSqlConnection())
@@ -59,9 +59,9 @@ namespace DAL
                 try
                 {
                     conn.Open();
-                    using (SqlCommand cmd = new SqlCommand(spName, conn))
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
+                        // Không dùng CommandType.StoredProcedure vì đang dùng query trực tiếp
                         if (parameters != null)
                         {
                             cmd.Parameters.AddRange(parameters);
@@ -74,11 +74,11 @@ namespace DAL
                 catch (SqlException sqlEx)
                 {
                     // Bắt trúng các lỗi chủ động ném ra từ TRIGGER (Lỗi Email sai định dạng, lỗi giao việc sai quy chế)
-                    MessageBox.Show(sqlEx.Message, "Lỗi Nghiệp Vụ Hệ Thống", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    System.Windows.Forms.MessageBox.Show(sqlEx.Message, "Lỗi Nghiệp Vụ Hệ Thống", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi hệ thống bất ngờ: " + ex.Message, "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Windows.Forms.MessageBox.Show("Lỗi hệ thống bất ngờ: " + ex.Message, "Thông Báo Lỗi", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 }
             }
             return isSuccess;

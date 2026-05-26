@@ -1,6 +1,6 @@
-﻿namespace _.Net____PCCV
+namespace _.Net____PCCV
 {
-    partial class LichLamViec
+    partial class CalendarView
     {
         /// <summary>
         /// Required designer variable.
@@ -176,7 +176,7 @@
 			this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
 			this.label1.Location = new System.Drawing.Point(394, 9);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(278, 39);
+			this.label1.Size = new System.Drawing.Size(265, 38);
 			this.label1.TabIndex = 12;
 			this.label1.Text = "LỊCH LÀM VIỆC";
 			// 
@@ -250,7 +250,7 @@
 			this.label8.TabIndex = 19;
 			this.label8.Text = "Trạng Thái";
 			// 
-			// LichLamViec
+			// CalendarView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -275,9 +275,9 @@
 			this.Controls.Add(this.button3);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.button1);
-			this.Name = "LichLamViec";
-			this.Text = "Lịch Làm Việc";
-			this.Load += new System.EventHandler(this.LichLamViec_Load);
+			this.Name = "CalendarView";
+			this.Text = "CalendarView";
+			this.Load += new System.EventHandler(this.CalendarView_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
