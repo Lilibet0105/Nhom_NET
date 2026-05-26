@@ -42,3 +42,18 @@ C:\Users\xuant\source\repos\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\bin\Debug\[
 C:\Users\xuant\source\repos\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\bin\CodexCheck\[.Net] - PCCV.exe.config
 C:\Users\xuant\source\repos\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\bin\CodexCheck\[.Net] - PCCV.exe
 C:\Users\xuant\source\repos\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\bin\CodexCheck\[.Net] - PCCV.pdb
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.csproj.AssemblyReference.cache
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\GUI.frmLogin.resources
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\GUI.frmMainDashboard.resources
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\GUI.frmTeamManager.resources
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.frmThongKeHieuSuat.resources
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.Properties.Resources.resources
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.csproj.GenerateResource.cache
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.csproj.CoreCompileInputs.cache
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.exe
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.pdb
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\bin\Debug\[.Net] - PCCV.exe.config
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\bin\Debug\[.Net] - PCCV.exe
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\bin\Debug\[.Net] - PCCV.pdb
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.CalendarView.resources
+C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.ProjectManager.resources
