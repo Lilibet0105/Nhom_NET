@@ -48,16 +48,18 @@
             this.pnlSidebar.Controls.Add(this.btnKanban);
             this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
+            this.pnlSidebar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Size = new System.Drawing.Size(220, 644);
+            this.pnlSidebar.Size = new System.Drawing.Size(196, 515);
             this.pnlSidebar.TabIndex = 0;
             // 
             // btnLogout
             // 
             this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnLogout.Location = new System.Drawing.Point(0, 594);
+            this.btnLogout.Location = new System.Drawing.Point(0, 475);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(220, 50);
+            this.btnLogout.Size = new System.Drawing.Size(196, 40);
             this.btnLogout.TabIndex = 4;
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -66,9 +68,10 @@
             // btnReport
             // 
             this.btnReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReport.Location = new System.Drawing.Point(0, 150);
+            this.btnReport.Location = new System.Drawing.Point(0, 120);
+            this.btnReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(220, 50);
+            this.btnReport.Size = new System.Drawing.Size(196, 40);
             this.btnReport.TabIndex = 3;
             this.btnReport.Text = "Báo cáo thống kê";
             this.btnReport.UseVisualStyleBackColor = true;
@@ -77,9 +80,10 @@
             // btnCalendar
             // 
             this.btnCalendar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCalendar.Location = new System.Drawing.Point(0, 100);
+            this.btnCalendar.Location = new System.Drawing.Point(0, 80);
+            this.btnCalendar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCalendar.Name = "btnCalendar";
-            this.btnCalendar.Size = new System.Drawing.Size(220, 50);
+            this.btnCalendar.Size = new System.Drawing.Size(196, 40);
             this.btnCalendar.TabIndex = 2;
             this.btnCalendar.Text = "Lịch công việc";
             this.btnCalendar.UseVisualStyleBackColor = true;
@@ -88,9 +92,10 @@
             // btnTeam
             // 
             this.btnTeam.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTeam.Location = new System.Drawing.Point(0, 50);
+            this.btnTeam.Location = new System.Drawing.Point(0, 40);
+            this.btnTeam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTeam.Name = "btnTeam";
-            this.btnTeam.Size = new System.Drawing.Size(220, 50);
+            this.btnTeam.Size = new System.Drawing.Size(196, 40);
             this.btnTeam.TabIndex = 1;
             this.btnTeam.Text = "Quản lý nhóm";
             this.btnTeam.UseVisualStyleBackColor = true;
@@ -101,8 +106,9 @@
             this.btnKanban.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnKanban.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnKanban.Location = new System.Drawing.Point(0, 0);
+            this.btnKanban.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnKanban.Name = "btnKanban";
-            this.btnKanban.Size = new System.Drawing.Size(220, 50);
+            this.btnKanban.Size = new System.Drawing.Size(196, 40);
             this.btnKanban.TabIndex = 0;
             this.btnKanban.Text = "Bảng Kanban";
             this.btnKanban.UseVisualStyleBackColor = true;
@@ -111,21 +117,24 @@
             // pnlContent
             // 
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContent.Location = new System.Drawing.Point(220, 0);
+            this.pnlContent.Location = new System.Drawing.Point(196, 0);
+            this.pnlContent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(958, 644);
+            this.pnlContent.Size = new System.Drawing.Size(851, 515);
             this.pnlContent.TabIndex = 1;
             // 
             // frmMainDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1178, 644);
+            this.ClientSize = new System.Drawing.Size(1047, 515);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.pnlSidebar);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmMainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hệ thống Quản lý Công việc";
+            this.Load += new System.EventHandler(this.frmMainDashboard_Load);
             this.pnlSidebar.ResumeLayout(false);
             this.ResumeLayout(false);
 

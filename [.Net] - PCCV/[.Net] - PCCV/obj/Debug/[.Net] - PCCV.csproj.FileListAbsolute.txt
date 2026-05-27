@@ -10,19 +10,6 @@ C:\Users\ADMIN\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Deb
 C:\Users\ADMIN\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.csproj.CoreCompileInputs.cache
 C:\Users\ADMIN\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.exe
 C:\Users\ADMIN\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.pdb
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.csproj.AssemblyReference.cache
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\GUI.frmCalendarView.resources
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\GUI.frmLogin.resources
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\GUI.frmMainDashboard.resources
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\GUI.frmTeamManager.resources
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.frmThongKeHieuSuat.resources
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.LichLamViec.resources
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.Properties.Resources.resources
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.QuanLyDuAn.resources
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.csproj.GenerateResource.cache
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.csproj.CoreCompileInputs.cache
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.exe
-C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.pdb
 C:\Users\xuant\source\repos\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.csproj.AssemblyReference.cache
 C:\Users\xuant\source\repos\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\GUI.frmCalendarView.resources
 C:\Users\xuant\source\repos\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\GUI.frmLogin.resources
@@ -57,3 +44,18 @@ C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\bin\Debug\[.Ne
 C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\bin\Debug\[.Net] - PCCV.pdb
 C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.CalendarView.resources
 C:\Users\quan\Downloads\-.Net---PCCV2\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.ProjectManager.resources
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\bin\Debug\[.Net] - PCCV.exe.config
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\bin\Debug\[.Net] - PCCV.exe
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\bin\Debug\[.Net] - PCCV.pdb
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.csproj.AssemblyReference.cache
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\GUI.frmLogin.resources
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\GUI.frmMainDashboard.resources
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\GUI.frmTeamManager.resources
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.frmPerformanceDashboard.resources
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.CalendarView.resources
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.ProjectManager.resources
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\_.Net____PCCV.Properties.Resources.resources
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.csproj.GenerateResource.cache
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.csproj.CoreCompileInputs.cache
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.exe
+C:\Users\My Pc\Documents\GitHub\-.Net---PCCV\[.Net] - PCCV\[.Net] - PCCV\obj\Debug\[.Net] - PCCV.pdb

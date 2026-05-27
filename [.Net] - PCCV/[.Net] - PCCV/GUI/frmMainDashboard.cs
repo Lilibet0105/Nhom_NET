@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _.Net____PCCV;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -68,12 +69,30 @@ namespace GUI
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new _.Net____PCCV.frmThongKeHieuSuat());
+            OpenChildForm(new _.Net____PCCV.frmPerformanceDashboard());
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmMainDashboard_Load(object sender, EventArgs e)
+        {
+            if (UserSession.Role == "Staff")
+            {
+                // Nếu là Nhân viên thông thường (Staff): Ẩn nút Quản lý nhóm theo yêu cầu đồ án
+                btnTeam.Visible = false;
+
+                // (Tùy chọn thêm): Nếu muốn khóa thay vì ẩn, anh có thể dùng: btnTeam.Enabled = false;
+
+                MessageBox.Show($"Đăng nhập với tư cách Nhân viên: Nút 'Quản lý nhóm' đã được ẩn bảo mật.", "Phân quyền hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (UserSession.Role == "Manager" || UserSession.Role == "Admin")
+            {
+                // Nếu là Quản trị viên/Trưởng nhóm: Hiển thị đầy đủ tính năng quản trị
+                btnTeam.Visible = true;
+            }
         }
     }
 }

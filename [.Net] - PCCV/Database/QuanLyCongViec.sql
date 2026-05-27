@@ -3,6 +3,7 @@ GO
 USE QuanLyCongViec;
 GO
 
+
 CREATE TABLE PhongBan (
     MaPB INT IDENTITY(1,1) PRIMARY KEY,
     TenPB NVARCHAR(100) NOT NULL UNIQUE,
@@ -73,8 +74,8 @@ CREATE TABLE BinhLuanTask (
     LinkDinhKem VARCHAR(500) NULL, -- Lưu trữ link báo cáo kết quả hoặc file tiến độ
     CONSTRAINT FK_BinhLuan_CongViec FOREIGN KEY (MaTask) REFERENCES CongViec(MaTask) ON DELETE CASCADE,
     CONSTRAINT FK_BinhLuan_NhanVien FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV)
-);
-GO;
+)
+GO
 
 -- View 1: Thống kê hiệu suất công việc chi tiết của từng nhân sự (Phục vụ biểu đồ frmPerformanceReport) 
 CREATE VIEW v_PerformanceSummary AS
@@ -284,3 +285,8 @@ INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline, MaDA, MaN
 INSERT INTO BinhLuanTask (MaTask, MaNV, NoiDung, LinkDinhKem) VALUES 
 (1, 2, N'Đã hoàn thành kéo thả UI, đẩy mã nguồn lên nhánh quangdo thành công!', 'https://github.com/quangdo/PCCV/pull/1'),
 (3, 3, N'Đang gặp chút vướng mắc về mã hóa chuỗi mật khẩu khi đối chiếu SQL, đang fix.', NULL);
+
+UPDATE TaiKhoan 
+SET MatKhau = '123456', TrangThai = N'Hoạt động'
+WHERE TenDangNhap = 'quangdo';
+GO
