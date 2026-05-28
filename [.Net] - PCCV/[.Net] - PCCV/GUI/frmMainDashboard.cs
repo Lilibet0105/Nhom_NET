@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -63,7 +63,7 @@ namespace GUI
 
         private void btnCalendar_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmCalendarView());
+            OpenChildForm(new _.Net____PCCV.CalendarView());
         }
 
         private void btnReport_Click(object sender, EventArgs e)
