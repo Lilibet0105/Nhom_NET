@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 ﻿using _Net____PCCV.BUS; // Sử dụng lớp xử lý nghiệp vụ
 using _Net____PCCV.DTO; // Sử dụng đối tượng truyền dữ liệu
 using System;
+=======
+﻿using System;
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,14 +18,18 @@ namespace GUI
 {
     public partial class frmTeamManager : Form
     {
+<<<<<<< HEAD
         // Khởi tạo đối tượng BUS xử lý thành viên
         private ThanhVienBUS tvBUS = new ThanhVienBUS();
         private bool isSuaMode = false; // Cờ đánh dấu chế độ Sửa
 
+=======
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
         public frmTeamManager()
         {
             InitializeComponent();
         }
+<<<<<<< HEAD
 
         // ==================== SỰ KIỆN LOAD FORM ====================
         private void frmTeamManager_Load(object sender, EventArgs e)
@@ -253,3 +261,7 @@ namespace GUI
         }
     }
 }
+=======
+    }
+}
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728

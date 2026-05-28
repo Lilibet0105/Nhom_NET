@@ -1,0 +1,14 @@
+﻿# Các thư mục chứa file chạy sinh ra khi Build
+bin/
+obj/
+
+# Thư mục ẩn chứa bộ nhớ đệm của Visual Studio
+.vs/
+*.vsidx
+*.suo
+*.user
+
+# Các file log và file tạm khác
+*.log
+*.cache
+*.cache
