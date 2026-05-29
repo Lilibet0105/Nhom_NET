@@ -1,4 +1,10 @@
+<<<<<<< HEAD
+﻿-- Created by GitHub Copilot in SSMS - review carefully before executing
+
+CREATE DATABASE QuanLyCongViec;
+=======
 ﻿CREATE DATABASE QuanLyCongViec;
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 GO
 USE QuanLyCongViec;
 GO
@@ -24,9 +30,15 @@ CREATE TABLE NhanVien (
 
 CREATE TABLE TaiKhoan (
     TenDangNhap VARCHAR(50) PRIMARY KEY,
+<<<<<<< HEAD
+    MatKhau VARCHAR(255) NOT NULL,
+    VaiTro NVARCHAR(20) NOT NULL DEFAULT 'Staff',
+    TrangThai NVARCHAR(20) NOT NULL DEFAULT N'Chờ duyệt',
+=======
     MatKhau VARCHAR(255) NOT NULL, -- Lưu chuỗi hash mật khẩu mã hóa phục vụ frmLogin
     VaiTro NVARCHAR(20) NOT NULL DEFAULT 'Staff', -- 'Admin', 'Manager', 'Staff' (Phục vụ phân quyền frmMainDashboard)
     TrangThai NVARCHAR(20) NOT NULL DEFAULT N'Chờ duyệt', -- N'Chờ duyệt', N'Hoạt động', N'Bị khóa' (Phục vụ frmUserManagement)
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
     NgayTao DATETIME DEFAULT GETDATE(),
     MaNV INT UNIQUE NOT NULL,
     CONSTRAINT FK_TaiKhoan_NhanVien FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV) ON DELETE CASCADE
@@ -38,24 +50,44 @@ CREATE TABLE DuAn (
     MoTa NVARCHAR(MAX) NULL,
     NgayBatDau DATE NOT NULL,
     NgayKetThuc DATE NOT NULL,
+<<<<<<< HEAD
+    TrangThai NVARCHAR(30) NOT NULL DEFAULT N'Mới khởi tạo',
+    CONSTRAINT CK_NgayDuAn CHECK (NgayKetThuc >= NgayBatDau)
+);
+
+=======
     TrangThai NVARCHAR(30) NOT NULL DEFAULT N'Mới khởi tạo', -- N'Mới khởi tạo', N'Đang chạy', N'Hoàn thành', N'Tạm dừng'
     CONSTRAINT CK_NgayDuAn CHECK (NgayKetThuc >= NgayBatDau)
 );
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 CREATE TABLE ThanhVienDuAn (
     MaDA INT,
     MaNV INT,
     NgayThamGia DATETIME DEFAULT GETDATE(),
+<<<<<<< HEAD
+    VaiTroTrongDuAn NVARCHAR(50) NULL,
+=======
     VaiTroTrongDuAn NVARCHAR(50) NULL, -- Lead, Member...
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
     PRIMARY KEY (MaDA, MaNV),
     CONSTRAINT FK_TVDA_DuAn FOREIGN KEY (MaDA) REFERENCES DuAn(MaDA) ON DELETE CASCADE,
     CONSTRAINT FK_TVDA_NhanVien FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV) ON DELETE CASCADE
 );
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 CREATE TABLE CongViec (
     MaTask INT IDENTITY(1,1) PRIMARY KEY,
     TenTask NVARCHAR(200) NOT NULL,
     MoTa NVARCHAR(MAX) NULL,
+<<<<<<< HEAD
+    MucDoUuTien NVARCHAR(20) NOT NULL DEFAULT N'Trung bình',
+    TrangThai NVARCHAR(20) NOT NULL DEFAULT 'To Do',
+=======
     MucDoUuTien NVARCHAR(20) NOT NULL DEFAULT N'Trung bình', -- N'Cao', N'Trung bình', N'Thấp' (Phục vụ lọc nâng cao)
     TrangThai NVARCHAR(20) NOT NULL DEFAULT 'To Do', -- 'To Do', 'In Progress', 'Done' (Phục vụ 3 cột Kanban)
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
     Deadline DATETIME NOT NULL,
     NgayTao DATETIME DEFAULT GETDATE(),
     MaDA INT NOT NULL,
@@ -64,12 +96,25 @@ CREATE TABLE CongViec (
     CONSTRAINT FK_CongViec_NhanVien FOREIGN KEY (MaNguoiThucHien) REFERENCES NhanVien(MaNV),
     CONSTRAINT CK_TrangThaiKanban CHECK (TrangThai IN ('To Do', 'In Progress', 'Done'))
 );
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 CREATE TABLE BinhLuanTask (
     MaBL INT IDENTITY(1,1) PRIMARY KEY,
     MaTask INT NOT NULL,
     MaNV INT NOT NULL,
     NoiDung NVARCHAR(MAX) NOT NULL,
     ThoiGian DATETIME DEFAULT GETDATE(),
+<<<<<<< HEAD
+    LinkDinhKem VARCHAR(500) NULL,
+    CONSTRAINT FK_BinhLuan_CongViec FOREIGN KEY (MaTask) REFERENCES CongViec(MaTask) ON DELETE CASCADE,
+    CONSTRAINT FK_BinhLuan_NhanVien FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV)
+);
+GO
+
+-- View 1: Thống kê hiệu suất công việc chi tiết của từng nhân sự
+=======
     LinkDinhKem VARCHAR(500) NULL, -- Lưu trữ link báo cáo kết quả hoặc file tiến độ
     CONSTRAINT FK_BinhLuan_CongViec FOREIGN KEY (MaTask) REFERENCES CongViec(MaTask) ON DELETE CASCADE,
     CONSTRAINT FK_BinhLuan_NhanVien FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV)
@@ -77,6 +122,7 @@ CREATE TABLE BinhLuanTask (
 GO;
 
 -- View 1: Thống kê hiệu suất công việc chi tiết của từng nhân sự (Phục vụ biểu đồ frmPerformanceReport) 
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 CREATE VIEW v_PerformanceSummary AS
 SELECT 
     nv.MaNV,
@@ -93,7 +139,11 @@ LEFT JOIN CongViec cv ON nv.MaNV = cv.MaNguoiThucHien
 GROUP BY nv.MaNV, nv.HoTen, pb.TenPB
 GO
 
+<<<<<<< HEAD
+-- View 2: Tổng quan danh sách công việc đầy đủ thông tin liên kết
+=======
 -- View 2: Tổng quan danh sách công việc đầy đủ thông tin liên kết (Phục vụ nạp dữ liệu frmKanbanBoard / frmCalendarView)
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 CREATE VIEW v_TaskDetailsAll AS
 SELECT 
     cv.MaTask,
@@ -117,7 +167,11 @@ INNER JOIN DuAn da ON cv.MaDA = da.MaDA
 INNER JOIN NhanVien nv ON cv.MaNguoiThucHien = nv.MaNV
 GO
 
+<<<<<<< HEAD
+-- Trigger 1: Bắt lỗi định dạng Email khi Thêm/Sửa nhân sự
+=======
 -- Trigger 1: Bắt lỗi định dạng Email khi Thêm/Sửa nhân sự (Validation phục vụ frmRegister và frmTeamManager)
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 CREATE TRIGGER trg_ValidateEmail_NhanVien
 ON NhanVien
 AFTER INSERT, UPDATE
@@ -126,7 +180,11 @@ BEGIN
     SET NOCOUNT ON;
     IF EXISTS (
         SELECT 1 FROM inserted 
+<<<<<<< HEAD
+        WHERE Email NOT LIKE '%_@__%.__%'
+=======
         WHERE Email NOT LIKE '%_@__%.__%' -- Kiểm tra định dạng cấu trúc Email căn bản
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
     )
     BEGIN
         RAISERROR (N'Lỗi hệ thống: Định dạng Email tài khoản không hợp lệ, vui lòng kiểm tra lại!', 16, 1);
@@ -135,7 +193,11 @@ BEGIN
 END;
 GO
 
+<<<<<<< HEAD
+-- Trigger 2: Ràng buộc giao việc - Chỉ được giao việc cho nhân sự thuộc danh sách thành viên của dự án
+=======
 -- Trigger 2: Ràng buộc giao việc - Chỉ được giao việc cho nhân sự thuộc danh sách thành viên của dự án đó (Phục vụ frmTaskAction)
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 CREATE TRIGGER trg_CheckTaskAssignee
 ON CongViec
 AFTER INSERT, UPDATE
@@ -154,7 +216,11 @@ BEGIN
 END;
 GO
 
+<<<<<<< HEAD
+-- SP 1: Xử lý chức năng đăng ký tài khoản mới
+=======
 -- SP 1: Xử lý chức năng đăng ký tài khoản mới (Phục vụ frmRegister - Validation trống thông tin)
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 CREATE PROCEDURE sp_RegisterUser
     @HoTen NVARCHAR(100),
     @Email VARCHAR(100),
@@ -165,21 +231,30 @@ AS
 BEGIN
     SET NOCOUNT ON;
     
+<<<<<<< HEAD
+=======
     -- Kiểm tra lỗi trống thông tin bắt buộc
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
     IF @HoTen = '' OR @Email = '' OR @TenDangNhap = '' OR @MatKhau = ''
     BEGIN
         RAISERROR(N'Không được phép bỏ trống các trường thông tin bắt buộc!', 16, 1);
         RETURN;
     END
     
+<<<<<<< HEAD
+=======
     -- Kiểm tra trùng lặp tài khoản
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
     IF EXISTS (SELECT 1 FROM TaiKhoan WHERE TenDangNhap = @TenDangNhap)
     BEGIN
         RAISERROR(N'Tên đăng nhập này đã tồn tại trên hệ thống!', 16, 1);
         RETURN;
     END
 
+<<<<<<< HEAD
+=======
     -- Kiểm tra trùng lặp Email
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
     IF EXISTS (SELECT 1 FROM NhanVien WHERE Email = @Email)
     BEGIN
         RAISERROR(N'Địa chỉ Email này đã được sử dụng bởi một nhân sự khác!', 16, 1);
@@ -188,12 +263,18 @@ BEGIN
 
     BEGIN TRANSACTION;
     BEGIN TRY
+<<<<<<< HEAD
+=======
         -- 1. Thêm vào bảng nhân viên trước
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
         DECLARE @NewMaNV INT;
         INSERT INTO NhanVien (HoTen, Email, ViTri) VALUES (@HoTen, @Email, @ViTri);
         SET @NewMaNV = SCOPE_IDENTITY();
 
+<<<<<<< HEAD
+=======
         -- 2. Thêm vào bảng tài khoản ở trạng thái 'Chờ duyệt'
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
         INSERT INTO TaiKhoan (TenDangNhap, MatKhau, VaiTro, TrangThai, MaNV)
         VALUES (@TenDangNhap, @MatKhau, 'Staff', N'Chờ duyệt', @NewMaNV);
 
@@ -208,7 +289,11 @@ BEGIN
 END;
 GO
 
+<<<<<<< HEAD
+-- SP 2: Tìm kiếm thành viên nhóm đa năng
+=======
 -- SP 2: Tìm kiếm thành viên nhóm đa năng (Phục vụ chức năng tìm kiếm tại frmTeamManager)
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 CREATE PROCEDURE sp_SearchTeamMembers
     @Keyword NVARCHAR(100)
 AS
@@ -226,7 +311,11 @@ BEGIN
 END;
 GO
 
+<<<<<<< HEAD
+-- SP 3: Tìm kiếm lọc công việc nâng cao
+=======
 -- SP 3: Tìm kiếm lọc công việc nâng cao (Phục vụ tính năng tìm kiếm bộ lọc tại frmKanbanBoard / frmCalendarView)
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 CREATE PROCEDURE sp_SearchTasksAdvanced
     @MaDA INT = NULL,
     @SearchText NVARCHAR(200) = NULL,
@@ -242,6 +331,10 @@ BEGIN
       AND (@MaNV IS NULL OR MaNguoiNhan = @MaNV)
     ORDER BY Deadline ASC;
 END;
+<<<<<<< HEAD
+GO
+=======
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 
 INSERT INTO PhongBan (TenPB, MoTa) VALUES 
 (N'Ban Giám Đốc', N'Điều hành toàn bộ công ty'),
@@ -260,7 +353,11 @@ INSERT INTO TaiKhoan (TenDangNhap, MatKhau, VaiTro, TrangThai, MaNV) VALUES
 ('admin', 'HASHED_PASSWORD_XYZ_123', 'Admin', N'Hoạt động', 1),
 ('hoanhao', 'HASHED_PASSWORD_MEMBER1', 'Staff', N'Hoạt động', 2),
 ('mailisa', 'HASHED_PASSWORD_MEMBER2', 'Staff', N'Hoạt động', 3),
+<<<<<<< HEAD
+('hahaha', 'HASHED_PASSWORD_MEMBER3', 'Staff', N'Chờ duyệt', 4),
+=======
 ('hahaha', 'HASHED_PASSWORD_MEMBER3', 'Staff', N'Chờ duyệt', 4), -- Tài khoản chờ duyệt để demo frmUserManagement
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 ('vanvu', 'HASHED_PASSWORD_MEMBER4', 'Staff', N'Hoạt động', 5),
 ('quangdo', 'HASHED_QUANGDO_LEADER', 'Manager', N'Hoạt động', 6);
 
@@ -283,4 +380,8 @@ INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline, MaDA, MaN
 
 INSERT INTO BinhLuanTask (MaTask, MaNV, NoiDung, LinkDinhKem) VALUES 
 (1, 2, N'Đã hoàn thành kéo thả UI, đẩy mã nguồn lên nhánh quangdo thành công!', 'https://github.com/quangdo/PCCV/pull/1'),
+<<<<<<< HEAD
 (3, 3, N'Đang gặp chút vướng mắc về mã hóa chuỗi mật khẩu khi đối chiếu SQL, đang fix.', NULL);
+=======
+(3, 3, N'Đang gặp chút vướng mắc về mã hóa chuỗi mật khẩu khi đối chiếu SQL, đang fix.', NULL);
+>>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
