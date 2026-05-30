@@ -48,10 +48,13 @@ ORDER BY Deadline ASC";
         {
             string query = @"
 SELECT nv.MaNV, nv.HoTen
-FROM ThanhVienDuAn tv
-INNER JOIN NhanVien nv ON tv.MaNV = nv.MaNV
-WHERE tv.MaDA = @MaDA
-ORDER BY nv.HoTen";
+FROM NhanVien nv
+LEFT JOIN ThanhVienDuAn tv
+    ON nv.MaNV = tv.MaNV
+   AND tv.MaDA = @MaDA
+ORDER BY
+    CASE WHEN tv.MaNV IS NULL THEN 1 ELSE 0 END,
+    nv.HoTen";
             SqlParameter[] parameters = { new SqlParameter("@MaDA", maDA) };
             return DataConnection.ExecuteQuery(query, parameters);
         }
@@ -59,6 +62,12 @@ ORDER BY nv.HoTen";
         public bool ThemCongViec(TaskDTO task)
         {
             string query = @"
+IF NOT EXISTS (SELECT 1 FROM ThanhVienDuAn WHERE MaDA = @MaDA AND MaNV = @MaNguoiThucHien)
+BEGIN
+    INSERT INTO ThanhVienDuAn (MaDA, MaNV, VaiTroTrongDuAn)
+    VALUES (@MaDA, @MaNguoiThucHien, N'Người thực hiện công việc');
+END
+
 INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline, NgayTao, MaDA, MaNguoiThucHien)
 VALUES (@TenTask, @MoTa, @MucDoUuTien, @TrangThai, @Deadline, @NgayTao, @MaDA, @MaNguoiThucHien)";
             return DataConnection.ExecuteStoredProcedure(query, TaoThamSoCongViec(task, includeId: false));
@@ -67,6 +76,12 @@ VALUES (@TenTask, @MoTa, @MucDoUuTien, @TrangThai, @Deadline, @NgayTao, @MaDA, @
         public bool SuaCongViec(TaskDTO task)
         {
             string query = @"
+IF NOT EXISTS (SELECT 1 FROM ThanhVienDuAn WHERE MaDA = @MaDA AND MaNV = @MaNguoiThucHien)
+BEGIN
+    INSERT INTO ThanhVienDuAn (MaDA, MaNV, VaiTroTrongDuAn)
+    VALUES (@MaDA, @MaNguoiThucHien, N'Người thực hiện công việc');
+END
+
 UPDATE CongViec
 SET TenTask = @TenTask,
     MoTa = @MoTa,
@@ -88,6 +103,13 @@ WHERE MaTask = @MaTask";
                 new SqlParameter("@MaTask", maTask),
                 new SqlParameter("@TrangThai", trangThai)
             };
+            return DataConnection.ExecuteStoredProcedure(query, parameters);
+        }
+
+        public bool XoaCongViec(int maTask)
+        {
+            string query = "DELETE FROM CongViec WHERE MaTask = @MaTask";
+            SqlParameter[] parameters = { new SqlParameter("@MaTask", maTask) };
             return DataConnection.ExecuteStoredProcedure(query, parameters);
         }
 

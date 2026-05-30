@@ -121,7 +121,6 @@ namespace GUI
             btnSuaCongViec.Text = "Sửa";
             btnSuaCongViec.UseVisualStyleBackColor = false;
             btnSuaCongViec.Click += btnSuaCongViec_Click;
-            // 
             // btnDong
             // 
             btnDong.Anchor = AnchorStyles.Top | AnchorStyles.Right;

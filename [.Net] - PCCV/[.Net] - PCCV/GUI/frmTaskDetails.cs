@@ -95,6 +95,13 @@ namespace GUI
             {
                 if (frmSua.ShowDialog(this) == DialogResult.OK)
                 {
+                    if (taskBUS.LayCongViecTheoMa(maTask) == null)
+                    {
+                        DialogResult = DialogResult.OK;
+                        Close();
+                        return;
+                    }
+
                     LoadThongTinCongViec();
                     DialogResult = DialogResult.OK;
                 }

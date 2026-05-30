@@ -47,6 +47,7 @@ namespace GUI
             lblTieuDeForm.Text = maTask > 0 ? "CẬP NHẬT CÔNG VIỆC" : "TẠO MỚI CÔNG VIỆC";
             txtMaCongViec.ReadOnly = true;
             txtMaCongViec.Text = maTask > 0 ? maTask.ToString() : "Tự động";
+            btnXoa.Visible = maTask > 0;
             dtpNgayBatDau.Value = DateTime.Now;
             dtpHanXuLy.Value = DateTime.Now.Date.AddDays(1);
         }
@@ -154,6 +155,40 @@ namespace GUI
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (maTask <= 0)
+            {
+                return;
+            }
+
+            string tenCongViec = string.IsNullOrWhiteSpace(txtTieuDe.Text) ? "công việc này" : txtTieuDe.Text.Trim();
+            DialogResult confirm = MessageBox.Show(
+                $"Bạn có chắc muốn xóa công việc \"{tenCongViec}\" không?",
+                "Xác nhận xóa công việc",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                if (taskBUS.XoaCongViec(maTask))
+                {
+                    MessageBox.Show("Xóa công việc thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi xóa công việc", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void cboDuAn_SelectedIndexChanged(object sender, EventArgs e)

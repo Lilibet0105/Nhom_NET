@@ -27,6 +27,7 @@ namespace GUI
         private Label lblMoTa;
         private TextBox txtMoTa;
         private Panel pnlNutLenh;
+        private Button btnXoa;
         private Button btnLuu;
         private Button btnHuy;
 
@@ -63,6 +64,7 @@ namespace GUI
             lblMoTa = new Label();
             txtMoTa = new TextBox();
             pnlNutLenh = new Panel();
+            btnXoa = new Button();
             btnLuu = new Button();
             btnHuy = new Button();
             pnlNoiDung.SuspendLayout();
@@ -266,6 +268,7 @@ namespace GUI
             // pnlNutLenh
             // 
             pnlNutLenh.BackColor = Color.FromArgb(245, 247, 250);
+            pnlNutLenh.Controls.Add(btnXoa);
             pnlNutLenh.Controls.Add(btnLuu);
             pnlNutLenh.Controls.Add(btnHuy);
             pnlNutLenh.Dock = DockStyle.Bottom;
@@ -274,6 +277,20 @@ namespace GUI
             pnlNutLenh.Padding = new Padding(24, 12, 24, 12);
             pnlNutLenh.Size = new Size(724, 60);
             pnlNutLenh.TabIndex = 1;
+            // 
+            // btnXoa
+            // 
+            btnXoa.BackColor = Color.FromArgb(220, 53, 69);
+            btnXoa.FlatStyle = FlatStyle.Flat;
+            btnXoa.ForeColor = Color.White;
+            btnXoa.Location = new Point(24, 12);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(92, 34);
+            btnXoa.TabIndex = 2;
+            btnXoa.Text = "Xóa";
+            btnXoa.UseVisualStyleBackColor = false;
+            btnXoa.Visible = false;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnLuu
             // 
