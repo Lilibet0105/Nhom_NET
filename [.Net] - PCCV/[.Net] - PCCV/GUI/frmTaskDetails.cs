@@ -91,7 +91,7 @@ namespace GUI
 
         private void btnSuaCongViec_Click(object sender, EventArgs e)
         {
-            using (FrmTaoMoiGiaoCongViec frmSua = new FrmTaoMoiGiaoCongViec(maTask))
+            using (frmTaskActions frmSua = new frmTaskActions(maTask))
             {
                 if (frmSua.ShowDialog(this) == DialogResult.OK)
                 {

@@ -4,9 +4,12 @@ namespace GUI
 {
     public partial class frmTaskActions : Form
     {
-        public frmTaskActions()
+        private int maTask;
+
+        public frmTaskActions(int maTask)
         {
             InitializeComponent();
+            this.maTask = maTask;
         }
     }
 }

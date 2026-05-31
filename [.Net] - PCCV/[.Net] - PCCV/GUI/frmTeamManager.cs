@@ -1,30 +1,22 @@
-using _Net____PCCV.BUS; // Sử dụng lớp xử lý nghiệp vụ
-using _Net____PCCV.DTO; // Sử dụng đối tượng truyền dữ liệu
+using _Net____PCCV.BUS;
+using _Net____PCCV.DTO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI
 {
     public partial class frmTeamManager : Form
     {
-        // Khởi tạo đối tượng BUS xử lý thành viên
         private ThanhVienBUS tvBUS = new ThanhVienBUS();
-        private bool isSuaMode = false; // Cờ đánh dấu chế độ Sửa
+        private bool isSuaMode = false;
 
         public frmTeamManager()
         {
             InitializeComponent();
         }
 
-        // ==================== SỰ KIỆN LOAD FORM ====================
         private void frmTeamManager_Load(object sender, EventArgs e)
         {
             LoadDanhSachThanhVien();
@@ -32,94 +24,74 @@ namespace GUI
             CaiDatTrangThaiMacDinh();
         }
 
-        // ==================== CÀI ĐẶT HIỂN THỊ DATAGRIDVIEW ====================
         private void CaiDatDataGridView()
         {
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
+            dgvTeam.AutoGenerateColumns = false;
+            dgvTeam.AllowUserToAddRows = false;
+            dgvTeam.AllowUserToDeleteRows = false;
+            dgvTeam.ReadOnly = true;
+            dgvTeam.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTeam.MultiSelect = false;
 
-            dataGridView1.Columns.Clear();
-
-            // Thêm các cột tương ứng cấu trúc dữ liệu hồ sơ nhân sự
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã TV", DataPropertyName = "MaTV", Width = 70, Name = "MaTV" });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Họ Tên", DataPropertyName = "HoTen", Width = 150, Name = "HoTen" });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Chức Vụ", DataPropertyName = "ChucVu", Width = 120, Name = "ChucVu" });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Email", DataPropertyName = "Email", Width = 160, Name = "Email" });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Số Điện Thoại", DataPropertyName = "SoDienThoai", Width = 110, Name = "SoDienThoai" });
+            dgvTeam.Columns.Clear();
+            dgvTeam.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Mã TV", DataPropertyName = "MaTV", Width = 70, Name = "MaTV" });
+            dgvTeam.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Họ Tên", DataPropertyName = "HoTen", Width = 150, Name = "HoTen" });
+            dgvTeam.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Chức Vụ", DataPropertyName = "ChucVu", Width = 120, Name = "ChucVu" });
         }
 
-        // ==================== CÀI ĐẶT TRẠNG THÁI MẶC ĐỊNH ====================
         private void CaiDatTrangThaiMacDinh()
         {
-            textBox1.ReadOnly = true; // Mã thành viên tự tăng nên để ReadOnly
-            textBox1.BackColor = SystemColors.Control;
-            button3.Enabled = false; // Nút Cập nhật ẩn khi chưa bấm Sửa
+            txtMemberID.ReadOnly = true;
+            txtMemberID.BackColor = SystemColors.Control;
             isSuaMode = false;
-            button2.Text = "Sửa Thành Viên";
+            btnSua.Text = "Sửa";
         }
 
-        // ==================== TẢI DỮ LIỆU LÊN GRIDVIEW ====================
         private void LoadDanhSachThanhVien()
         {
             try
             {
                 DataTable dt = tvBUS.LayDanhSachThanhVien();
-                dataGridView1.DataSource = dt;
+                dgvTeam.DataSource = dt;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải danh sách hồ sơ nhân sự: " + ex.Message, "Hệ Thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi tải danh sách: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ==================== XÓA TRẮNG CÁC Ô NHẬP LIỆU ====================
         private void XoaTrangNhapLieu()
         {
-            textBox1.Clear(); // MaTV
-            textBox2.Clear(); // HoTen
-            textBox3.Clear(); // ChucVu
-            textBox4.Clear(); // Email
-            textBox5.Clear(); // SoDienThoai
+            txtMemberID.Clear();
+            txtFullname.Clear();
+            cboRole.SelectedIndex = -1;
             isSuaMode = false;
-            button3.Enabled = false;
-            button2.Text = "Sửa Thành Viên";
+            btnSua.Text = "Sửa";
         }
 
-        // ==================== CHUYỂN ĐỔI DỮ LIỆU SANG DTO ====================
         private ThanhVienDTO LayDuLieuTuForm()
         {
             ThanhVienDTO tv = new ThanhVienDTO();
-            if (!string.IsNullOrEmpty(textBox1.Text))
-                tv.MaTV = int.Parse(textBox1.Text.Trim());
-            tv.HoTen = textBox2.Text.Trim();
-            tv.ChucVu = textBox3.Text.Trim();
-            tv.Email = textBox4.Text.Trim();
-            tv.SoDienThoai = textBox5.Text.Trim();
+            if (!string.IsNullOrEmpty(txtMemberID.Text))
+                tv.MaTV = int.Parse(txtMemberID.Text.Trim());
+            tv.HoTen = txtFullname.Text.Trim();
+            tv.ChucVu = cboRole.Text.Trim();
             return tv;
         }
 
-        // ==================== CHỨC NĂNG THÊM THÀNH VIÊN ====================
-        private void button1_Click(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(textBox2.Text))
+                if (string.IsNullOrWhiteSpace(txtFullname.Text))
                 {
-                    MessageBox.Show("Vui lòng nhập họ tên thành viên!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    textBox2.Focus();
+                    MessageBox.Show("Vui lòng nhập họ tên!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 ThanhVienDTO tv = LayDuLieuTuForm();
-                bool result = tvBUS.ThemThanhVien(tv);
-
-                if (result)
+                if (tvBUS.ThemThanhVien(tv))
                 {
-                    MessageBox.Show("Thêm hồ sơ nhân sự thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thêm thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDanhSachThanhVien();
                     XoaTrangNhapLieu();
                 }
@@ -130,89 +102,27 @@ namespace GUI
             }
         }
 
-        // ==================== CHẾ ĐỘ SỬA HỒ SƠ ====================
-        private void button2_Click(object sender, EventArgs e)
+        private void btnSua_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow == null)
-            {
-                MessageBox.Show("Vui lòng chọn một nhân sự để chỉnh sửa!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            if (dgvTeam.CurrentRow == null) return;
 
             if (!isSuaMode)
             {
-                DataGridRow row = dataGridView1.CurrentRow;
-                textBox1.Text = row.Cells["MaTV"].Value?.ToString() ?? "";
-                textBox2.Text = row.Cells["HoTen"].Value?.ToString() ?? "";
-                textBox3.Text = row.Cells["ChucVu"].Value?.ToString() ?? "";
-                textBox4.Text = row.Cells["Email"].Value?.ToString() ?? "";
-                textBox5.Text = row.Cells["SoDienThoai"].Value?.ToString() ?? "";
-
+                DataGridViewRow row = dgvTeam.CurrentRow;
+                txtMemberID.Text = row.Cells["MaTV"].Value?.ToString() ?? "";
+                txtFullname.Text = row.Cells["HoTen"].Value?.ToString() ?? "";
+                cboRole.Text = row.Cells["ChucVu"].Value?.ToString() ?? "";
                 isSuaMode = true;
-                button3.Enabled = true;
-                button2.Text = "Hủy Sửa";
+                btnSua.Text = "Lưu";
             }
             else
             {
-                XoaTrangNhapLieu();
-            }
-        }
-
-        // ==================== CHỨC NĂNG CẬP NHẬT (LƯU SỬA) ====================
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (!isSuaMode) return;
-
-            try
-            {
-                if (string.IsNullOrWhiteSpace(textBox2.Text))
-                {
-                    MessageBox.Show("Họ tên thành viên không được để trống!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                ThanhVienDTO tv = LayDuLieuTuForm();
-                bool result = tvBUS.SuaThanhVien(tv);
-
-                if (result)
-                {
-                    MessageBox.Show("Cập nhật hồ sơ nhân sự thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadDanhSachThanhVien();
-                    XoaTrangNhapLieu();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // ==================== CHỨC NĂNG XÓA THÀNH VIÊN ====================
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow == null)
-            {
-                MessageBox.Show("Vui lòng chọn thành viên cần xóa!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            DataGridViewRow row = dataGridView1.CurrentRow;
-            string maTV = row.Cells["MaTV"].Value?.ToString() ?? "";
-            string hoTen = row.Cells["HoTen"].Value?.ToString() ?? "";
-
-            DialogResult dlg = MessageBox.Show(
-                $"Bạn có chắc chắn muốn xóa thành viên '{hoTen}' (Mã: {maTV}) khỏi hệ thống?",
-                "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question
-            );
-
-            if (dlg == DialogResult.Yes)
-            {
                 try
                 {
-                    bool result = tvBUS.XoaThanhVien(int.Parse(maTV));
-                    if (result)
+                    ThanhVienDTO tv = LayDuLieuTuForm();
+                    if (tvBUS.SuaThanhVien(tv))
                     {
-                        MessageBox.Show("Xóa thành viên thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Cập nhật thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadDanhSachThanhVien();
                         XoaTrangNhapLieu();
                     }
@@ -224,31 +134,32 @@ namespace GUI
             }
         }
 
-        // ==================== CHỨC NĂNG TÌM KIẾM THÀNH VIÊN ====================
-        private void btnTimKiem_Click(object sender, EventArgs e)
+        private void btnXoa_Click(object sender, EventArgs e)
         {
-            try
+            if (dgvTeam.CurrentRow == null) return;
+            DataGridViewRow row = dgvTeam.CurrentRow;
+            int maTV = Convert.ToInt32(row.Cells["MaTV"].Value);
+
+            if (MessageBox.Show("Bạn có muốn xóa không?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                string tuKhoa = txtTimKiem.Text.Trim();
-                DataTable dt = tvBUS.TimKiemThanhVien(tuKhoa);
-                dataGridView1.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (tvBUS.XoaThanhVien(maTV))
+                {
+                    LoadDanhSachThanhVien();
+                    XoaTrangNhapLieu();
+                }
             }
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvTeam_Click(object sender, EventArgs e) { }
+
+        private void dgvTeam_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                textBox1.Text = row.Cells["MaTV"].Value?.ToString() ?? "";
-                textBox2.Text = row.Cells["HoTen"].Value?.ToString() ?? "";
-                textBox3.Text = row.Cells["ChucVu"].Value?.ToString() ?? "";
-                textBox4.Text = row.Cells["Email"].Value?.ToString() ?? "";
-                textBox5.Text = row.Cells["SoDienThoai"].Value?.ToString() ?? "";
+                DataGridViewRow row = dgvTeam.Rows[e.RowIndex];
+                txtMemberID.Text = row.Cells["MaTV"].Value?.ToString() ?? "";
+                txtFullname.Text = row.Cells["HoTen"].Value?.ToString() ?? "";
+                cboRole.Text = row.Cells["ChucVu"].Value?.ToString() ?? "";
             }
         }
     }

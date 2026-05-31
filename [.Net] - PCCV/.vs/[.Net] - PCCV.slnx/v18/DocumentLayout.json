@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\gui\\frmteammanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmteammanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\gui\\frmusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\gui\\frmusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
@@ -39,19 +47,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "frmTeamManager.cs",
-              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmTeamManager.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmTeamManager.cs",
-              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmTeamManager.cs",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmTeamManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAPoAAAAYAAAAAAAAAA==",
+              "Title": "frmUserManagement.cs",
+              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmUserManagement.cs",
+              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmUserManagement.cs",
+              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmUserManagement.cs",
+              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmUserManagement.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwAgAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-31T10:58:09.793Z",
+              "WhenOpened": "2026-05-31T14:52:21.715Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmUserManagement.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmUserManagement.cs",
+              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmUserManagement.cs",
+              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmUserManagement.cs [Design]",
+              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmUserManagement.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-31T14:49:01.637Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

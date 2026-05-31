@@ -84,15 +84,6 @@
     <Compile Include="DTO\TaskDTO.cs" />
     <Compile Include="DTO\ThongKeDTO.cs" />
     <Compile Include="DTO\UserManagement.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Calendar.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="GUI\frmCalendarView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +150,8 @@
     <Compile Include="GUI\frmUserManagement.Designer.cs">
       <DependentUpon>frmUserManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\frmLogin.resx">
@@ -170,9 +163,9 @@
     <EmbeddedResource Include="GUI\frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FrmTaoMoiGiaoCongViec.resx" />
     <EmbeddedResource Include="GUI\frmTeamManager.resx">
       <DependentUpon>frmTeamManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmPerformanceDashboard.resx">
       <DependentUpon>frmPerformanceDashboard.cs</DependentUpon>
@@ -191,6 +184,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include=".vs\[.Net] - PCCV.csproj.dtbcache.json" />
+    <None Include="bin\Debug\[.Net] - PCCV.exe.config" />
+    <None Include="obj\Release\[.Net] - PCCV.csproj.AssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -222,6 +218,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\[.Net] - PCCV.exe" />
+    <Content Include="bin\Debug\[.Net] - PCCV.pdb" />
     <Content Include="Database\QuanLyCongViec.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -230,6 +228,9 @@
       <DependentUpon>QuanLyCongViec.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

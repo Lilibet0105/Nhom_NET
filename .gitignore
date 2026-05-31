@@ -1,18 +1,26 @@
-﻿## Tránh đồng bộ file dữ liệu vật lý SQL Server (Nguyên nhân gây lỗi)
+﻿## Ignore Visual Studio Temporary Files and Build Output
+Top/
+.vs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bbin/
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.usercaps
+*.userresource
+
+# SQL Server files (nếu bạn có lưu file database .mdf/.ldf trong thư mục code)
 *.mdf
 *.ldf
 
-## Tránh đồng bộ file rác cấu hình của Visual Studio
-.vs/
-*.suo
-*.user
-*.userosscache
-*.sln.docuser.suo
-*.suo
-DocumentLayout.backup.json
-
-## Tránh đồng bộ file chạy biên dịch sau khi bấm Start
-[Bin]
-[Obj]
-**/bin/
-**/obj/
+# Packages
+#.nuget/
+packages/

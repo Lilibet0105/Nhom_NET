@@ -21,7 +21,7 @@ namespace GUI
 
         private void btnTaoMoi_Click(object sender, EventArgs e)
         {
-            using (frmTaskActions frmTaoMoi = new frmTaskActions())
+            using (frmTaskActions frmTaoMoi = new frmTaskActions(0))
             {
                 if (frmTaoMoi.ShowDialog(this) == DialogResult.OK)
                 {
@@ -296,7 +296,7 @@ namespace GUI
         private void btnSua_Click(object sender, EventArgs e)
         {
             int maTask = Convert.ToInt32(((Button)sender).Tag);
-            using (FrmTaoMoiGiaoCongViec frmSua = new FrmTaoMoiGiaoCongViec(maTask))
+            using (frmTaskActions frmSua = new frmTaskActions(maTask))
             {
                 if (frmSua.ShowDialog(this) == DialogResult.OK)
                 {

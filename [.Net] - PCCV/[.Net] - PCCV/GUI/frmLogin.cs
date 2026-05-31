@@ -90,5 +90,19 @@ namespace GUI
         {
 
         }
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            // 1. Ẩn form Đăng nhập hiện tại đi (hoặc dùng .Close() nếu form Login không phải form chính)
+            this.Hide();
+
+            // 2. Khởi tạo Form Đăng ký (Thay 'frmRegister' bằng tên chuẩn Form đăng ký trong dự án của bạn)
+            frmRegister fRegister = new frmRegister();
+
+            // 3. Hiển thị Form đăng ký lên màn hình
+            fRegister.ShowDialog();
+
+            // 4. Sau khi người dùng tắt Form đăng ký hoặc đăng ký xong quay lại, hiển thị lại Form đăng nhập
+            this.Show();
+        }
     }
 }

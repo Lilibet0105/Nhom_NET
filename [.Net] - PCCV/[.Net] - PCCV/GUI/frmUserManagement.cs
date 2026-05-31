@@ -23,7 +23,7 @@ namespace GUI
 
         private void CaiDatGiaoDienODoiChinh()
         {
-            txtUsername.ReadOnly = true; // Không cho sửa Username (Khóa chính)
+            txtUserName.ReadOnly = true; // Không cho sửa Username (Khóa chính)
 
             // Cài đặt danh sách lựa chọn cho Quyền hạn
             cboVaiTro.Items.Clear();
@@ -43,7 +43,7 @@ namespace GUI
             try
             {
                 DataTable dt = tkBUS.LayDanhSachTaiKhoan();
-                dgvUsers.DataSource = dt;
+                dataGridView1.DataSource = dt;
             }
             catch (Exception ex)
             {
@@ -52,12 +52,12 @@ namespace GUI
         }
 
         // Sự kiện xảy ra khi người dùng chọn một dòng tài khoản trên GridView
-        private void dgvUsers_SelectionChanged(object sender, EventArgs e)
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvUsers.CurrentRow != null)
+            if (dataGridView1.CurrentRow != null)
             {
-                DataGridViewRow row = dgvUsers.CurrentRow;
-                txtUsername.Text = row.Cells["Username"].Value?.ToString() ?? "";
+                DataGridViewRow row = dataGridView1.CurrentRow;
+                txtUserName.Text = row.Cells["Username"].Value?.ToString() ?? "";
 
                 // Đồng bộ Vai trò lên ComboBox
                 string vaiTro = row.Cells["VaiTro"].Value?.ToString() ?? "Staff";
@@ -72,7 +72,7 @@ namespace GUI
         // ==================== LẬP TRÌNH NÚT CẬP NHẬT TRẠNG THÁI & VAI TRÒ ====================
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUsername.Text))
+            if (string.IsNullOrEmpty(txtUserName.Text))
             {
                 MessageBox.Show("Vui lòng chọn tài khoản cần thay đổi thông tin cấu hình!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -83,7 +83,7 @@ namespace GUI
                 // Đóng gói dữ liệu thay đổi vào DTO
                 TaiKhoanDTO tk = new TaiKhoanDTO
                 {
-                    Username = txtUsername.Text.Trim(),
+                    Username = txtUserName.Text.Trim(),
                     VaiTro = cboVaiTro.SelectedItem.ToString(),
                     TrangThai = cboTrangThai.SelectedItem.ToString()
                 };
