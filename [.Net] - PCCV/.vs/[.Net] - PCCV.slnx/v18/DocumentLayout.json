@@ -1,48 +1,7 @@
 {
   "Version": 1,
-<<<<<<< HEAD
-  "WorkspaceRootPath": "D:\\t\u00E0i li\u1EC7u\\Net\\-.Net---PCCV-main\\[.Net] - PCCV\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|d:\\t\u00E0i li\u1EC7u\\net\\-.net---pccv-main\\[.net] - pccv\\[.net] - pccv\\gui\\frmusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|D:\\t\u00E0i li\u1EC7u\\Net\\-.Net---PCCV-main\\[.Net] - PCCV\\[.net] - pccv\\gui\\frmusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmusermanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|D:\\t\u00E0i li\u1EC7u\\Net\\-.Net---PCCV-main\\[.Net] - PCCV\\[.net] - pccv\\gui\\frmteammanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmteammanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|D:\\t\u00E0i li\u1EC7u\\Net\\-.Net---PCCV-main\\[.Net] - PCCV\\[.net] - pccv\\gui\\frmteammanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmteammanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-  "WorkspaceRootPath": "C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.net] - pccv\\gui\\projectmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\projectmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\quan\\downloads\\-.net---pccv2\\[.net] - pccv\\[.net] - pccv\\gui\\calendarview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\calendarview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.net] - pccv\\gui\\calendarview.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\calendarview.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.net] - pccv\\gui\\calendarview.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\calendarview.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.net] - pccv\\gui\\projectmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\projectmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -50,28 +9,14 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
-<<<<<<< HEAD
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Bookmark",
-=======
->>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
-<<<<<<< HEAD
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-=======
->>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
@@ -80,125 +25,15 @@
             },
             {
               "$type": "Bookmark",
-<<<<<<< HEAD
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-=======
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
->>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-<<<<<<< HEAD
-              "Title": "frmUserManagement.cs",
-              "DocumentMoniker": "D:\\t\u00E0i li\u1EC7u\\Net\\-.Net---PCCV-main\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmUserManagement.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmUserManagement.cs",
-              "ToolTip": "D:\\t\u00E0i li\u1EC7u\\Net\\-.Net---PCCV-main\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmUserManagement.cs",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmUserManagement.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAawG8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T18:59:32.698Z",
-=======
-              "Title": "CalendarView.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\CalendarView.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\CalendarView.cs",
-              "ToolTip": "C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\CalendarView.cs [Design]",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\CalendarView.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T09:52:11.922Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CalendarView.resx",
-              "DocumentMoniker": "C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\CalendarView.resx",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\CalendarView.resx",
-              "ToolTip": "C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\CalendarView.resx",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\CalendarView.resx",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2026-05-26T09:52:11.662Z",
->>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-<<<<<<< HEAD
-              "Title": "frmTeamManager.cs",
-              "DocumentMoniker": "D:\\t\u00E0i li\u1EC7u\\Net\\-.Net---PCCV-main\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmTeamManager.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmTeamManager.cs",
-              "ToolTip": "D:\\t\u00E0i li\u1EC7u\\Net\\-.Net---PCCV-main\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmTeamManager.cs",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmTeamManager.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAlwBwAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T18:27:42.7Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmTeamManager.cs [Design]",
-              "DocumentMoniker": "D:\\t\u00E0i li\u1EC7u\\Net\\-.Net---PCCV-main\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmTeamManager.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmTeamManager.cs",
-              "ToolTip": "D:\\t\u00E0i li\u1EC7u\\Net\\-.Net---PCCV-main\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmTeamManager.cs [Design]",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmTeamManager.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T18:27:39.382Z"
-=======
-              "Title": "CalendarView.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\CalendarView.Designer.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\CalendarView.Designer.cs",
-              "ToolTip": "C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\CalendarView.Designer.cs",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\CalendarView.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T09:52:11.663Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProjectManager.cs",
-              "DocumentMoniker": "C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\ProjectManager.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\ProjectManager.cs",
-              "ToolTip": "C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\ProjectManager.cs",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\ProjectManager.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAIAwwB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T09:52:11.663Z",
-              "EditorCaption": ""
->>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-<<<<<<< HEAD
-              "Title": "frmUserManagement.cs [Design]",
-              "DocumentMoniker": "D:\\t\u00E0i li\u1EC7u\\Net\\-.Net---PCCV-main\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmUserManagement.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmUserManagement.cs",
-              "ToolTip": "D:\\t\u00E0i li\u1EC7u\\Net\\-.Net---PCCV-main\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmUserManagement.cs [Design]",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmUserManagement.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T18:27:35.245Z",
-              "EditorCaption": " [Design]"
-=======
-              "Title": "ProjectManager.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\ProjectManager.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\ProjectManager.cs",
-              "ToolTip": "C:\\Users\\quan\\Downloads\\-.Net---PCCV2\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\ProjectManager.cs [Design]",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\ProjectManager.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T09:52:11.664Z",
-              "EditorCaption": " [Design]"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
->>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
             }
           ]
         }

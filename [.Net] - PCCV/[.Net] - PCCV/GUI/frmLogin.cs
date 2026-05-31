@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BUS;
 
 namespace GUI
 {
     public partial class frmLogin : Form
     {
+        private NguoiDungBUS _userBUS = new NguoiDungBUS();
+
         public frmLogin()
         {
             InitializeComponent();
@@ -19,7 +15,8 @@ namespace GUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "admin" && txtPassword.Text == "123")
+            string error;
+            if (_userBUS.Login(txtUsername.Text.Trim(), txtPassword.Text, out error))
             {
                 this.Hide();
                 using (frmMainDashboard mainForm = new frmMainDashboard())
@@ -30,23 +27,22 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(error, "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void frmLogin_Load(object sender, EventArgs e)
+
+        private void btnExit_Click(object sender, EventArgs e) { this.Close(); }
+
+        private void btnRegister_Click(object sender, EventArgs e)
         {
+            this.Hide();
 
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void txtUsername_TextChanged(object sender, EventArgs e)
-        {
-
+            using (frmRegister registerForm = new frmRegister())
+            {
+                registerForm.ShowDialog();
+            }
+            this.Show();
         }
     }
 }
