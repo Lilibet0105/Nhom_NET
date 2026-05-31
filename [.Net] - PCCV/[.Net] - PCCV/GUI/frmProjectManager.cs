@@ -12,12 +12,12 @@ using _Net____PCCV.DTO;
 
 namespace _.Net____PCCV
 {
-    public partial class ProjectManager : Form
+    public partial class frmProjectManager : Form
     {
         private ProjectManagerBUS duAnBUS = new ProjectManagerBUS();
         private bool isSuaMode = false; // Cờ đánh dấu đang ở chế độ Sửa
 
-        public ProjectManager()
+        public frmProjectManager()
         {
             InitializeComponent();
         }

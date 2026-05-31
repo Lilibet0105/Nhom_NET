@@ -12,12 +12,12 @@ using _Net____PCCV.DTO;
 
 namespace _.Net____PCCV
 {
-    public partial class CalendarView : Form
+    public partial class frmCalendarView : Form
     {
         private CalendarViewBUS calendarBUS = new CalendarViewBUS();
         private bool isSuaMode = false; // Cờ đánh dấu đang ở chế độ Sửa
 
-        public CalendarView()
+        public frmCalendarView()
         {
             InitializeComponent();
         }

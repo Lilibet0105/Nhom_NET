@@ -1,6 +1,6 @@
 namespace _.Net____PCCV
 {
-    partial class ProjectManager
+    partial class frmProjectManager
     {
         /// <summary>
         /// Required designer variable.

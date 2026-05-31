@@ -1,6 +1,6 @@
 namespace _.Net____PCCV
 {
-    partial class CalendarView
+    partial class frmCalendarView
     {
         /// <summary>
         /// Required designer variable.
