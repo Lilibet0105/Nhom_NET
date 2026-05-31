@@ -63,17 +63,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CalendarView.cs">
+    <Compile Include="GUI\frmCalendarView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CalendarView.Designer.cs">
-      <DependentUpon>CalendarView.cs</DependentUpon>
+    <Compile Include="GUI\frmCalendarView.Designer.cs">
+      <DependentUpon>frmCalendarView.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ProjectManager.cs">
+    <Compile Include="GUI\frmProjectManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\ProjectManager.Designer.cs">
-      <DependentUpon>ProjectManager.cs</DependentUpon>
+    <Compile Include="GUI\frmProjectManager.Designer.cs">
+      <DependentUpon>frmProjectManager.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\frmKanbanBoard.cs">
       <SubType>Form</SubType>
@@ -93,11 +93,11 @@
     <Compile Include="GUI\frmMainDashboard.Designer.cs">
       <DependentUpon>frmMainDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\FrmTaoMoiGiaoCongViec.cs">
+    <Compile Include="GUI\frmTaskActions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\FrmTaoMoiGiaoCongViec.Designer.cs">
-      <DependentUpon>FrmTaoMoiGiaoCongViec.cs</DependentUpon>
+    <Compile Include="GUI\frmTaskActions.Designer.cs">
+      <DependentUpon>frmTaskActions.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\frmTeamManager.cs">
       <SubType>Form</SubType>
@@ -125,11 +125,11 @@
     <EmbeddedResource Include="GUI\frmPerformanceDashboard.resx">
       <DependentUpon>frmPerformanceDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\CalendarView.resx">
-      <DependentUpon>CalendarView.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\frmCalendarView.resx">
+      <DependentUpon>frmCalendarView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ProjectManager.resx">
-      <DependentUpon>ProjectManager.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\frmProjectManager.resx">
+      <DependentUpon>frmProjectManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

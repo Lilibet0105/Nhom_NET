@@ -13,7 +13,7 @@ namespace GUI
 
         private void btnTaoMoi_Click(object sender, EventArgs e)
         {
-            using (FrmTaoMoiGiaoCongViec frmTaoMoi = new FrmTaoMoiGiaoCongViec())
+            using (frmTaskActions frmTaoMoi = new frmTaskActions())
             {
                 frmTaoMoi.ShowDialog(this);
             }

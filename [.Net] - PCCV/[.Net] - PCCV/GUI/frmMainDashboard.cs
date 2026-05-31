@@ -64,7 +64,7 @@ namespace GUI
 
         private void btnCalendar_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new _.Net____PCCV.CalendarView());
+            OpenChildForm(new _.Net____PCCV.frmCalendarView());
         }
 
         private void btnReport_Click(object sender, EventArgs e)
