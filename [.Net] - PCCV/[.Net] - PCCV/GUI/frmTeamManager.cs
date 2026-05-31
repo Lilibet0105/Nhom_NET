@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-﻿using _Net____PCCV.BUS; // Sử dụng lớp xử lý nghiệp vụ
+using _Net____PCCV.BUS; // Sử dụng lớp xử lý nghiệp vụ
 using _Net____PCCV.DTO; // Sử dụng đối tượng truyền dữ liệu
 using System;
-=======
-﻿using System;
->>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,23 +9,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI
 {
     public partial class frmTeamManager : Form
     {
-<<<<<<< HEAD
         // Khởi tạo đối tượng BUS xử lý thành viên
         private ThanhVienBUS tvBUS = new ThanhVienBUS();
         private bool isSuaMode = false; // Cờ đánh dấu chế độ Sửa
 
-=======
->>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728
         public frmTeamManager()
         {
             InitializeComponent();
         }
-<<<<<<< HEAD
 
         // ==================== SỰ KIỆN LOAD FORM ====================
         private void frmTeamManager_Load(object sender, EventArgs e)
@@ -148,7 +141,7 @@ namespace GUI
 
             if (!isSuaMode)
             {
-                DataGridViewRow row = dataGridView1.CurrentRow;
+                DataGridRow row = dataGridView1.CurrentRow;
                 textBox1.Text = row.Cells["MaTV"].Value?.ToString() ?? "";
                 textBox2.Text = row.Cells["HoTen"].Value?.ToString() ?? "";
                 textBox3.Text = row.Cells["ChucVu"].Value?.ToString() ?? "";
@@ -232,7 +225,6 @@ namespace GUI
         }
 
         // ==================== CHỨC NĂNG TÌM KIẾM THÀNH VIÊN ====================
-        // Gán vào sự kiện Click của nút Tìm kiếm (ví dụ: btnTimKiem) hoặc TextChanged của txtTimKiem
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             try
@@ -261,7 +253,3 @@ namespace GUI
         }
     }
 }
-=======
-    }
-}
->>>>>>> 5c7afd23e84424bb1042ed50d1d1bb448e75d728

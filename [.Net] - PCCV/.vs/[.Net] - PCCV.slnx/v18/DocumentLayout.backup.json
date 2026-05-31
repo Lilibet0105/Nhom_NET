@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\gui\\frmcalendarview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmcalendarview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\properties\\resources.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\properties\\resources.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\gui\\frmtaskactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmtaskactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\gui\\frmperformancedashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmperformancedashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\gui\\frmteammanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmteammanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\gui\\frmmaindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\gui\\frmmaindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|c:\\users\\my pc\\documents\\github\\-.net---pccv\\[.net] - pccv\\[.net] - pccv\\dal\\dataconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37070799-F731-4193-BDEB-AA42A0066CD2}|[.Net] - PCCV\\[.Net] - PCCV.csproj|solutionrelative:[.net] - pccv\\dal\\dataconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,63 +46,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmTaskActions.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmTaskActions.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmTaskActions.cs",
-              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmTaskActions.cs [Design]",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmTaskActions.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-31T10:22:42.359Z",
-              "EditorCaption": " [Design]"
+              "DocumentIndex": 0,
+              "Title": "Resources.resx",
+              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\Properties\\Resources.resx",
+              "RelativeDocumentMoniker": "[.Net] - PCCV\\Properties\\Resources.resx",
+              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\Properties\\Resources.resx",
+              "RelativeToolTip": "[.Net] - PCCV\\Properties\\Resources.resx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2026-05-31T10:53:41.307Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "frmPerformanceDashboard.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmPerformanceDashboard.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmPerformanceDashboard.cs",
-              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmPerformanceDashboard.cs [Design]",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmPerformanceDashboard.cs [Design]",
+              "Title": "DataConnection.cs",
+              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\DAL\\DataConnection.cs",
+              "RelativeDocumentMoniker": "[.Net] - PCCV\\DAL\\DataConnection.cs",
+              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\DAL\\DataConnection.cs",
+              "RelativeToolTip": "[.Net] - PCCV\\DAL\\DataConnection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAACgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-31T10:20:57.118Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-05-31T10:52:23.719Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "frmTeamManager.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmTeamManager.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmTeamManager.cs",
-              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmTeamManager.cs [Design]",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmTeamManager.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-31T10:20:36.077Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmCalendarView.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmCalendarView.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmCalendarView.cs",
-              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmCalendarView.cs [Design]",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmCalendarView.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-31T10:20:12.822Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "frmMainDashboard.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmMainDashboard.cs",
-              "RelativeDocumentMoniker": "[.Net] - PCCV\\GUI\\frmMainDashboard.cs",
-              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\GUI\\frmMainDashboard.cs [Design]",
-              "RelativeToolTip": "[.Net] - PCCV\\GUI\\frmMainDashboard.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-31T10:20:10.051Z",
-              "EditorCaption": " [Design]"
+              "DocumentIndex": 1,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\App.config",
+              "RelativeDocumentMoniker": "[.Net] - PCCV\\App.config",
+              "ToolTip": "C:\\Users\\My Pc\\Documents\\GitHub\\-.Net---PCCV\\[.Net] - PCCV\\[.Net] - PCCV\\App.config",
+              "RelativeToolTip": "[.Net] - PCCV\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-05-31T10:49:33.28Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
