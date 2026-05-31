@@ -1,14 +1,18 @@
-﻿# Các thư mục chứa file chạy sinh ra khi Build
-bin/
-obj/
+﻿## Tránh đồng bộ file dữ liệu vật lý SQL Server (Nguyên nhân gây lỗi)
+*.mdf
+*.ldf
 
-# Thư mục ẩn chứa bộ nhớ đệm của Visual Studio
+## Tránh đồng bộ file rác cấu hình của Visual Studio
 .vs/
-*.vsidx
 *.suo
 *.user
+*.userosscache
+*.sln.docuser.suo
+*.suo
+DocumentLayout.backup.json
 
-# Các file log và file tạm khác
-*.log
-*.cache
-*.cache
+## Tránh đồng bộ file chạy biên dịch sau khi bấm Start
+[Bin]
+[Obj]
+**/bin/
+**/obj/
