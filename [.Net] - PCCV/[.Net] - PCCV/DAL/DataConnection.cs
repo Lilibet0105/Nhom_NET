@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace _Net____PCCV.DAL
 {
     public class DataConnection
     {
         private static string connectionString = @"Data Source=G5\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;TrustServerCertificate=True";
+        private static string connectionString =
+            ConfigurationManager.ConnectionStrings["QuanLyCongViec"]?.ConnectionString
+            ?? @"Data Source=.;Initial Catalog=QuanLyCongViec;Integrated Security=True;TrustServerCertificate=True";
 
         // Hàm khởi tạo kết nối SQL
         public static SqlConnection GetSqlConnection()
