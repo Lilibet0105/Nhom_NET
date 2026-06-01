@@ -35,12 +35,16 @@
             this.btnTeam = new System.Windows.Forms.Button();
             this.btnKanban = new System.Windows.Forms.Button();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.btnProject = new System.Windows.Forms.Button();
+            this.btnUser = new System.Windows.Forms.Button();
             this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSidebar
             // 
             this.pnlSidebar.BackColor = System.Drawing.Color.DarkGray;
+            this.pnlSidebar.Controls.Add(this.btnUser);
+            this.pnlSidebar.Controls.Add(this.btnProject);
             this.pnlSidebar.Controls.Add(this.btnLogout);
             this.pnlSidebar.Controls.Add(this.btnReport);
             this.pnlSidebar.Controls.Add(this.btnCalendar);
@@ -71,7 +75,7 @@
             this.btnReport.Location = new System.Drawing.Point(0, 120);
             this.btnReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(196, 40);
+            this.btnReport.Size = new System.Drawing.Size(196, 45);
             this.btnReport.TabIndex = 3;
             this.btnReport.Text = "Báo cáo thống kê";
             this.btnReport.UseVisualStyleBackColor = true;
@@ -123,6 +127,26 @@
             this.pnlContent.Size = new System.Drawing.Size(851, 515);
             this.pnlContent.TabIndex = 1;
             // 
+            // btnProject
+            // 
+            this.btnProject.Location = new System.Drawing.Point(0, 161);
+            this.btnProject.Name = "btnProject";
+            this.btnProject.Size = new System.Drawing.Size(196, 46);
+            this.btnProject.TabIndex = 5;
+            this.btnProject.Text = "Quản lý dự án";
+            this.btnProject.UseVisualStyleBackColor = true;
+            this.btnProject.Click += new System.EventHandler(this.btnProject_Click);
+            // 
+            // btnUser
+            // 
+            this.btnUser.Location = new System.Drawing.Point(0, 203);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(196, 43);
+            this.btnUser.TabIndex = 7;
+            this.btnUser.Text = "Quản lý tài khoản";
+            this.btnUser.UseVisualStyleBackColor = true;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            // 
             // frmMainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -149,5 +173,7 @@
         private System.Windows.Forms.Button btnCalendar;
         private System.Windows.Forms.Button btnTeam;
         private System.Windows.Forms.Button btnKanban;
+        private System.Windows.Forms.Button btnProject;
+        private System.Windows.Forms.Button btnUser;
     }
 }

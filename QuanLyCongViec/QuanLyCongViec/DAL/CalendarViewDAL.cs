@@ -1,9 +1,9 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using _Net____PCCV.DTO;
+using QuanLyCongViec.DTO;
 
-namespace _Net____PCCV.DAL
+namespace QuanLyCongViec.DAL
 {
     public class CalendarViewDAL
     {

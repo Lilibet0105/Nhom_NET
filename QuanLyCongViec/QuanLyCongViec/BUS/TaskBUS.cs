@@ -3,10 +3,10 @@ using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using _Net____PCCV.DAL;
-using _Net____PCCV.DTO;
+using QuanLyCongViec.DAL;
+using QuanLyCongViec.DTO;
 
-namespace _Net____PCCV.BUS
+namespace QuanLyCongViec.BUS
 {
     public class TaskBUS
     {

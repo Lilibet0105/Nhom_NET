@@ -2,8 +2,8 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using _Net____PCCV.BUS;
-using _Net____PCCV.DTO;
+using QuanLyCongViec.BUS;
+using QuanLyCongViec.DTO;
 
 namespace GUI
 {

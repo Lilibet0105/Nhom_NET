@@ -1,9 +1,9 @@
 using System;
 using System.Data;
-using _Net____PCCV.DAL;
-using _Net____PCCV.DTO;
+using QuanLyCongViec.DAL;
+using QuanLyCongViec.DTO;
 
-namespace _Net____PCCV.BUS
+namespace QuanLyCongViec.BUS
 {
     public class ProjectManagerBUS
     {

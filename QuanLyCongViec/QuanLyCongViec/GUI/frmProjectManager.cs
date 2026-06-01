@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using _Net____PCCV.BUS;
-using _Net____PCCV.DTO;
+using QuanLyCongViec.BUS;
+using QuanLyCongViec.DTO;
 
 namespace _.Net____PCCV
 {

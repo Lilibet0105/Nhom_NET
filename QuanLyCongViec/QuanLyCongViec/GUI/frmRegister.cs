@@ -13,6 +13,8 @@ namespace GUI
         {
             InitializeComponent();
 
+            txtEmail.PasswordChar = '\0';
+
             if (cboRole.Items.Count > 0)
             {
                 cboRole.SelectedIndex = 0;
@@ -21,27 +23,33 @@ namespace GUI
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text) ||
+        string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtFullName.Text))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ tất cả các trường thông tin bắt buộc!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             NguoiDungDTO newUser = new NguoiDungDTO()
             {
                 TenDangNhap = txtUsername.Text.Trim(),
                 MatKhau = txtPassword.Text,
                 HoTen = txtFullName.Text.Trim(),
                 Email = txtEmail.Text.Trim(),
-                ChucVu = cboRole.SelectedItem != null ? cboRole.SelectedItem.ToString() : "Nhân viên"
+                ChucVu = "Staff", // Đồng bộ cứng chức vụ theo bảng TaiKhoan SQL
             };
 
             string error;
 
             if (_userBUS.Register(newUser, out error))
             {
-                MessageBox.Show("Đăng ký tài khoản thành công!\nVui lòng chờ Quản trị viên phê duyệt.",
+                MessageBox.Show("Đăng ký tài khoản thành công!\nVui lòng chờ Quản trị viên phê duyệt tại giao diện quản lý.",
                                 "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 this.Close();
             }
             else
             {
-                MessageBox.Show(error, "Lỗi Nhập Liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(error, "Lỗi Hệ Thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

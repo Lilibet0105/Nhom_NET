@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Configuration;
 
-namespace _Net____PCCV.DAL
+namespace QuanLyCongViec.DAL
 {
     public class DataConnection
     {
@@ -80,6 +80,44 @@ namespace _Net____PCCV.DAL
                 catch (Exception ex)
                 {
                     System.Windows.Forms.MessageBox.Show("Lỗi hệ thống bất ngờ: " + ex.Message, "Thông Báo Lỗi", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                }
+            }
+            return isSuccess;
+        }
+
+        public static bool ExecuteNonQuery(string query, SqlParameter[] parameters = null)
+        {
+            bool isSuccess = false;
+            using (SqlConnection conn = GetSqlConnection())
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        if (parameters != null)
+                        {
+                            // SỬA TẠI ĐÂY: Dùng vòng lặp Clone tham số để không bao giờ bị lỗi khóa SqlParameter
+                            foreach (var p in parameters)
+                            {
+                                cmd.Parameters.Add((SqlParameter)((ICloneable)p).Clone());
+                            }
+                        }
+
+                        int result = cmd.ExecuteNonQuery();
+                        // Nếu số dòng ảnh hưởng > 0 tức là cập nhật thành công, ngược lại là sai tên đăng nhập
+                        isSuccess = (result > 0);
+                    }
+                }
+                catch (SqlException sqlEx)
+                {
+                    System.Windows.Forms.MessageBox.Show("Lỗi SQL: " + sqlEx.Message, "Lỗi Nghiệp Vụ Hệ Thống", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
+                    isSuccess = false;
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show("Lỗi hệ thống DAL: " + ex.Message, "Thông Báo Lỗi", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    isSuccess = false;
                 }
             }
             return isSuccess;

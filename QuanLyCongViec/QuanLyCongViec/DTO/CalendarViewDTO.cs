@@ -1,6 +1,6 @@
 using System;
 
-namespace _Net____PCCV.DTO
+namespace QuanLyCongViec.DTO
 {
     public class CalendarViewDTO
     {

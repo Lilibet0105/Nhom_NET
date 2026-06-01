@@ -1,4 +1,4 @@
-﻿namespace _Net____PCCV.DTO
+﻿namespace QuanLyCongViec.DTO
 {
     public class ThanhVienDTO
     {
@@ -11,7 +11,7 @@
 
     public class TaiKhoanDTO
     {
-        public string Username { get; set; }
+        public string TenDangNhap { get; set; }
         public string VaiTro { get; set; }
         public string TrangThai { get; set; }
     }

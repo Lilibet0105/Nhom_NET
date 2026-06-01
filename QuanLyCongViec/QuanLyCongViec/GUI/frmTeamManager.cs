@@ -1,5 +1,5 @@
-using _Net____PCCV.BUS;
-using _Net____PCCV.DTO;
+using QuanLyCongViec.BUS;
+using QuanLyCongViec.DTO;
 using System;
 using System.Data;
 using System.Drawing;

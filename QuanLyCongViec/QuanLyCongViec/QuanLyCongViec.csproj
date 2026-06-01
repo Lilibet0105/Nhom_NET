@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{37070799-F731-4193-BDEB-AA42A0066CD2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>_.Net____PCCV</RootNamespace>
-    <AssemblyName>[.Net] - PCCV</AssemblyName>
+    <RootNamespace>QuanLyCongViec</RootNamespace>
+    <AssemblyName>QuanLyCongViec</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,6 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -71,7 +72,7 @@
     <Compile Include="BUS\ProjectManagerBUS.cs" />
     <Compile Include="BUS\TaskBUS.cs" />
     <Compile Include="BUS\ThongKeBUS.cs" />
-    <Compile Include="BUS\UserManagement.cs" />
+    <Compile Include="BUS\UserManagementBUS.cs" />
     <Compile Include="DAL\DataConnection.cs" />
     <Compile Include="DAL\CalendarViewDAL.cs" />
     <Compile Include="DAL\LichLamViecDAL.cs" />
@@ -85,7 +86,7 @@
     <Compile Include="DTO\TaskCommentDTO.cs" />
     <Compile Include="DTO\TaskDTO.cs" />
     <Compile Include="DTO\ThongKeDTO.cs" />
-    <Compile Include="DTO\UserManagement.cs" />
+    <Compile Include="DTO\UserManagementDTO.cs" />
     <Compile Include="GUI\frmCalendarView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,7 +185,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="bin\Debug\[.Net] - PCCV.exe.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -216,18 +216,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\[.Net] - PCCV.exe" />
-    <Content Include="bin\Debug\[.Net] - PCCV.pdb" />
     <Content Include="Database\QuanLyCongViec.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Database\QuanLyCongViec.sql" />
     <Content Include="Database\QuanLyCongViec_log.ldf">
       <DependentUpon>QuanLyCongViec.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Database\QuanLyCongViec.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Debug\" />
     <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

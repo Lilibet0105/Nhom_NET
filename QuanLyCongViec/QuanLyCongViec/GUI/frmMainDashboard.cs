@@ -83,16 +83,30 @@ namespace GUI
             {
                 // Nếu là Nhân viên thông thường (Staff): Ẩn nút Quản lý nhóm theo yêu cầu đồ án
                 btnTeam.Visible = false;
+                btnProject.Visible = false;
+                btnUser.Visible = false;
 
                 // (Tùy chọn thêm): Nếu muốn khóa thay vì ẩn, anh có thể dùng: btnTeam.Enabled = false;
 
-                MessageBox.Show($"Đăng nhập với tư cách Nhân viên: Nút 'Quản lý nhóm' đã được ẩn bảo mật.", "Phân quyền hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Đăng nhập với tư cách Nhân viên: Nút 'Quản lý nhóm', 'Quản lý dự án' và 'Quản lý người dùng' đã được ẩn bảo mật.", "Phân quyền hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (UserSession.Role == "Manager" || UserSession.Role == "Admin")
             {
                 // Nếu là Quản trị viên/Trưởng nhóm: Hiển thị đầy đủ tính năng quản trị
                 btnTeam.Visible = true;
+                btnProject.Visible = true;
+                btnUser.Visible = true;
             }
+        }
+
+        private void btnProject_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmProjectManager());
+        }
+
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmUserManagement());
         }
     }
 }

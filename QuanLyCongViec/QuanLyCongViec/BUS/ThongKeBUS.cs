@@ -1,9 +1,9 @@
 using System;
 using System.Data;
-using _Net____PCCV.DTO;
-// using _Net____PCCV.DAL; // Bỏ comment dòng này sau khi bạn đã tạo lớp ThongKeDAL
+using QuanLyCongViec.DTO;
+// using QuanLyCongViec.DAL; // Bỏ comment dòng này sau khi bạn đã tạo lớp ThongKeDAL
 
-namespace _Net____PCCV.BUS
+namespace QuanLyCongViec.BUS
 {
     public class ThongKeBUS
     {

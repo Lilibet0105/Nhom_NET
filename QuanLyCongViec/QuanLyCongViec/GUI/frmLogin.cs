@@ -1,5 +1,5 @@
 ﻿using _.Net____PCCV;
-using _Net____PCCV.DAL;
+using QuanLyCongViec.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
