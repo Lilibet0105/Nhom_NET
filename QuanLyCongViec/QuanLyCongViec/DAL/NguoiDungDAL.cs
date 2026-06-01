@@ -10,7 +10,7 @@ namespace DAL
     {
         public bool CheckLogin(string username, string hashedPassword)
         {
-            string query = "SELECT COUNT(*) FROM NguoiDung WHERE TenDangNhap = @user AND MatKhau = @pass AND TrangThai = N'Đang hoạt động'";
+            string query = "SELECT COUNT(*) FROM TaiKhoan WHERE TenDangNhap = @user AND MatKhau = @pass AND TrangThai = N'Hoạt động'";
 
             SqlParameter[] parameters = new SqlParameter[]
             {
@@ -30,7 +30,7 @@ namespace DAL
 
         public bool IsUsernameExist(string username)
         {
-            string query = "SELECT COUNT(*) FROM NguoiDung WHERE TenDangNhap = @user";
+            string query = "SELECT COUNT(*) FROM TaiKhoan WHERE TenDangNhap = @user";
 
             SqlParameter[] parameters = new SqlParameter[]
             {
@@ -49,18 +49,38 @@ namespace DAL
 
         public bool InsertRegister(NguoiDungDTO user)
         {
-            string query = "INSERT INTO NguoiDung (TenDangNhap, MatKhau, HoTen, Email, ChucVu, TrangThai) VALUES (@user, @pass, @name, @email, @role, N'Chờ duyệt')";
-
-            SqlParameter[] parameters = new SqlParameter[]
+            using (SqlConnection conn = GetSqlConnection())
             {
-                new SqlParameter("@user", user.TenDangNhap),
-                new SqlParameter("@pass", user.MatKhau),
-                new SqlParameter("@name", user.HoTen),
-                new SqlParameter("@email", user.Email),
-                new SqlParameter("@role", user.ChucVu)
-            };
+                try
+                {
+                    conn.Open();
 
-            return ExecuteStoredProcedure(query, parameters);
+                    using (SqlCommand cmd = new SqlCommand("sp_RegisterUser", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Truyền các tham số xuống Stored Procedure
+                        cmd.Parameters.AddWithValue("@HoTen", user.HoTen);
+                        cmd.Parameters.AddWithValue("@Email", user.Email);
+                        cmd.Parameters.AddWithValue("@TenDangNhap", user.TenDangNhap);
+                        cmd.Parameters.AddWithValue("@MatKhau", user.MatKhau);
+                        cmd.Parameters.AddWithValue("@ViTri", user.ChucVu);
+
+                        // Chạy lệnh ghi xuống Database
+                        cmd.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Lỗi thực thi Đăng ký: " + ex.Message);
+                    return false;
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open) conn.Close();
+                }
+            }
         }
     }
 }

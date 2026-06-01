@@ -3,14 +3,6 @@ using _Net____PCCV.DTO;
 
 namespace _Net____PCCV.BUS
 {
-    public class ThanhVienBUS
-    {
-        public DataTable LayDanhSachThanhVien() => new DataTable(); // Viết lệnh nạp từ DAO/DAL lên
-        public bool ThemThanhVien(ThanhVienDTO tv) => true;
-        public bool SuaThanhVien(ThanhVienDTO tv) => true;
-        public bool XoaThanhVien(int maTV) => true;
-        public DataTable TimKiemThanhVien(string tuKhoa) => new DataTable();
-    }
 
     public class TaiKhoanBUS
     {

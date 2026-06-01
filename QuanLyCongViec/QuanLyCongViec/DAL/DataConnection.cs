@@ -12,7 +12,7 @@ namespace _Net____PCCV.DAL
 {
     public class DataConnection
     {
-        private static string connectionString = @"Data Source=G5\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;TrustServerCertificate=True";
+        private static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ADMIN\QuanLyCongViec.mdf;Integrated Security=True;Connect Timeout=30";
 
         // Hàm khởi tạo kết nối SQL
         public static SqlConnection GetSqlConnection()

@@ -47,10 +47,10 @@
             // 
             this.btnExit.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(238, 340);
+            this.btnExit.Location = new System.Drawing.Point(268, 425);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(94, 29);
+            this.btnExit.Size = new System.Drawing.Size(106, 36);
             this.btnExit.TabIndex = 13;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -60,10 +60,10 @@
             // 
             this.btnRegister.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegister.Location = new System.Drawing.Point(49, 340);
+            this.btnRegister.Location = new System.Drawing.Point(55, 425);
             this.btnRegister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(102, 29);
+            this.btnRegister.Size = new System.Drawing.Size(115, 36);
             this.btnRegister.TabIndex = 12;
             this.btnRegister.Text = "Đăng ký";
             this.btnRegister.UseVisualStyleBackColor = false;
@@ -71,36 +71,36 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(124, 151);
+            this.txtPassword.Location = new System.Drawing.Point(140, 189);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(146, 22);
+            this.txtPassword.Size = new System.Drawing.Size(164, 26);
             this.txtPassword.TabIndex = 11;
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(124, 110);
+            this.txtUsername.Location = new System.Drawing.Point(140, 138);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(146, 22);
+            this.txtUsername.Size = new System.Drawing.Size(164, 26);
             this.txtUsername.TabIndex = 10;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(45, 156);
+            this.lblPassword.Location = new System.Drawing.Point(51, 195);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(64, 16);
+            this.lblPassword.Size = new System.Drawing.Size(79, 20);
             this.lblPassword.TabIndex = 9;
             this.lblPassword.Text = "Mật khẩu:";
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(45, 110);
+            this.lblUsername.Location = new System.Drawing.Point(51, 138);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(70, 16);
+            this.lblUsername.Size = new System.Drawing.Size(82, 20);
             this.lblUsername.TabIndex = 8;
             this.lblUsername.Text = "Tài khoản:";
             // 
@@ -108,44 +108,43 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblTitle.Location = new System.Drawing.Point(26, 48);
+            this.lblTitle.Location = new System.Drawing.Point(29, 60);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(307, 31);
+            this.lblTitle.Size = new System.Drawing.Size(363, 37);
             this.lblTitle.TabIndex = 7;
             this.lblTitle.Text = "ĐĂNG KÝ TÀI KHOẢN";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(124, 238);
+            this.txtEmail.Location = new System.Drawing.Point(140, 298);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.PasswordChar = '*';
-            this.txtEmail.Size = new System.Drawing.Size(146, 22);
+            this.txtEmail.Size = new System.Drawing.Size(164, 26);
             this.txtEmail.TabIndex = 17;
             // 
             // txtFullName
             // 
-            this.txtFullName.Location = new System.Drawing.Point(124, 197);
+            this.txtFullName.Location = new System.Drawing.Point(140, 246);
             this.txtFullName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(146, 22);
+            this.txtFullName.Size = new System.Drawing.Size(164, 26);
             this.txtFullName.TabIndex = 16;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 243);
+            this.label1.Location = new System.Drawing.Point(51, 304);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
+            this.label1.Size = new System.Drawing.Size(52, 20);
             this.label1.TabIndex = 15;
             this.label1.Text = "Email:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 197);
+            this.label2.Location = new System.Drawing.Point(51, 246);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 16);
+            this.label2.Size = new System.Drawing.Size(61, 20);
             this.label2.TabIndex = 14;
             this.label2.Text = "Họ tên:";
             // 
@@ -155,26 +154,26 @@
             this.cboRole.Items.AddRange(new object[] {
             "Staff",
             "Admin"});
-            this.cboRole.Location = new System.Drawing.Point(124, 284);
+            this.cboRole.Location = new System.Drawing.Point(140, 355);
             this.cboRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboRole.Name = "cboRole";
-            this.cboRole.Size = new System.Drawing.Size(146, 24);
+            this.cboRole.Size = new System.Drawing.Size(164, 28);
             this.cboRole.TabIndex = 18;
             // 
             // lblRole
             // 
             this.lblRole.AutoSize = true;
-            this.lblRole.Location = new System.Drawing.Point(45, 286);
+            this.lblRole.Location = new System.Drawing.Point(51, 358);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(54, 16);
+            this.lblRole.Size = new System.Drawing.Size(66, 20);
             this.lblRole.TabIndex = 19;
             this.lblRole.Text = "Chức vụ";
             // 
             // frmRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 395);
+            this.ClientSize = new System.Drawing.Size(428, 494);
             this.Controls.Add(this.lblRole);
             this.Controls.Add(this.cboRole);
             this.Controls.Add(this.txtEmail);
