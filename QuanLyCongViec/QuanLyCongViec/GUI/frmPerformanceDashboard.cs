@@ -1,35 +1,27 @@
-﻿using QuanLyCongViec.DAL;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using QuanLyCongViec.BUS;
+using COMExcel = Microsoft.Office.Interop.Excel;
 
 namespace QuanLyCongViec.GUI
 {
     public partial class frmPerformanceDashboard : Form
     {
+        private ThongKeBUS tkBUS = new ThongKeBUS();
+
         public frmPerformanceDashboard()
         {
             InitializeComponent();
         }
 
-        private void frmThongKeHieuSuat_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void frmPerformanceDashboard_Load(object sender, EventArgs e)
         {
+            // Thiết lập khoảng thời gian mặc định: Đầu tháng này đến ngày hôm nay
             dtpFrom.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             dtpTo.Value = DateTime.Now;
-
             LoadDashboardData();
         }
 
@@ -40,99 +32,55 @@ namespace QuanLyCongViec.GUI
 
         private void LoadDashboardData()
         {
-            string query = @"
-                SELECT 
-                    nv.HoTen,
-                    COUNT(CASE WHEN cv.TrangThai = 'Done' THEN 1 END) AS SoViec_Done,
-                    COUNT(CASE WHEN cv.TrangThai = 'In Progress' THEN 1 END) AS SoViec_InProgress,
-                    COUNT(CASE WHEN cv.TrangThai = 'To Do' THEN 1 END) AS SoViec_ToDo,
-                    COUNT(CASE WHEN cv.TrangThai = 'Done' AND cv.Deadline < GETDATE() THEN 1 
-                               WHEN cv.TrangThai != 'Done' AND cv.Deadline < GETDATE() THEN 1 END) AS SoViec_TreHan
-                FROM NhanVien nv
-                LEFT JOIN CongViec cv ON nv.MaNV = cv.MaNguoiThucHien
-                WHERE cv.NgayTao BETWEEN @From AND @To OR cv.NgayTao IS NULL
-                GROUP BY nv.HoTen";
+            DateTime tuNgay = dtpFrom.Value;
+            DateTime denNgay = dtpTo.Value;
 
-            SqlParameter[] parameters =
-            {
-                new SqlParameter("@From", dtpFrom.Value.Date),
-                new SqlParameter("@To", dtpTo.Value.Date.AddDays(1))
-            };
+            // 1. Đổ dữ liệu thật lên các thẻ số liệu KPI tổng quan
+            QuanLyCongViec.DTO.ThongKeDTO dto = tkBUS.LayThongKeTongQuan(tuNgay, denNgay);
+            lblTotalTasks.Text = dto.TongCongViec.ToString();
+            lblCompletionRate.Text = dto.TyLeHoanThanh.ToString() + "%";
+            lblOverdueTasks.Text = dto.ViecTreHan.ToString();
 
-            DataTable dtStaff = DataConnection.ExecuteQuery(query, parameters);
-            dgvDetails.DataSource = dtStaff;
-            CalculateSummaryCards(dtStaff);
+            // 2. Lấy dữ liệu vẽ Biểu đồ Tròn
+            DataTable dtStatus = tkBUS.LayThongKeTrangThai(tuNgay, denNgay);
+            BuildPieChart(dtStatus);
+
+            // 3. Lấy dữ liệu vẽ Biểu đồ Cột
+            DataTable dtStaff = tkBUS.LayPhanBoCongViecNhanSu(tuNgay, denNgay);
             BuildColumnChart(dtStaff);
+
+            // 4. Đổ dữ liệu hiệu suất thật vào bảng GridView hiển thị
+            dgvDetails.DataSource = tkBUS.LayChiTietHieuSuatThanhVien(tuNgay, denNgay);
         }
 
-        private void CalculateSummaryCards(DataTable dtStaff)
-        {
-            int totalTasks = 0;
-            int totalFinished = 0;
-            int totalOverdue = 0;
-
-            // Duyệt ma trận bảng dữ liệu để cộng dồn các cột khớp với database
-            foreach (DataRow row in dtStaff.Rows)
-            {
-                int done = Convert.ToInt32(row["SoViec_Done"]);
-                int progress = Convert.ToInt32(row["SoViec_InProgress"]);
-                int todo = Convert.ToInt32(row["SoViec_ToDo"]);
-                int overdue = Convert.ToInt32(row["SoViec_TreHan"]);
-
-                totalFinished += done;
-                totalTasks += (done + progress + todo);
-                totalOverdue += overdue;
-            }
-
-            // Gán dữ liệu trực tiếp lên các Label trên giao diện
-            lblTotalTasks.Text = totalTasks.ToString();
-            lblOverdueTasks.Text = totalOverdue.ToString();
-
-            if (totalTasks > 0)
-            {
-                double rate = ((double)totalFinished / totalTasks) * 100;
-                lblCompletionRate.Text = $"{Math.Round(rate, 1)}%";
-            }
-            else
-            {
-                lblCompletionRate.Text = "0%";
-            }
-
-            // 4. Vẽ biểu đồ hình tròn (Tỷ lệ phần trăm trạng thái hệ thống)
-            BuildPieChart(totalFinished, (totalTasks - totalFinished), totalOverdue);
-        }
-
-        private void BuildPieChart(int done, int inProgress, int overdue)
+        private void BuildPieChart(DataTable dtStatus)
         {
             chartPie.Series.Clear();
             chartPie.Titles.Clear();
             chartPie.Titles.Add("TỶ LỆ TRẠNG THÁI CÔNG VIỆC");
+            Series series = new Series("TrangThai") { ChartType = SeriesChartType.Pie };
 
-            Series seriesPie = new Series("StatusSeries") { ChartType = SeriesChartType.Pie };
-
-            // Đổ dữ liệu phân mảnh biểu đồ tròn
-            if (done > 0) seriesPie.Points.AddXY("Hoàn thành", done);
-            if (inProgress > 0) seriesPie.Points.AddXY("Đang thực hiện/Chờ", inProgress);
-            if (overdue > 0) seriesPie.Points.AddXY("Trễ hạn", overdue);
-
-            chartPie.Series.Add(seriesPie);
+            foreach (DataRow row in dtStatus.Rows)
+            {
+                series.Points.AddXY(row["TrangThai"].ToString(), row["SoLuong"]);
+            }
+            chartPie.Series.Add(series);
         }
 
         private void BuildColumnChart(DataTable dtStaff)
         {
             chartColumn.Series.Clear();
-            chartColumn.ChartAreas[0].AxisX.Interval = 1; // Hiển thị đầy đủ tên nhân sự trên trục hoành
+            chartColumn.ChartAreas[0].AxisX.Interval = 1;
             chartColumn.Titles.Clear();
             chartColumn.Titles.Add("PHÂN BỔ CÔNG VIỆC THEO NHÂN SỰ");
 
-            // Khởi tạo 3 cột chồng hiển thị trạng thái công việc
-            Series colFinished = new Series("Hoàn thành") { ChartType = SeriesChartType.Column, Color = System.Drawing.Color.DeepSkyBlue };
-            Series colProcessing = new Series("Đang làm") { ChartType = SeriesChartType.Column, Color = System.Drawing.Color.Orange };
-            Series colOverdue = new Series("Trễ hạn") { ChartType = SeriesChartType.Column, Color = System.Drawing.Color.Crimson };
+            Series colFinished = new Series("Hoàn thành") { ChartType = SeriesChartType.Column, Color = Color.DeepSkyBlue };
+            Series colProcessing = new Series("Đang làm") { ChartType = SeriesChartType.Column, Color = Color.Orange };
+            Series colOverdue = new Series("Trễ hạn") { ChartType = SeriesChartType.Column, Color = Color.Crimson };
 
             foreach (DataRow row in dtStaff.Rows)
             {
-                string tenNV = row["HoTen"].ToString(); // Lấy cột HoTen từ database làm nhãn trục X
+                string tenNV = row["HoTen"].ToString();
                 colFinished.Points.AddXY(tenNV, row["SoViec_Done"]);
                 colProcessing.Points.AddXY(tenNV, row["SoViec_InProgress"]);
                 colOverdue.Points.AddXY(tenNV, row["SoViec_TreHan"]);
@@ -142,6 +90,96 @@ namespace QuanLyCongViec.GUI
             chartColumn.Series.Add(colProcessing);
             chartColumn.Series.Add(colOverdue);
         }
+
+        // ====================================================================
+        // XUẤT FILE BÁO CÁO EXCEL - SỬ DỤNG INTEROP EXCEL (SẠCH SẼ 100% WARNING)
+        // ====================================================================
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            DateTime tuNgay = dtpFrom.Value;
+            DateTime denNgay = dtpTo.Value;
+
+            DataTable dtReport = tkBUS.LayDuLieuBaoCao(tuNgay, denNgay);
+
+            if (dtReport == null || dtReport.Rows.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy dữ liệu công việc nào trong khoảng thời gian đã chọn để xuất báo cáo!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Khởi tạo ứng dụng Excel theo kiến trúc nhóm mẫu của bạn
+            COMExcel.Application exApp = new COMExcel.Application();
+            COMExcel.Workbook exBook = exApp.Workbooks.Add(COMExcel.XlWBATemplate.xlWBATWorksheet);
+            COMExcel.Worksheet exSheet = exBook.Worksheets[1];
+            COMExcel.Range exRange;
+
+            int row = 1;
+            int colCount = dtReport.Columns.Count;
+
+            exSheet.Cells.Font.Name = "Times New Roman";
+
+            // --- 1. Tạo tiêu đề báo cáo ---
+            exRange = exSheet.Range[exSheet.Cells[row, 1], exSheet.Cells[row, colCount]];
+            exRange.MergeCells = true;
+            exRange.Font.Size = 14;
+            exRange.Font.Bold = true;
+            exRange.HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+            exRange.Value = "BÁO CÁO HIỆU SUẤT VÀ TIẾN ĐỘ CÔNG VIỆC";
+            row += 2;
+
+            // --- 2. Tạo dòng thời gian lọc ---
+            exRange = exSheet.Range[exSheet.Cells[row, 1], exSheet.Cells[row, colCount]];
+            exRange.MergeCells = true;
+            exRange.Font.Italic = true;
+            exRange.HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+            exRange.Value = $"Khoảng thời gian: Từ ngày {tuNgay.ToString("dd/MM/yyyy")} đến ngày {denNgay.ToString("dd/MM/yyyy")}";
+            row += 2;
+
+            // --- 3. Đẩy danh sách Tiêu đề cột ---
+            exRange = exSheet.Range[exSheet.Cells[row, 1], exSheet.Cells[row, colCount]];
+            exRange.Font.Bold = true;
+            object[,] headers = new object[1, colCount];
+            for (int c = 0; c < colCount; c++)
+            {
+                headers[0, c] = dtReport.Columns[c].ColumnName;
+            }
+            exRange.Value2 = headers;
+            row++;
+
+            // --- 4. Đổ dữ liệu chi tiết từ SQL vào bảng tính ---
+            foreach (DataRow r in dtReport.Rows)
+            {
+                for (int c = 0; c < colCount; c++)
+                {
+                    exSheet.Cells[row, c + 1] = r[c]?.ToString();
+                }
+                row++;
+            }
+
+            // --- 5. Đổ thông tin chữ ký ngày lập dưới chân trang ---
+            row += 2;
+            exRange = exSheet.Range[exSheet.Cells[row, colCount - 2], exSheet.Cells[row, colCount]];
+            exRange.MergeCells = true;
+            exRange.HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+            exRange.Value = "Ngày " + DateTime.Now.Day + " tháng " + DateTime.Now.Month + " năm " + DateTime.Now.Year;
+
+            row++;
+            exRange = exSheet.Range[exSheet.Cells[row, colCount - 2], exSheet.Cells[row, colCount]];
+            exRange.MergeCells = true;
+            exRange.HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+            exRange.Font.Bold = true;
+            exRange.Value = "Người lập báo cáo";
+
+            // Bật ứng dụng Excel lên màn hình để người dùng xem trực tiếp và bấm lưu tùy thích
+            exSheet.Name = "BaoCaoHieuSuat";
+            exApp.Visible = true;
+        }
+
+        private void btnLammoi_Click(object sender, EventArgs e)
+        {
+            dtpFrom.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            dtpTo.Value = DateTime.Now;
+            LoadDashboardData();
+        }
     }
 }
-

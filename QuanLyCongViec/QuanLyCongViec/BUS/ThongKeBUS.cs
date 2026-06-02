@@ -1,52 +1,87 @@
 using System;
 using System.Data;
 using QuanLyCongViec.DTO;
-// using QuanLyCongViec.DAL; // Bỏ comment dòng này sau khi bạn đã tạo lớp ThongKeDAL
+using QuanLyCongViec.DAL;
 
 namespace QuanLyCongViec.BUS
 {
     public class ThongKeBUS
     {
-        // Khai báo lớp DAL sau này để lấy dữ liệu từ SQL Server
-        // private ThongKeDAL tkDAL = new ThongKeDAL();
+        private ThongKeDAL tkDAL = new ThongKeDAL();
 
+        /// <summary>
+        /// Tính toán các chỉ số KPI thực tế tổng quan
+        /// </summary>
         public ThongKeDTO LayThongKeTongQuan(DateTime tuNgay, DateTime denNgay)
         {
             ThongKeDTO dto = new ThongKeDTO();
+            DataTable dtData = tkDAL.LayDuLieuBaoCao(tuNgay, denNgay);
 
-            // GIAI ĐOẠN 1: Gán dữ liệu giả lập (Mock Data) để test giao diện
-            dto.TongCongViec = 256;
-            dto.TyLeHoanThanh = 78.5;
-            dto.ViecTreHan = 18;
+            if (dtData != null && dtData.Rows.Count > 0)
+            {
+                int tongViec = dtData.Rows.Count;
+                int viecHoanThanh = 0;
+                int viecTreHan = 0;
 
-            /* GIAI ĐOẠN 2 (Sau khi có database): Code thực tế sẽ như sau:
-            int tongViec = tkDAL.DemTongSoViec(tuNgay, denNgay);
-            int viecXong = tkDAL.DemViecHoanThanh(tuNgay, denNgay);
-            int treHan = tkDAL.DemViecTreHan(tuNgay, denNgay);
+                foreach (DataRow row in dtData.Rows)
+                {
+                    string trangThai = row["Trạng Thái"]?.ToString().Trim();
+                    string strDeadline = row["Hạn Chót"]?.ToString();
 
-            dto.TongCongViec = tongViec;
-            dto.ViecTreHan = treHan;
-            dto.TyLeHoanThanh = tongViec > 0 ? Math.Round(((double)viecXong / tongViec) * 100, 1) : 0;
-            */
+                    // Kiểm tra trạng thái hoàn thành
+                    if (trangThai == "Done" || trangThai == "Hoàn Thành")
+                    {
+                        viecHoanThanh++;
+                    }
+
+                    // Kiểm tra trễ hạn: Quá ngày hiện tại mà trạng thái chưa xong
+                    if (DateTime.TryParseExact(strDeadline, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime deadlineDate))
+                    {
+                        if (deadlineDate.Date < DateTime.Now.Date && trangThai != "Done" && trangThai != "Hoàn Thành")
+                        {
+                            viecTreHan++;
+                        }
+                    }
+                }
+
+                dto.TongCongViec = tongViec;
+                dto.ViecTreHan = viecTreHan;
+                dto.TyLeHoanThanh = tongViec > 0 ? Math.Round(((double)viecHoanThanh / tongViec) * 100, 1) : 0;
+            }
 
             return dto;
         }
 
-        // Hàm lấy dữ liệu cho bảng DataGridView bên dưới
-        public DataTable LayChiTietHieuSuatThanhVien()
+        /// <summary>
+        /// Lấy bảng hiệu suất chi tiết đổ vào DataGridView đầu ra
+        /// </summary>
+        public DataTable LayChiTietHieuSuatThanhVien(DateTime tuNgay, DateTime denNgay)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("TenThanhVien", typeof(string));
-            dt.Columns.Add("ChucVu", typeof(string));
-            dt.Columns.Add("ViecDuocGiao", typeof(int));
-            dt.Columns.Add("ViecHoanThanh", typeof(int));
-            dt.Columns.Add("DiemHieuSuat", typeof(string));
+            DataTable dtStaff = tkDAL.LayPhanBoCongViecNhanSu(tuNgay, denNgay);
 
-            // Thêm vài dòng dữ liệu mẫu chạy thử ở Giai đoạn 1
-            dt.Rows.Add("Nguyen Van An", "Truong Nhom", 50, 45, "90%");
-            dt.Rows.Add("Le Thi Binh", "Thanh Vien", 45, 35, "77.7%");
-            
-            return dt;
+            DataTable dtGrid = new DataTable();
+            dtGrid.Columns.Add("Tên Nhân Viên", typeof(string));
+            dtGrid.Columns.Add("Việc Được Giao", typeof(int));
+            dtGrid.Columns.Add("Việc Hoàn Thành", typeof(int));
+            dtGrid.Columns.Add("Hiệu Suất", typeof(string));
+
+            foreach (DataRow row in dtStaff.Rows)
+            {
+                int xong = Convert.ToInt32(row["SoViec_Done"]);
+                int dangLam = Convert.ToInt32(row["SoViec_InProgress"]);
+                int tre = Convert.ToInt32(row["SoViec_TreHan"]);
+                int tong = xong + dangLam + tre; // Tổng số việc thực tế phát sinh trong kỳ
+
+                double hieuSuat = tong > 0 ? Math.Round(((double)xong / tong) * 100, 1) : 0;
+
+                dtGrid.Rows.Add(row["HoTen"].ToString(), tong, xong, hieuSuat.ToString() + "%");
+            }
+
+            return dtGrid;
         }
+
+        public DataTable LayDuLieuBaoCao(DateTime tuNgay, DateTime denNgay) => tkDAL.LayDuLieuBaoCao(tuNgay, denNgay);
+        public DataTable LayThongKeTrangThai(DateTime tuNgay, DateTime denNgay) => tkDAL.LayThongKeTrangThai(tuNgay, denNgay);
+        public DataTable LayPhanBoCongViecNhanSu(DateTime tuNgay, DateTime denNgay) => tkDAL.LayPhanBoCongViecNhanSu(tuNgay, denNgay);
     }
 }

@@ -102,6 +102,7 @@ namespace QuanLyCongViec.GUI // ĐÃ SỬA: Đồng bộ hóa đúng namespace h
             this.btnXuatExcel.TabIndex = 4;
             this.btnXuatExcel.Text = "Xuất báo cáo";
             this.btnXuatExcel.UseVisualStyleBackColor = false;
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // grpTongCongViec
             // 
