@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Data;
 using System.Text.RegularExpressions;
-using _Net____PCCV.DTO;
-using _Net____PCCV.DAL;
+using QuanLyCongViec.DTO;
+using QuanLyCongViec.DAL;
 
-namespace _Net____PCCV.BUS
+namespace QuanLyCongViec.BUS
 {
     public class ThanhVienBUS
     {

@@ -8,11 +8,15 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Configuration;
 
-namespace QuanLyCongViec.DAL
+namespace QuanLyCongViec.DAL // Đồng bộ Namespace về đúng hệ thống gốc của nhóm bạn
 {
     public class DataConnection
     {
-        private static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ADMIN\QuanLyCongViec.mdf;Integrated Security=True;Connect Timeout=30";
+        // ================================================================================================
+        // ĐÃ SỬA: Chuyển từ kết nối file cứng (AttachDbFilename) sang kết nối qua Instance Server của máy.
+        // Cách này giúp chạy app C# mượt mà mà SSMS không bao giờ bị báo đỏ, báo Recovery Pending nữa.
+        // ================================================================================================
+        private static string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;Connect Timeout=30";
 
         // Hàm khởi tạo kết nối SQL
         public static SqlConnection GetSqlConnection()
@@ -21,7 +25,6 @@ namespace QuanLyCongViec.DAL
         }
 
         // Hàm dùng chung để thực thi các câu lệnh SELECT hoặc gọi VIEW đổ vào DataGridView
-        // (Phục vụ nạp dữ liệu cho frmKanbanBoard, frmTeamManager, frmPerformanceReport...)
         public static DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
             DataTable dataTable = new DataTable();
@@ -34,7 +37,11 @@ namespace QuanLyCongViec.DAL
                     {
                         if (parameters != null)
                         {
-                            cmd.Parameters.AddRange(parameters);
+                            // Sử dụng Clone tham số an toàn tránh lỗi đúp tham số khi tái sử dụng
+                            foreach (var p in parameters)
+                            {
+                                cmd.Parameters.Add((SqlParameter)((ICloneable)p).Clone());
+                            }
                         }
                         using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                         {
@@ -50,8 +57,7 @@ namespace QuanLyCongViec.DAL
             return dataTable;
         }
 
-        // Hàm dùng chung để thực thi gọi các STORED PROCEDURE (Thêm, Sửa, Xóa, Đăng ký)
-        // Trả về true nếu thực thi thành công, false nếu thất bại (Kích hoạt Trigger báo lỗi định dạng...)
+        // Hàm dùng chung để thực thi gọi các STORED PROCEDURE 
         public static bool ExecuteStoredProcedure(string query, SqlParameter[] parameters)
         {
             bool isSuccess = false;
@@ -62,19 +68,20 @@ namespace QuanLyCongViec.DAL
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        // Không dùng CommandType.StoredProcedure vì đang dùng query trực tiếp
                         if (parameters != null)
                         {
-                            cmd.Parameters.AddRange(parameters);
+                            foreach (var p in parameters)
+                            {
+                                cmd.Parameters.Add((SqlParameter)((ICloneable)p).Clone());
+                            }
                         }
 
                         int result = cmd.ExecuteNonQuery();
-                        isSuccess = true; // Thực thi qua lệnh không lỗi nghĩa là thành công
+                        isSuccess = true;
                     }
                 }
                 catch (SqlException sqlEx)
                 {
-                    // Bắt trúng các lỗi chủ động ném ra từ TRIGGER (Lỗi Email sai định dạng, lỗi giao việc sai quy chế)
                     System.Windows.Forms.MessageBox.Show(sqlEx.Message, "Lỗi Nghiệp Vụ Hệ Thống", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
                 }
                 catch (Exception ex)
@@ -85,6 +92,7 @@ namespace QuanLyCongViec.DAL
             return isSuccess;
         }
 
+        // Hàm dùng chung để thực thi INSERT, UPDATE, DELETE thông thường
         public static bool ExecuteNonQuery(string query, SqlParameter[] parameters = null)
         {
             bool isSuccess = false;
@@ -97,7 +105,6 @@ namespace QuanLyCongViec.DAL
                     {
                         if (parameters != null)
                         {
-                            // SỬA TẠI ĐÂY: Dùng vòng lặp Clone tham số để không bao giờ bị lỗi khóa SqlParameter
                             foreach (var p in parameters)
                             {
                                 cmd.Parameters.Add((SqlParameter)((ICloneable)p).Clone());
@@ -105,7 +112,6 @@ namespace QuanLyCongViec.DAL
                         }
 
                         int result = cmd.ExecuteNonQuery();
-                        // Nếu số dòng ảnh hưởng > 0 tức là cập nhật thành công, ngược lại là sai tên đăng nhập
                         isSuccess = (result > 0);
                     }
                 }

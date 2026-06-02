@@ -1,5 +1,6 @@
 ﻿using _.Net____PCCV;
 using QuanLyCongViec.DAL;
+using QuanLyCongViec.BUS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +33,7 @@ namespace GUI
             try
             {
                 // Khởi tạo lớp BUS để mượn hàm mã hóa SHA256 đồng bộ với lúc Đăng ký
-                NguoiDungBUS userBUS = new NguoiDungBUS();
+                TaiKhoanBUS userBUS = new TaiKhoanBUS();
                 string hashedPass = userBUS.ComputeSHA256(txtPassword.Text.Trim());
 
                 // 2. Tạo câu lệnh truy vấn so khớp chuỗi đã mã hóa trong Database

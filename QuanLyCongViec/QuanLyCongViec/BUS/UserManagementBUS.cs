@@ -1,19 +1,14 @@
-﻿using System;
+﻿using QuanLyCongViec.DAL; // Để gọi được lớp DataConnection
+using QuanLyCongViec.DTO; // Để gọi được lớp ThanhVienDTO và TaiKhoanDTO
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using QuanLyCongViec.DTO;
-using QuanLyCongViec.DAL; // Để gọi được lớp DataConnection
+using System.Security.Cryptography; // BẮT BUỘC PHẢI CÓ DÒNG NÀY ĐỂ DÙNG SHA256
+using System.Text;
 
 namespace QuanLyCongViec.BUS
 {
-    public class ThanhVienBUS
-    {
-        public DataTable LayDanhSachThanhVien() => new DataTable();
-        public bool ThemThanhVien(ThanhVienDTO tv) => true;
-        public bool SuaThanhVien(ThanhVienDTO tv) => true;
-        public bool XoaThanhVien(int maTV) => true;
-        public DataTable TimKiemThanhVien(string tuKhoa) => new DataTable();
-    }
+   
 
     public class TaiKhoanBUS
     {
@@ -38,6 +33,22 @@ namespace QuanLyCongViec.BUS
 
             // Gọi hàm thực thi dùng chung dưới DAL để cập nhật trực tiếp vào SQL Server
             return DataConnection.ExecuteNonQuery(query, parameters);
+        }
+        public string ComputeSHA256(string rawData)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Chuyển chuỗi đầu vào thành mảng bytes
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Chuyển mảng bytes thành chuỗi ký tự dạng Hexadecimal (thập lục phân)
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
     }
 }

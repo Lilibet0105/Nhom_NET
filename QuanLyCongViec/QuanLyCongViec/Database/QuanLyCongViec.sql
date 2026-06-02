@@ -296,3 +296,141 @@ INSERT INTO BinhLuanTask (MaTask, MaNV, NoiDung, LinkDinhKem) VALUES
 (1, 2, N'Đã hoàn thành kéo thả UI, đẩy mã nguồn lên nhánh quangdo thành công!', 'https://github.com/quangdo/PCCV/pull/1'),
 (3, 3, N'Đang gặp chút vướng mắc về mã hóa chuỗi mật khẩu khi đối chiếu SQL, đang fix.', NULL);
 
+
+
+-- =========================================================
+-- 1. CHÈN THÊM DỮ LIỆU VÀO BẢNG PHÒNG BAN (PhongBan)
+-- =========================================================
+INSERT INTO PhongBan (TenPB, MoTa) VALUES 
+(N'Phòng Marketing & Truyền thông', N'Chịu trách nhiệm quảng bá sản phẩm và tiếp cận khách hàng'),
+(N'Phòng Kế toán & Tài chính', N'Quản lý thu chi, dòng tiền, bảng lương và ngân sách dự án'),
+(N'Phòng Nhân sự (HR)', N'Tuyển dụng, đào tạo và phát triển văn hóa doanh nghiệp'),
+(N'Phòng Đảm bảo chất lượng (QA/QC)', N'Kiểm thử sản phẩm, đảm bảo quy trình và chất lượng đầu ra');
+
+-- =========================================================
+-- 2. CHÈN THÊM DỮ LIỆU VÀO BẢNG NHÂN VIÊN (NhanVien)
+-- =========================================================
+-- Giả định các MaPB vừa sinh ra ở trên là 2, 3, 4, 5 (Phòng IT cũ đã là 1)
+INSERT INTO NhanVien (HoTen, NgaySinh, GioiTinh, SoDienThoai, Email, LuongBaoHiem, ViTri, MaPB) VALUES 
+(N'Phòng Độ Mixi', '1989-09-12', N'Nam', '0912345678', 'mixigaming@gmail.com', 25000000, N'Trưởng phòng IT', 1),
+(N'Nguyễn Trần Khánh Vân', '1995-02-25', N'Nữ', '0988777666', 'khanhvan@gmail.com', 15000000, N'UI/UX Designer', 1),
+(N'Trần Thanh Sơn', '1997-05-18', N'Nam', '0905111222', 'thanhson@gmail.com', 14000000, N'Automation Tester', 5),
+(N'Lê Khả Ái Nhi', '1999-11-02', N'Nữ', '0934555666', 'ainhi.marketing@company.com', 12000000, N'Content Creator', 2),
+(N'Phạm Minh Hoàng', '1993-04-30', N'Nam', '0888999111', 'hoangpm.finance@company.com', 18000000, N'Kế toán trưởng', 3),
+(N'Đỗ Thuỳ Linh', '1996-08-15', N'Nữ', '0911222333', 'linhdt.hr@company.com', 11000000, N'Chuyên viên Tuyển dụng', 4),
+(N'Vũ Hoàng Long', '2000-01-20', N'Nam', '0944555333', 'longvh@gmail.com', 10500000, N'Frontend Developer', 1);
+
+-- =========================================================
+-- 3. CHÈN THÊM DỮ LIỆU TÀI KHOẢN TƯƠNG ỨNG (TaiKhoan)
+-- =========================================================
+-- Mật khẩu dưới đây đều để chuỗi hash giả lập (để đồng bộ với cơ chế SHA256 của bạn)
+-- Đầy đủ các Trạng thái: 'Đang hoạt động', 'Chờ duyệt', 'Bị khóa'
+-- Đầy đủ các Vai trò: 'Admin', 'Manager', 'Staff'
+INSERT INTO TaiKhoan (TenDangNhap, MatKhau, VaiTro, TrangThai, MaNV) VALUES 
+('mixigaming', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', N'Admin', N'Đang hoạt động', 7),
+('khanhvan_ui', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', N'Staff', N'Đang hoạt động', 8),
+('thanhson_qa', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', N'Staff', N'Chờ duyệt', 9),
+('ainhi_mkt', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', N'Manager', N'Đang hoạt động', 10),
+('hoangpm_acc', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', N'Manager', N'Bị khóa', 11),
+('thuylinh_hr', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', N'Staff', N'Chờ duyệt', 12),
+('longvh_dev', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', N'Staff', N'Đang hoạt động', 13);
+
+-- =========================================================
+-- 4. CHÈN THÊM DỮ LIỆU DỰ ÁN MỚI (DuAn)
+-- =========================================================
+INSERT INTO DuAn (TenDA, MoTa, NgayBatDau, NgayKetThuc, TrangThai) VALUES 
+(N'Chiến dịch Marketing sản phẩm Hè 2026', N'Phủ sóng thương hiệu trên các nền tảng mạng xã hội lớn', '2026-06-01', '2026-08-31', N'Mới khởi tạo'),
+(N'Tối ưu hóa Hệ thống và Quy trình Nhân sự v3', N'Số hóa toàn bộ hồ sơ nhân viên và tự động hóa tính lương', '2026-05-10', '2026-07-20', N'Đang chạy');
+
+-- =========================================================
+-- 5. PHÂN CÔNG THÀNH VIÊN VÀO DỰ ÁN (ThanhVienDuAn)
+-- =========================================================
+-- Giả định MaDA mới sinh ra ở trên là 2 và 3
+INSERT INTO ThanhVienDuAn (MaDA, MaNV, VaiTroTrongDuAn) VALUES 
+(2, 10, N'Trưởng nhóm Chiến dịch MKT'),
+(2, 8, N'Thiết kế ấn phẩm hình ảnh & banner truyền thông'),
+(3, 11, N'Cố vấn giải pháp nghiệp vụ tính lương'),
+(3, 12, N'Chịu trách nhiệm thu thập số liệu nhân sự'),
+(3, 13, N'Lập trình module lõi cho hệ thống số hóa');
+
+-- =========================================================
+-- 6. TẠO THÊM CÔNG VIỆC CON CHI TIẾT (CongViec)
+-- =========================================================
+-- Đầy đủ các trạng thái 'To Do', 'In Progress', 'Done' phục vụ bảng Kanban
+INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline, MaDA, MaNguoiThucHien) VALUES 
+(N'Lập kế hoạch ngân sách chi tiết cho sự kiện ra mắt', N'Thống kê chi phí thuê KOLs, chạy quảng cáo Facebook/TikTok', N'Cao', 'In Progress', '2026-06-10', 2, 10),
+(N'Thiết kế bộ nhận diện Key Visual cho mùa hè', N'Xuất file thiết kế định dạng Figma và PSD gửi ban giám đốc duyệt', N'Trung bình', 'To Do', '2026-06-15', 2, 8),
+(N'Phân tích biểu mẫu đánh giá năng lực KPI', N'Thu thập toàn bộ các file Excel biểu mẫu đánh giá của các phòng ban', N'Thấp', 'Done', '2026-05-25', 3, 12),
+(N'Thiết kế giao diện chức năng tính thuế thu nhập', N'Dựng hoàn thiện giao diện Windows Forms nhập công thức tính thuế', N'Cao', 'In Progress', '2026-06-12', 3, 13);
+GO
+
+
+-- =========================================================
+-- 1. TẠO THÊM CÁC DỰ ÁN MỚI VỚI TRẠNG THÁI ĐA DẠNG
+-- =========================================================
+INSERT INTO DuAn (TenDA, MoTa, NgayBatDau, NgayKetThuc, TrangThai) VALUES 
+(N'Xây dựng Ứng dụng Di động E-Commerce v2', N'Phát triển app mua sắm trên Android và iOS', '2026-02-01', '2026-05-30', N'Hoàn thành'),
+(N'Triển khai Hạ tầng Cloud AWS cho Doanh nghiệp', N'Chuyển đổi toàn bộ dữ liệu từ On-premise lên nền tảng đám mây', '2026-05-01', '2026-08-31', N'Đang chạy'),
+(N'Tối ưu hóa SEO & Chiến dịch Google Ads Q2', N'Đẩy hạng các từ khóa cốt lõi của công ty lên top 3 tìm kiếm', '2026-04-15', '2026-07-15', N'Đang chạy'),
+(N'Nghiên cứu & Ứng dụng AI Chatbot Chăm sóc Khách hàng', N'Tích hợp mô hình ngôn ngữ lớn để tự động trả lời inbox', '2026-05-20', '2026-11-20', N'Mới khởi tạo'),
+(N'Tái cấu trúc Hệ thống Kế toán Nội bộ', N'Đồng bộ hóa luồng tiền mặt với các chi nhánh miền Nam', '2026-01-10', '2026-04-10', N'Tạm dừng');
+
+-- =========================================================
+-- 2. PHÂN CÔNG THÀNH VIÊN VÀO CÁC DỰ ÁN MỚI
+-- (Dựa trên ID nhân viên từ 7 đến 13 đã tạo ở bước trước)
+-- =========================================================
+INSERT INTO ThanhVienDuAn (MaDA, MaNV, VaiTroTrongDuAn) VALUES 
+-- Dự án E-Commerce (MaDA: 4)
+(4, 7, N'Product Owner'),
+(4, 8, N'Lead Designer'),
+(4, 13, N'Mobile Developer'),
+-- Dự án Hạ tầng Cloud (MaDA: 5)
+(5, 7, N'Cloud Architect'),
+(5, 9, N'DevOps Tester'),
+-- Dự án SEO & Google Ads (MaDA: 6)
+(6, 10, N'Digital Marketing Specialist'),
+(6, 12, N'Data Analyst');
+
+-- =========================================================
+-- 3. TẠO HƠN 15 CÔNG VIỆC (TASK) CHI TIẾT ĐỂ LÀM ĐẸP BÁO CÁO
+-- (Gồm đủ các trạng thái, mức độ ưu tiên và có cả task trễ hạn)
+-- =========================================================
+
+--- Dự án 4: Ứng dụng Di động E-Commerce (Đã hoàn thành - Tất cả task phải là 'Done') ---
+INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline, MaDA, MaNguoiThucHien) VALUES 
+(N'Thiết kế Wireframe luồng thanh toán', N'Vẽ phác thảo màn hình Giỏ hàng và cổng Thanh toán nội địa', N'Cao', 'Done', '2026-02-20', 4, 8),
+(N'Tích hợp API Stripe và VNPay', N'Cài đặt webhook nhận phản hồi giao dịch từ ngân hàng', N'Cao', 'Done', '2026-04-15', 4, 13),
+(N'Kiểm thử bảo mật luồng đặt hàng', N'Test các trường hợp tấn công SQL Injection vào giỏ hàng', N'Cao', 'Done', '2026-05-10', 4, 7),
+(N'Đăng tải ứng dụng lên Google Play Store', N'Chuẩn bị ảnh chụp màn hình, mô tả và đẩy bản release', N'Trung bình', 'Done', '2026-05-28', 4, 13);
+
+--- Dự án 5: Hạ tầng Cloud AWS (Đang chạy - Trạng thái hỗn hợp, có task TRỄ HẠN) ---
+INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline, MaDA, MaNguoiThucHien) VALUES 
+(N'Đánh giá hiện trạng hệ thống Server vật lý', N'Thống kê dung lượng ổ cứng, CPU và RAM hiện tại để map sang AWS', N'Trung bình', 'Done', '2026-05-15', 5, 7),
+(N'Cấu hình mạng ảo VPC và Subnet an toàn', N'Chia tách vùng mạng công cộng (Public) và vùng cơ sở dữ liệu (Private)', N'Cao', 'In Progress', '2026-05-25', 5, 7), -- <-- TRỄ HẠN (Deadline < June 2026)
+(N'Thiết lập kịch bản sao lưu tự động AWS S3', N'Cài đặt chu kỳ backup dữ liệu kế toán vào 2h sáng mỗi ngày', N'Cao', 'To Do', '2026-06-15', 5, 9),
+(N'Chạy thử nghiệm tải hệ thống (Load Testing)', N'Giả lập 10,000 kết nối đồng thời vào Server đám mây mới', N'Cao', 'To Do', '2026-07-20', 5, 9);
+
+--- Dự án 6: SEO & Google Ads (Đang chạy - Tập trung trạng thái 'In Progress' và 'Review') ---
+INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline, MaDA, MaNguoiThucHien) VALUES 
+(N'Nghiên cứu bộ từ khóa sản phẩm cốt lõi', N'Sử dụng công cụ Ahrefs và Google Keyword Planner để tìm từ khóa volume cao', N'Trung bình', 'Done', '2026-04-30', 6, 10),
+(N'Tối ưu hóa On-page cho các bài viết nhóm ngành', N'Sửa tiêu đề, thẻ H1, H2, thuộc tính alt của ảnh và mật độ từ khóa', N'Thấp', 'In Progress', '2026-06-10', 6, 10),
+(N'Cài đặt tài khoản quảng cáo và bám đuôi (Remarketing)', N'Gắn mã Google Tag Manager để đo lường chuyển đổi khách cũ', N'Cao', 'Review', '2026-06-01', 6, 10), -- <-- ĐANG CHỜ DUYỆT (Review)
+(N'Lập báo cáo chi phí trên mỗi lượt nhấp (CPC)', N'Trích xuất dữ liệu chi tiêu hàng tuần để tối ưu hóa ngân sách', N'Thấp', 'In Progress', '2026-06-25', 6, 12);
+
+--- Dự án 7: AI Chatbot (Mới khởi tạo - Đa số task là 'To Do') ---
+INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline, MaDA, MaNguoiThucHien) VALUES 
+(N'Thu thập 5,000 câu hỏi mẫu thường gặp của khách hàng', N'Lấy dữ liệu chat lịch sử từ Fanpage và Zalo OA', N'Trung bình', 'To Do', '2026-06-20', 7, 12),
+(N'Lựa chọn mô hình AI nền tảng (LLM)', N'So sánh hiệu năng và chi phí giữa OpenAI API và Gemini API', N'Cao', 'To Do', '2026-07-01', 7, 7);
+
+--- Bổ sung các công việc độc lập hoặc thuộc dự án cũ để tăng tính đa dạng ---
+INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline, MaDA, MaNguoiThucHien) VALUES 
+(N'Cập nhật chứng chỉ bảo mật SSL cho Website', N'Gia hạn chứng chỉ HTTPS tránh cảnh báo bảo mật trên trình duyệt', N'Cao', 'Done', '2026-05-12', 1, 7),
+(N'Sửa lỗi hiển thị phông chữ trên giao diện Main', N'Lỗi vỡ layout khi người dùng co giãn kích thước màn hình', N'Thấp', 'Review', '2026-06-05', 1, 8),
+(N'Kiểm tra lại cấu trúc Trigger bảng TaiKhoan', N'Đảm bảo Trigger không chặn nhầm các tiến trình đăng ký từ form', N'Cao', 'In Progress', '2026-06-08', 1, 9);
+GO
+
+select * from TaiKhoan;
+-- Cập nhật mật khẩu mã hóa SHA256 cho '123456' của tài khoản quangdo
+UPDATE TaiKhoan 
+SET MatKhau = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92' 
+WHERE TenDangNhap = 'quangdo';
