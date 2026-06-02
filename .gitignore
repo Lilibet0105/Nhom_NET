@@ -17,10 +17,6 @@ obj/
 *.usercaps
 *.userresource
 
-# SQL Server files (nếu bạn có lưu file database .mdf/.ldf trong thư mục code)
-*.mdf
-*.ldf
-
 # Packages
 #.nuget/
 packages/
