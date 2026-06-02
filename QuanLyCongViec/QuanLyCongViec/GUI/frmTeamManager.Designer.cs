@@ -39,9 +39,9 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtSearchTeam = new System.Windows.Forms.TextBox();
-            this.btnSearchTeam = new System.Windows.Forms.Button();
             this.btnRefreshTeam = new System.Windows.Forms.Button();
+            this.btnSearchTeam = new System.Windows.Forms.Button();
+            this.txtSearchTeam = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,8 +52,11 @@
             // 
             // dgvTeam
             // 
+            this.dgvTeam.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvTeam.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTeam.Dock = System.Windows.Forms.DockStyle.Left;
             this.dgvTeam.Location = new System.Drawing.Point(0, 0);
             this.dgvTeam.MultiSelect = false;
             this.dgvTeam.Name = "dgvTeam";
@@ -66,6 +69,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(578, 119);
             this.label1.Name = "label1";
@@ -75,6 +79,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(578, 175);
             this.label2.Name = "label2";
@@ -84,6 +89,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(578, 310);
             this.label3.Name = "label3";
@@ -93,6 +99,7 @@
             // 
             // txtMemberID
             // 
+            this.txtMemberID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMemberID.Location = new System.Drawing.Point(692, 119);
             this.txtMemberID.Name = "txtMemberID";
             this.txtMemberID.ReadOnly = true;
@@ -101,6 +108,7 @@
             // 
             // txtFullname
             // 
+            this.txtFullname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFullname.Location = new System.Drawing.Point(692, 168);
             this.txtFullname.Name = "txtFullname";
             this.txtFullname.Size = new System.Drawing.Size(146, 26);
@@ -108,6 +116,7 @@
             // 
             // cboRole
             // 
+            this.cboRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboRole.FormattingEnabled = true;
             this.cboRole.Location = new System.Drawing.Point(692, 307);
             this.cboRole.Name = "cboRole";
@@ -116,6 +125,7 @@
             // 
             // btnThem
             // 
+            this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnThem.Location = new System.Drawing.Point(560, 373);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(82, 35);
@@ -126,6 +136,7 @@
             // 
             // btnSua
             // 
+            this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSua.Location = new System.Drawing.Point(692, 373);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(82, 35);
@@ -136,6 +147,7 @@
             // 
             // btnXoa
             // 
+            this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXoa.Location = new System.Drawing.Point(816, 373);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(86, 35);
@@ -146,32 +158,14 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.btnRefreshTeam);
             this.panel1.Controls.Add(this.btnSearchTeam);
             this.panel1.Controls.Add(this.txtSearchTeam);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(505, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(873, 100);
             this.panel1.TabIndex = 10;
-            // 
-            // txtSearchTeam
-            // 
-            this.txtSearchTeam.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtSearchTeam.Location = new System.Drawing.Point(0, 0);
-            this.txtSearchTeam.Name = "txtSearchTeam";
-            this.txtSearchTeam.Size = new System.Drawing.Size(873, 26);
-            this.txtSearchTeam.TabIndex = 0;
-            // 
-            // btnSearchTeam
-            // 
-            this.btnSearchTeam.Location = new System.Drawing.Point(113, 47);
-            this.btnSearchTeam.Name = "btnSearchTeam";
-            this.btnSearchTeam.Size = new System.Drawing.Size(91, 36);
-            this.btnSearchTeam.TabIndex = 1;
-            this.btnSearchTeam.Text = "Tìm kiếm";
-            this.btnSearchTeam.UseVisualStyleBackColor = true;
-            this.btnSearchTeam.Click += new System.EventHandler(this.btnSearchTeam_Click);
             // 
             // btnRefreshTeam
             // 
@@ -183,8 +177,29 @@
             this.btnRefreshTeam.UseVisualStyleBackColor = true;
             this.btnRefreshTeam.Click += new System.EventHandler(this.btnRefreshTeam_Click);
             // 
+            // btnSearchTeam
+            // 
+            this.btnSearchTeam.Location = new System.Drawing.Point(113, 47);
+            this.btnSearchTeam.Name = "btnSearchTeam";
+            this.btnSearchTeam.Size = new System.Drawing.Size(91, 36);
+            this.btnSearchTeam.TabIndex = 1;
+            this.btnSearchTeam.Text = "Tìm kiếm";
+            this.btnSearchTeam.UseVisualStyleBackColor = true;
+            this.btnSearchTeam.Click += new System.EventHandler(this.btnSearchTeam_Click);
+            // 
+            // txtSearchTeam
+            // 
+            this.txtSearchTeam.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtSearchTeam.Location = new System.Drawing.Point(0, 0);
+            this.txtSearchTeam.Name = "txtSearchTeam";
+            this.txtSearchTeam.Size = new System.Drawing.Size(873, 26);
+            this.txtSearchTeam.TabIndex = 0;
+            this.txtSearchTeam.Enter += new System.EventHandler(this.txtSearchTeam_Enter);
+            this.txtSearchTeam.Leave += new System.EventHandler(this.txtSearchTeam_Leave);
+            // 
             // txtEmail
             // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEmail.Location = new System.Drawing.Point(692, 264);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(146, 26);
@@ -192,6 +207,7 @@
             // 
             // txtPhone
             // 
+            this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPhone.Location = new System.Drawing.Point(692, 215);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(146, 26);
@@ -199,6 +215,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(578, 267);
             this.label4.Name = "label4";
@@ -208,6 +225,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(578, 218);
             this.label5.Name = "label5";

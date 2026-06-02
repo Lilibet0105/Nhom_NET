@@ -45,24 +45,28 @@ namespace QuanLyCongViec.GUI
 
             // Thêm các cột hiển thị
             DataGridViewTextBoxColumn colMaDA = new DataGridViewTextBoxColumn();
+            colMaDA.Name = "MaDA";
             colMaDA.HeaderText = "Mã Dự Án";
             colMaDA.DataPropertyName = "MaDA";
             colMaDA.Width = 80;
             dataGridView1.Columns.Add(colMaDA);
 
             DataGridViewTextBoxColumn colTenDA = new DataGridViewTextBoxColumn();
+            colTenDA.Name = "TenDA";
             colTenDA.HeaderText = "Tên Dự Án";
             colTenDA.DataPropertyName = "TenDA";
             colTenDA.Width = 200;
             dataGridView1.Columns.Add(colTenDA);
 
             DataGridViewTextBoxColumn colMoTa = new DataGridViewTextBoxColumn();
+            colMoTa.Name = "MoTa";
             colMoTa.HeaderText = "Mô Tả";
             colMoTa.DataPropertyName = "MoTa";
             colMoTa.Width = 250;
             dataGridView1.Columns.Add(colMoTa);
 
             DataGridViewTextBoxColumn colBatDau = new DataGridViewTextBoxColumn();
+            colBatDau.Name = "NgayBatDau";
             colBatDau.HeaderText = "Ngày Bắt Đầu";
             colBatDau.DataPropertyName = "NgayBatDau";
             colBatDau.Width = 130;
@@ -70,6 +74,7 @@ namespace QuanLyCongViec.GUI
             dataGridView1.Columns.Add(colBatDau);
 
             DataGridViewTextBoxColumn colKetThuc = new DataGridViewTextBoxColumn();
+            colKetThuc.Name = "NgayKetThuc";
             colKetThuc.HeaderText = "Ngày Kết Thúc";
             colKetThuc.DataPropertyName = "NgayKetThuc";
             colKetThuc.Width = 130;
@@ -77,6 +82,7 @@ namespace QuanLyCongViec.GUI
             dataGridView1.Columns.Add(colKetThuc);
 
             DataGridViewTextBoxColumn colTrangThai = new DataGridViewTextBoxColumn();
+            colTrangThai.Name = "TrangThai";
             colTrangThai.HeaderText = "Trạng Thái";
             colTrangThai.DataPropertyName = "TrangThai";
             colTrangThai.Width = 130;
@@ -290,7 +296,7 @@ namespace QuanLyCongViec.GUI
         }
 
         // ==================== CLICK VÀO DÒNG DATAGRIDVIEW ====================
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {

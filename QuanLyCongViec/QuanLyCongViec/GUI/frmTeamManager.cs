@@ -23,6 +23,8 @@ namespace GUI
             CaiDatDataGridView();
             CaiDatTrangThaiMacDinh();
             NapDanhSachChucVu();
+            txtSearchTeam.Text = "Nhập mã hoặc tên nhân viên...";
+            txtSearchTeam.ForeColor = Color.Gray;
         }
 
         private void CaiDatDataGridView()
@@ -213,6 +215,22 @@ namespace GUI
             if (cboRole.Items.Count > 0)
             {
                 cboRole.SelectedIndex = 0;
+            }
+        }
+        private void txtSearchTeam_Enter(object sender, EventArgs e)
+        {
+            if (txtSearchTeam.Text == "Nhập mã hoặc tên nhân viên...")
+            {
+                txtSearchTeam.Text = "";
+                txtSearchTeam.ForeColor = Color.Black;
+            }
+        }
+        private void txtSearchTeam_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSearchTeam.Text))
+            {
+                txtSearchTeam.Text = "Nhập mã hoặc tên nhân viên...";
+                txtSearchTeam.ForeColor = Color.Gray;
             }
         }
     }
