@@ -10,7 +10,7 @@ namespace _Net____PCCV.DAL
         // Lấy toàn bộ danh sách dự án
         public DataTable LayDanhSachDuAn()
         {
-            string query = "SELECT MaDA, TenDA, MoTa, NgayBatDau, NgayKetThuc, TrangThai FROM DuAn ORDER BY NgayBatDau DESC";
+            string query = "SELECT MaDA, 'DA' + RIGHT('0000' + CAST(MaDA AS VARCHAR(10)), 4) AS MaDAHienThi, TenDA, MoTa, NgayBatDau, NgayKetThuc, TrangThai FROM DuAn ORDER BY NgayBatDau DESC";
             return DAL.DataConnection.ExecuteQuery(query);
         }
 
@@ -59,7 +59,7 @@ namespace _Net____PCCV.DAL
         // Tìm kiếm dự án theo tên
         public DataTable TimKiemDuAn(string keyword)
         {
-            string query = "SELECT MaDA, TenDA, MoTa, NgayBatDau, NgayKetThuc, TrangThai FROM DuAn WHERE TenDA LIKE @Keyword OR MoTa LIKE @Keyword ORDER BY NgayBatDau DESC";
+            string query = "SELECT MaDA, 'DA' + RIGHT('0000' + CAST(MaDA AS VARCHAR(10)), 4) AS MaDAHienThi, TenDA, MoTa, NgayBatDau, NgayKetThuc, TrangThai FROM DuAn WHERE TenDA LIKE @Keyword OR MoTa LIKE @Keyword ORDER BY NgayBatDau DESC";
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@Keyword", "%" + keyword + "%")

@@ -1,119 +1,103 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using _Net____PCCV.BUS;
 using _Net____PCCV.DTO;
+using GUI;
 
 namespace _.Net____PCCV
 {
     public partial class ProjectManager : Form
     {
-        private ProjectManagerBUS duAnBUS = new ProjectManagerBUS();
-        private bool isSuaMode = false; // Cờ đánh dấu đang ở chế độ Sửa
+        private readonly ProjectManagerBUS duAnBUS = new ProjectManagerBUS();
+        private bool isSuaMode;
 
         public ProjectManager()
         {
             InitializeComponent();
         }
 
-        // ==================== SỰ KIỆN LOAD FORM ====================
         private void ProjectManager_Load(object sender, EventArgs e)
         {
-            LoadDanhSachDuAn();
             CaiDatDataGridView();
             CaiDatTrangThaiMacDinh();
+            LoadDanhSachDuAn();
         }
 
-        // ==================== CÀI ĐẶT HIỂN THỊ DATAGRIDVIEW ====================
         private void CaiDatDataGridView()
         {
             dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
-
-            // Xóa cột cũ nếu có
             dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add(UiHelper.TextColumn("MaDAHienThi", "MaDAHienThi", "MĂ£ dá»± Ă¡n", 100, 16));
+            dataGridView1.Columns.Add(UiHelper.TextColumn("MaDA", "MaDA", "ID", 60));
+            dataGridView1.Columns["MaDA"].Visible = false;
+            dataGridView1.Columns.Add(UiHelper.TextColumn("TenDA", "TenDA", "TĂªn dá»± Ă¡n", 220, 28));
+            dataGridView1.Columns.Add(UiHelper.TextColumn("MoTa", "MoTa", "MĂ´ táº£", 260, 32));
 
-            // Thêm các cột hiển thị
-            DataGridViewTextBoxColumn colMaDA = new DataGridViewTextBoxColumn();
-            colMaDA.HeaderText = "Mã Dự Án";
-            colMaDA.DataPropertyName = "MaDA";
-            colMaDA.Width = 80;
-            dataGridView1.Columns.Add(colMaDA);
-
-            DataGridViewTextBoxColumn colTenDA = new DataGridViewTextBoxColumn();
-            colTenDA.HeaderText = "Tên Dự Án";
-            colTenDA.DataPropertyName = "TenDA";
-            colTenDA.Width = 200;
-            dataGridView1.Columns.Add(colTenDA);
-
-            DataGridViewTextBoxColumn colMoTa = new DataGridViewTextBoxColumn();
-            colMoTa.HeaderText = "Mô Tả";
-            colMoTa.DataPropertyName = "MoTa";
-            colMoTa.Width = 250;
-            dataGridView1.Columns.Add(colMoTa);
-
-            DataGridViewTextBoxColumn colBatDau = new DataGridViewTextBoxColumn();
-            colBatDau.HeaderText = "Ngày Bắt Đầu";
-            colBatDau.DataPropertyName = "NgayBatDau";
-            colBatDau.Width = 130;
+            DataGridViewTextBoxColumn colBatDau = UiHelper.TextColumn("NgayBatDau", "NgayBatDau", "Ngày bắt đầu", 140, 18);
             colBatDau.DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns.Add(colBatDau);
 
-            DataGridViewTextBoxColumn colKetThuc = new DataGridViewTextBoxColumn();
-            colKetThuc.HeaderText = "Ngày Kết Thúc";
-            colKetThuc.DataPropertyName = "NgayKetThuc";
-            colKetThuc.Width = 130;
+            DataGridViewTextBoxColumn colKetThuc = UiHelper.TextColumn("NgayKetThuc", "NgayKetThuc", "Ngày kết thúc", 140, 18);
             colKetThuc.DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns.Add(colKetThuc);
 
-            DataGridViewTextBoxColumn colTrangThai = new DataGridViewTextBoxColumn();
-            colTrangThai.HeaderText = "Trạng Thái";
-            colTrangThai.DataPropertyName = "TrangThai";
-            colTrangThai.Width = 130;
-            dataGridView1.Columns.Add(colTrangThai);
+            dataGridView1.Columns.Add(UiHelper.TextColumn("TrangThai", "TrangThai", "Trạng thái", 140, 18));
+            UiHelper.StyleGrid(dataGridView1);
         }
 
-        // ==================== CÀI ĐẶT TRẠNG THÁI MẶC ĐỊNH ====================
         private void CaiDatTrangThaiMacDinh()
         {
-            textBox1.ReadOnly = true; // Mã dự án chỉ đọc
-            textBox1.BackColor = SystemColors.Control;
+            textBox1.ReadOnly = true;
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
             dateTimePicker2.CustomFormat = "dd/MM/yyyy";
             dateTimePicker1.Value = DateTime.Now;
             dateTimePicker2.Value = DateTime.Now.AddMonths(1);
-            comboBox1.SelectedIndex = 0; // Mặc định "Chưa Hoàn Thành"
-            button3.Enabled = false; // Nút Cập Nhật ban đầu tắt
+
+            comboBox1.Items.Clear();
+            comboBox1.Items.AddRange(new object[] { "Má»›i khá»Ÿi táº¡o", "Äang cháº¡y", "HoĂ n thĂ nh", "Táº¡m dá»«ng" });
+            comboBox1.SelectedIndex = 0;
+
+            button3.Enabled = false;
             isSuaMode = false;
         }
 
-        // ==================== NẠP DỮ LIỆU LÊN DATAGRIDVIEW ====================
         private void LoadDanhSachDuAn()
         {
             try
             {
                 DataTable dt = duAnBUS.LayDanhSachDuAn();
                 dataGridView1.DataSource = dt;
+                CapNhatMaDuAnTuDong(dt);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải danh sách dự án: " + ex.Message, "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lá»—i khi táº£i danh sĂ¡ch dá»± Ă¡n: " + ex.Message, "Há»‡ thá»‘ng", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ==================== XÓA TRẮNG CÁC Ô NHẬP LIỆU ====================
+        private void CapNhatMaDuAnTuDong(DataTable dt)
+        {
+            int maxId = 0;
+            if (dt != null)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (row["MaDA"] != DBNull.Value && int.TryParse(row["MaDA"].ToString(), out int id) && id > maxId)
+                    {
+                        maxId = id;
+                    }
+                }
+            }
+
+            if (!isSuaMode)
+            {
+                textBox1.Text = UiHelper.FormatCode("DA", maxId + 1);
+            }
+        }
+
         private void XoaTrangNhapLieu()
         {
             textBox1.Clear();
@@ -124,168 +108,125 @@ namespace _.Net____PCCV
             comboBox1.SelectedIndex = 0;
             isSuaMode = false;
             button3.Enabled = false;
-            button2.Text = "Sửa Dự Án";
+            button2.Text = "Sá»­a Dá»± Ăn";
+            CapNhatMaDuAnTuDong(dataGridView1.DataSource as DataTable);
         }
 
-        // ==================== CHUYỂN DỮ LIỆU TỪ FORM SANG DTO ====================
         private ProjectManagerDTO LayDuLieuTuForm()
         {
-            ProjectManagerDTO duAn = new ProjectManagerDTO();
-            if (!string.IsNullOrEmpty(textBox1.Text))
-                duAn.MaDA = int.Parse(textBox1.Text.Trim());
-            duAn.TenDA = textBox2.Text.Trim();
-            duAn.MoTa = textBox3.Text.Trim();
-            duAn.NgayBatDau = dateTimePicker1.Value.Date;
-            duAn.NgayKetThuc = dateTimePicker2.Value.Date;
-            duAn.TrangThai = comboBox1.SelectedItem?.ToString() ?? "Mới khởi tạo";
-            return duAn;
+            return new ProjectManagerDTO
+            {
+                MaDA = UiHelper.ParseCode(textBox1.Text),
+                TenDA = textBox2.Text.Trim(),
+                MoTa = textBox3.Text.Trim(),
+                NgayBatDau = dateTimePicker1.Value.Date,
+                NgayKetThuc = dateTimePicker2.Value.Date,
+                TrangThai = comboBox1.SelectedItem?.ToString() ?? "Má»›i khá»Ÿi táº¡o"
+            };
         }
 
-        // ==================== NÚT THÊM DỰ ÁN ====================
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
                 if (string.IsNullOrWhiteSpace(textBox2.Text))
                 {
-                    MessageBox.Show("Vui lòng nhập Tên Dự Án!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Vui lĂ²ng nháº­p tĂªn dá»± Ă¡n.", "ThĂ´ng bĂ¡o", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox2.Focus();
                     return;
                 }
+
                 if (dateTimePicker2.Value.Date < dateTimePicker1.Value.Date)
                 {
-                    MessageBox.Show("Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("NgĂ y káº¿t thĂºc pháº£i lá»›n hÆ¡n hoáº·c báº±ng ngĂ y báº¯t Ä‘áº§u.", "ThĂ´ng bĂ¡o", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                ProjectManagerDTO duAn = LayDuLieuTuForm();
-                bool result = duAnBUS.ThemDuAn(duAn);
-
-                if (result)
+                if (duAnBUS.ThemDuAn(LayDuLieuTuForm()))
                 {
-                    MessageBox.Show("Thêm dự án thành công!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("ThĂªm dá»± Ă¡n thĂ nh cĂ´ng.", "ThĂ´ng bĂ¡o", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDanhSachDuAn();
                     XoaTrangNhapLieu();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Lá»—i", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ==================== NÚT SỬA DỰ ÁN (CHUYỂN SANG CHẾ ĐỘ SỬA) ====================
         private void button2_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow == null)
             {
-                MessageBox.Show("Vui lòng chọn một dự án trong bảng để sửa!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lĂ²ng chá»n má»™t dá»± Ă¡n trong báº£ng Ä‘á»ƒ sá»­a.", "ThĂ´ng bĂ¡o", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (!isSuaMode)
             {
-                // Chuyển sang chế độ Sửa - nạp dữ liệu từ dòng đang chọn lên form
-                DataGridViewRow row = dataGridView1.CurrentRow;
-                textBox1.Text = row.Cells["MaDA"].Value?.ToString() ?? "";
-                textBox2.Text = row.Cells["TenDA"].Value?.ToString() ?? "";
-                textBox3.Text = row.Cells["MoTa"].Value?.ToString() ?? "";
-
-                if (row.Cells["NgayBatDau"].Value != null && row.Cells["NgayBatDau"].Value != DBNull.Value)
-                    dateTimePicker1.Value = Convert.ToDateTime(row.Cells["NgayBatDau"].Value);
-                if (row.Cells["NgayKetThuc"].Value != null && row.Cells["NgayKetThuc"].Value != DBNull.Value)
-                    dateTimePicker2.Value = Convert.ToDateTime(row.Cells["NgayKetThuc"].Value);
-
-                string trangThai = row.Cells["TrangThai"].Value?.ToString() ?? "Mới khởi tạo";
-                int index = comboBox1.Items.IndexOf(trangThai);
-                comboBox1.SelectedIndex = index >= 0 ? index : 0;
-
+                DoDuLieuDongDuocChon(dataGridView1.CurrentRow);
                 isSuaMode = true;
                 button3.Enabled = true;
-                button2.Text = "Hủy Sửa";
+                button2.Text = "Há»§y Sá»­a";
             }
             else
             {
-                // Hủy chế độ sửa - xóa trắng form
                 XoaTrangNhapLieu();
             }
         }
 
-        // ==================== NÚT CẬP NHẬT DỰ ÁN ====================
         private void button3_Click(object sender, EventArgs e)
         {
             if (!isSuaMode)
             {
-                MessageBox.Show("Vui lòng nhấn nút 'Sửa Dự Án' trước khi cập nhật!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lĂ²ng nháº¥n nĂºt Sá»­a Dá»± Ăn trÆ°á»›c khi cáº­p nháº­t.", "ThĂ´ng bĂ¡o", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                if (string.IsNullOrWhiteSpace(textBox2.Text))
+                if (duAnBUS.SuaDuAn(LayDuLieuTuForm()))
                 {
-                    MessageBox.Show("Vui lòng nhập Tên Dự Án!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    textBox2.Focus();
-                    return;
-                }
-                if (dateTimePicker2.Value.Date < dateTimePicker1.Value.Date)
-                {
-                    MessageBox.Show("Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                ProjectManagerDTO duAn = LayDuLieuTuForm();
-                bool result = duAnBUS.SuaDuAn(duAn);
-
-                if (result)
-                {
-                    MessageBox.Show("Cập nhật dự án thành công!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cáº­p nháº­t dá»± Ă¡n thĂ nh cĂ´ng.", "ThĂ´ng bĂ¡o", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDanhSachDuAn();
                     XoaTrangNhapLieu();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Lá»—i", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ==================== NÚT XÓA DỰ ÁN ====================
         private void button4_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow == null)
             {
-                MessageBox.Show("Vui lòng chọn một dự án trong bảng để xóa!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lĂ²ng chá»n má»™t dá»± Ă¡n trong báº£ng Ä‘á»ƒ xĂ³a.", "ThĂ´ng bĂ¡o", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            DataGridViewRow row = dataGridView1.CurrentRow;
-            string maDA = row.Cells["MaDA"].Value?.ToString() ?? "";
-            string tenDA = row.Cells["TenDA"].Value?.ToString() ?? "";
-
-            DialogResult dlg = MessageBox.Show(
-                "Bạn có chắc chắn muốn xóa dự án '" + tenDA + "' (Mã: " + maDA + ")?\nLưu ý: Tất cả công việc và thành viên thuộc dự án này cũng sẽ bị xóa!",
-                "Xác nhận xóa",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (dlg == DialogResult.Yes)
+            string maDA = dataGridView1.CurrentRow.Cells["MaDA"].Value?.ToString() ?? "";
+            string tenDA = dataGridView1.CurrentRow.Cells["TenDA"].Value?.ToString() ?? "";
+            DialogResult dlg = MessageBox.Show("Báº¡n cĂ³ cháº¯c cháº¯n muá»‘n xĂ³a dá»± Ă¡n '" + tenDA + "' (" + UiHelper.FormatCode("DA", maDA) + ")?", "XĂ¡c nháº­n xĂ³a", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg != DialogResult.Yes)
             {
-                try
+                return;
+            }
+
+            try
+            {
+                if (duAnBUS.XoaDuAn(int.Parse(maDA)))
                 {
-                    bool result = duAnBUS.XoaDuAn(int.Parse(maDA));
-                    if (result)
-                    {
-                        MessageBox.Show("Xóa dự án thành công!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadDanhSachDuAn();
-                        XoaTrangNhapLieu();
-                    }
+                    MessageBox.Show("XĂ³a dá»± Ă¡n thĂ nh cĂ´ng.", "ThĂ´ng bĂ¡o", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadDanhSachDuAn();
+                    XoaTrangNhapLieu();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lá»—i", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -294,25 +235,33 @@ namespace _.Net____PCCV
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                textBox1.Text = row.Cells["MaDA"].Value?.ToString() ?? "";
-                textBox2.Text = row.Cells["TenDA"].Value?.ToString() ?? "";
-                textBox3.Text = row.Cells["MoTa"].Value?.ToString() ?? "";
-
-                if (row.Cells["NgayBatDau"].Value != null && row.Cells["NgayBatDau"].Value != DBNull.Value)
-                    dateTimePicker1.Value = Convert.ToDateTime(row.Cells["NgayBatDau"].Value);
-                if (row.Cells["NgayKetThuc"].Value != null && row.Cells["NgayKetThuc"].Value != DBNull.Value)
-                    dateTimePicker2.Value = Convert.ToDateTime(row.Cells["NgayKetThuc"].Value);
-
-                string trangThai = row.Cells["TrangThai"].Value?.ToString() ?? "Mới khởi tạo";
-                int index = comboBox1.Items.IndexOf(trangThai);
-                comboBox1.SelectedIndex = index >= 0 ? index : 0;
+                DoDuLieuDongDuocChon(dataGridView1.Rows[e.RowIndex]);
             }
+        }
+
+        private void DoDuLieuDongDuocChon(DataGridViewRow row)
+        {
+            textBox1.Text = row.Cells["MaDAHienThi"].Value?.ToString() ?? UiHelper.FormatCode("DA", row.Cells["MaDA"].Value);
+            textBox2.Text = row.Cells["TenDA"].Value?.ToString() ?? "";
+            textBox3.Text = row.Cells["MoTa"].Value?.ToString() ?? "";
+
+            if (row.Cells["NgayBatDau"].Value != null && row.Cells["NgayBatDau"].Value != DBNull.Value)
+            {
+                dateTimePicker1.Value = Convert.ToDateTime(row.Cells["NgayBatDau"].Value);
+            }
+
+            if (row.Cells["NgayKetThuc"].Value != null && row.Cells["NgayKetThuc"].Value != DBNull.Value)
+            {
+                dateTimePicker2.Value = Convert.ToDateTime(row.Cells["NgayKetThuc"].Value);
+            }
+
+            string trangThai = row.Cells["TrangThai"].Value?.ToString() ?? "Má»›i khá»Ÿi táº¡o";
+            int index = comboBox1.Items.IndexOf(trangThai);
+            comboBox1.SelectedIndex = index >= 0 ? index : 0;
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -1,29 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
-using System.Configuration;
 
 namespace _Net____PCCV.DAL
 {
     public class DataConnection
     {
-        private static string connectionString =
-            ConfigurationManager.ConnectionStrings["QuanLyCongViec"]?.ConnectionString
-            ?? @"Data Source=.;Initial Catalog=QuanLyCongViec;Integrated Security=True;TrustServerCertificate=True";
+        private static readonly string connectionString = BuildConnectionString();
 
-        // Hàm khởi tạo kết nối SQL
+        private static string BuildConnectionString()
+        {
+            string outputMdf = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Database", "QuanLyCongViec.mdf");
+            if (File.Exists(outputMdf))
+            {
+                return CreateLocalDbConnection(outputMdf);
+            }
+
+            string configured = ConfigurationManager.ConnectionStrings["QuanLyCongViec"]?.ConnectionString;
+            if (!string.IsNullOrWhiteSpace(configured))
+            {
+                return configured;
+            }
+
+            return @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=QuanLyCongViec;Integrated Security=True;TrustServerCertificate=True";
+        }
+
+        private static string CreateLocalDbConnection(string mdfPath)
+        {
+            return "Data Source=(LocalDB)\\MSSQLLocalDB;" +
+                   "AttachDbFilename=" + mdfPath + ";" +
+                   "Integrated Security=True;Connect Timeout=30;TrustServerCertificate=True";
+        }
+
         public static SqlConnection GetSqlConnection()
         {
             return new SqlConnection(connectionString);
         }
 
-        // Hàm dùng chung để thực thi các câu lệnh SELECT hoặc gọi VIEW đổ vào DataGridView
-        // (Phục vụ nạp dữ liệu cho frmKanbanBoard, frmTeamManager, frmPerformanceReport...)
         public static DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
             DataTable dataTable = new DataTable();
@@ -38,6 +54,7 @@ namespace _Net____PCCV.DAL
                         {
                             cmd.Parameters.AddRange(parameters);
                         }
+
                         using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                         {
                             adapter.Fill(dataTable);
@@ -46,14 +63,13 @@ namespace _Net____PCCV.DAL
                 }
                 catch (Exception ex)
                 {
-                    System.Windows.Forms.MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " + ex.Message, "Hệ Thống Thông Báo", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " + ex.Message, "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
             return dataTable;
         }
 
-        // Hàm dùng chung để thực thi gọi các STORED PROCEDURE (Thêm, Sửa, Xóa, Đăng ký)
-        // Trả về true nếu thực thi thành công, false nếu thất bại (Kích hoạt Trigger báo lỗi định dạng...)
         public static bool ExecuteStoredProcedure(string query, SqlParameter[] parameters)
         {
             bool isSuccess = false;
@@ -64,26 +80,25 @@ namespace _Net____PCCV.DAL
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        // Không dùng CommandType.StoredProcedure vì đang dùng query trực tiếp
                         if (parameters != null)
                         {
                             cmd.Parameters.AddRange(parameters);
                         }
 
-                        int result = cmd.ExecuteNonQuery();
-                        isSuccess = true; // Thực thi qua lệnh không lỗi nghĩa là thành công
+                        cmd.ExecuteNonQuery();
+                        isSuccess = true;
                     }
                 }
                 catch (SqlException sqlEx)
                 {
-                    // Bắt trúng các lỗi chủ động ném ra từ TRIGGER (Lỗi Email sai định dạng, lỗi giao việc sai quy chế)
-                    System.Windows.Forms.MessageBox.Show(sqlEx.Message, "Lỗi Nghiệp Vụ Hệ Thống", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
+                    MessageBox.Show(sqlEx.Message, "Lỗi Nghiệp Vụ Hệ Thống", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 catch (Exception ex)
                 {
-                    System.Windows.Forms.MessageBox.Show("Lỗi hệ thống bất ngờ: " + ex.Message, "Thông Báo Lỗi", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi hệ thống bất ngờ: " + ex.Message, "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
             return isSuccess;
         }
     }

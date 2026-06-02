@@ -46,7 +46,7 @@ namespace GUI
             }
 
             lblTieuDe.Text = currentTask.TenTask;
-            lblMaTask.Text = $"Mã công việc: {currentTask.MaTask}";
+            lblMaTask.Text = $"Mã công việc: {UiHelper.FormatCode("CV", currentTask.MaTask)}";
             lblDuAn.Text = $"Dự án: {currentTask.TenDA}";
             lblNguoiThucHien.Text = $"Người thực hiện: {currentTask.TenNguoiNhan}";
             lblTrangThai.Text = $"Trạng thái: {currentTask.TrangThai}";
@@ -62,6 +62,7 @@ namespace GUI
         private void LoadBinhLuan()
         {
             dgvBinhLuan.AutoGenerateColumns = false;
+            UiHelper.StyleGrid(dgvBinhLuan);
             dgvBinhLuan.DataSource = taskBUS.LayBinhLuanTheoCongViec(maTask);
         }
 

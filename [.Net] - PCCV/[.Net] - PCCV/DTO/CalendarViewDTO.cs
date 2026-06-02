@@ -15,12 +15,12 @@ namespace _Net____PCCV.DTO
         public CalendarViewDTO()
         {
             MaLich = 0;
-            TieuDe = "";
-            DiaDiem = "";
-            MoTa = "";
+            TieuDe = string.Empty;
+            DiaDiem = string.Empty;
+            MoTa = string.Empty;
             ThoiGianBatDau = DateTime.Now;
             ThoiGianKetThuc = DateTime.Now;
-            TrangThai = "Chưa Hoàn Thành";
+            TrangThai = "To Do";
         }
     }
 }

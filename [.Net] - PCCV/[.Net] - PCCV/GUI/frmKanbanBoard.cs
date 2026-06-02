@@ -150,7 +150,7 @@ namespace GUI
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 Location = new Point(10, 8),
                 Size = new Size(286, 42),
-                Text = task.TenTask
+                Text = $"{UiHelper.FormatCode("CV", task.MaTask)} - {task.TenTask}"
             };
 
             Label lblMeta = new Label
