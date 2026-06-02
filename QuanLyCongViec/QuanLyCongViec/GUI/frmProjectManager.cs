@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using QuanLyCongViec.BUS;
 using QuanLyCongViec.DTO;
 
-namespace _.Net____PCCV
+namespace QuanLyCongViec.GUI
 {
     public partial class frmProjectManager : Form
     {

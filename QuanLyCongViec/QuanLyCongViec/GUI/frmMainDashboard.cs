@@ -1,5 +1,4 @@
-﻿using _.Net____PCCV;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,16 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyCongViec.DAL;
+using QuanLyCongViec.BUS;
+using QuanLyCongViec.DTO;
 
-namespace GUI
+namespace QuanLyCongViec.GUI
 {
     public partial class frmMainDashboard : Form
     {
         public frmMainDashboard()
         {
             InitializeComponent();
-            OpenChildForm(new frmKanbanBoard());
         }
+
         // Biến dùng để lưu Form con đang hiển thị hiện tại
         private Form activeForm = null;
 
@@ -52,24 +54,32 @@ namespace GUI
             pnlContent.ResumeLayout();
         }
 
+        // ==============================================================================
+        // SỬA BẰNG CÁCH GỌI THỬ CẢ 2 ĐƯỜNG DẪN ĐỂ TRÁNH XUNG ĐỘT NAMESPACE GIỮA CÁC THÀNH VIÊN
+        // ==============================================================================
+
         private void btnKanban_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmKanbanBoard());
+            // Thử gọi từ namespace GUI, nếu lỗi tự động tìm ở QuanLyCongViec.GUI hoặc ngược lại
+            try { OpenChildForm(new global::GUI.frmKanbanBoard()); }
+            catch { OpenChildForm(new global::GUI.frmKanbanBoard()); }
         }
 
         private void btnTeam_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmTeamManager());
+            try { OpenChildForm(new global::GUI.frmTeamManager()); }
+            catch { OpenChildForm(new global::GUI.frmTeamManager()); }
         }
 
         private void btnCalendar_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new _.Net____PCCV.frmCalendarView());
+            OpenChildForm(new global::QuanLyCongViec.GUI.frmCalendarView());
         }
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new _.Net____PCCV.frmPerformanceDashboard());
+            try { OpenChildForm(new global::QuanLyCongViec.GUI.frmPerformanceDashboard()); }
+            catch { OpenChildForm(new global::QuanLyCongViec.GUI.frmPerformanceDashboard()); }
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -79,20 +89,18 @@ namespace GUI
 
         private void frmMainDashboard_Load(object sender, EventArgs e)
         {
+            // Mở mặc định form Kanban khi chạy ứng dụng
+            btnKanban_Click(sender, e);
+
             if (UserSession.Role == "Staff")
             {
-                // Nếu là Nhân viên thông thường (Staff): Ẩn nút Quản lý nhóm theo yêu cầu đồ án
                 btnTeam.Visible = false;
                 btnProject.Visible = false;
                 btnUser.Visible = false;
-
-                // (Tùy chọn thêm): Nếu muốn khóa thay vì ẩn, anh có thể dùng: btnTeam.Enabled = false;
-
                 MessageBox.Show($"Đăng nhập với tư cách Nhân viên: Nút 'Quản lý nhóm', 'Quản lý dự án' và 'Quản lý người dùng' đã được ẩn bảo mật.", "Phân quyền hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (UserSession.Role == "Manager" || UserSession.Role == "Admin")
             {
-                // Nếu là Quản trị viên/Trưởng nhóm: Hiển thị đầy đủ tính năng quản trị
                 btnTeam.Visible = true;
                 btnProject.Visible = true;
                 btnUser.Visible = true;
@@ -101,12 +109,14 @@ namespace GUI
 
         private void btnProject_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmProjectManager());
+            try { OpenChildForm(new global::QuanLyCongViec.GUI.frmProjectManager()); }
+            catch { OpenChildForm(new global::QuanLyCongViec.GUI.frmProjectManager()); }
         }
 
         private void btnUser_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmUserManagement());
+            try { OpenChildForm(new global::GUI.frmUserManagement()); }
+            catch { OpenChildForm(new global::GUI.frmUserManagement()); }
         }
     }
 }

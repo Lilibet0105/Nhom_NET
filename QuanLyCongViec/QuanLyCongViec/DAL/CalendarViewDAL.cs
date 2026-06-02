@@ -7,61 +7,61 @@ namespace QuanLyCongViec.DAL
 {
     public class CalendarViewDAL
     {
-        // Lấy toàn bộ danh sách lịch làm việc
+        // Lấy toàn bộ danh sách công việc làm lịch trình
         public DataTable LayDanhSachLich()
         {
-            string query = "SELECT MaLich, TieuDe, DiaDiem, MoTa, ThoiGianBatDau, ThoiGianKetThuc, TrangThai FROM LichLamViec ORDER BY ThoiGianBatDau DESC";
+            string query = "SELECT MaTask AS MaLich, TenTask AS TieuDe, N'' AS DiaDiem, MoTa, Deadline AS ThoiGianBatDau, Deadline AS ThoiGianKetThuc, TrangThai FROM CongViec ORDER BY Deadline DESC";
+
+            // ĐÃ SỬA: Chuyển từ ExecuteNonQuery sang ExecuteQuery để trả về DataTable đúng kiểu dữ liệu
             return DAL.DataConnection.ExecuteQuery(query);
         }
 
-        // Thêm lịch làm việc mới
+        // Thêm lịch làm việc mới vào bảng công việc
         public bool ThemLich(CalendarViewDTO lich)
         {
-            string query = "INSERT INTO LichLamViec (TieuDe, DiaDiem, MoTa, ThoiGianBatDau, ThoiGianKetThuc, TrangThai) VALUES (@TieuDe, @DiaDiem, @MoTa, @ThoiGianBatDau, @ThoiGianKetThuc, @TrangThai)";
+            string query = "INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline) VALUES (@TieuDe, @MoTa, N'Trung bình', @TrangThai, @ThoiGianBatDau)";
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@TieuDe", lich.TieuDe),
-                new SqlParameter("@DiaDiem", (object)lich.DiaDiem ?? DBNull.Value),
                 new SqlParameter("@MoTa", (object)lich.MoTa ?? DBNull.Value),
-                new SqlParameter("@ThoiGianBatDau", lich.ThoiGianBatDau),
-                new SqlParameter("@ThoiGianKetThuc", lich.ThoiGianKetThuc),
-                new SqlParameter("@TrangThai", lich.TrangThai)
+                new SqlParameter("@TrangThai", lich.TrangThai),
+                new SqlParameter("@ThoiGianBatDau", lich.ThoiGianBatDau)
             };
-            return DAL.DataConnection.ExecuteStoredProcedure(query, parameters);
+            return DAL.DataConnection.ExecuteNonQuery(query, parameters);
         }
 
         // Sửa lịch làm việc
         public bool SuaLich(CalendarViewDTO lich)
         {
-            string query = "UPDATE LichLamViec SET TieuDe = @TieuDe, DiaDiem = @DiaDiem, MoTa = @MoTa, ThoiGianBatDau = @ThoiGianBatDau, ThoiGianKetThuc = @ThoiGianKetThuc, TrangThai = @TrangThai WHERE MaLich = @MaLich";
+            string query = "UPDATE CongViec SET TenTask = @TieuDe, MoTa = @MoTa, TrangThai = @TrangThai, Deadline = @ThoiGianBatDau WHERE MaTask = @MaLich";
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@MaLich", lich.MaLich),
                 new SqlParameter("@TieuDe", lich.TieuDe),
-                new SqlParameter("@DiaDiem", (object)lich.DiaDiem ?? DBNull.Value),
                 new SqlParameter("@MoTa", (object)lich.MoTa ?? DBNull.Value),
-                new SqlParameter("@ThoiGianBatDau", lich.ThoiGianBatDau),
-                new SqlParameter("@ThoiGianKetThuc", lich.ThoiGianKetThuc),
-                new SqlParameter("@TrangThai", lich.TrangThai)
+                new SqlParameter("@TrangThai", lich.TrangThai),
+                new SqlParameter("@ThoiGianBatDau", lich.ThoiGianBatDau)
             };
-            return DAL.DataConnection.ExecuteStoredProcedure(query, parameters);
+            return DAL.DataConnection.ExecuteNonQuery(query, parameters);
         }
 
         // Xóa lịch làm việc
         public bool XoaLich(int maLich)
         {
-            string query = "DELETE FROM LichLamViec WHERE MaLich = @MaLich";
+            string query = "DELETE FROM CongViec WHERE MaTask = @MaLich";
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@MaLich", maLich)
             };
-            return DAL.DataConnection.ExecuteStoredProcedure(query, parameters);
+
+            // ĐÃ SỬA: Chuyển từ ExecuteQuery sang ExecuteNonQuery để trả về kiểu bool đúng với hàm
+            return DAL.DataConnection.ExecuteNonQuery(query, parameters);
         }
 
-        // Tìm kiếm lịch làm việc theo tiêu đề
+        // Tìm kiếm lịch làm việc
         public DataTable TimKiemLich(string keyword)
         {
-            string query = "SELECT MaLich, TieuDe, DiaDiem, MoTa, ThoiGianBatDau, ThoiGianKetThuc, TrangThai FROM LichLamViec WHERE TieuDe LIKE @Keyword OR DiaDiem LIKE @Keyword ORDER BY ThoiGianBatDau DESC";
+            string query = "SELECT MaTask AS MaLich, TenTask AS TieuDe, N'' AS DiaDiem, MoTa, Deadline AS ThoiGianBatDau, Deadline AS ThoiGianKetThuc, TrangThai FROM CongViec WHERE TenTask LIKE @Keyword ORDER BY Deadline DESC";
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@Keyword", "%" + keyword + "%")

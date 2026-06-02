@@ -1,4 +1,4 @@
-﻿namespace GUI
+﻿namespace QuanLyCongViec.GUI
 {
     partial class frmLogin
     {

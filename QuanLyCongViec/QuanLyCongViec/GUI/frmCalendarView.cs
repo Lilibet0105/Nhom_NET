@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using QuanLyCongViec.BUS;
 using QuanLyCongViec.DTO;
 
-namespace _.Net____PCCV
+namespace QuanLyCongViec.GUI
 {
     public partial class frmCalendarView : Form
     {
@@ -22,7 +22,7 @@ namespace _.Net____PCCV
             InitializeComponent();
         }
 
-        // ==================== SỰ KIỆN LOAD FORM ====================
+        // ==================== SỰ KIỆN LOAD FORM ====================\
         private void CalendarView_Load(object sender, EventArgs e)
         {
             LoadDanhSachLich();
@@ -30,7 +30,7 @@ namespace _.Net____PCCV
             CaiDatTrangThaiMacDinh();
         }
 
-        // ==================== CÀI ĐẶT HIỂN THỊ DATAGRIDVIEW ====================
+        // ==================== CÀI ĐẶT HIỂN THỊ DATAGRIDVIEW ====================\
         private void CaiDatDataGridView()
         {
             dataGridView1.AutoGenerateColumns = false;
@@ -40,72 +40,27 @@ namespace _.Net____PCCV
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
 
-            // Xóa cột cũ nếu có
+            // Xóa cột cũ nếu có để tránh trùng lặp khi load lại
             dataGridView1.Columns.Clear();
 
-            // Thêm các cột hiển thị
-            DataGridViewTextBoxColumn colMaLich = new DataGridViewTextBoxColumn();
-            colMaLich.HeaderText = "Mã Lịch";
-            colMaLich.DataPropertyName = "MaLich";
-            colMaLich.Width = 70;
-            dataGridView1.Columns.Add(colMaLich);
+            // Cấu hình các cột hiển thị đẹp mắt và khớp 100% với SQL dữ liệu
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "MaLich", Name = "MaLich", HeaderText = "Mã Lịch", Width = 70 });
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TieuDe", Name = "TieuDe", HeaderText = "Tiêu Đề", Width = 150 });
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DiaDiem", Name = "DiaDiem", HeaderText = "Địa Điểm", Width = 130 });
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "MoTa", Name = "MoTa", HeaderText = "Mô Tả", Width = 180 });
 
-            DataGridViewTextBoxColumn colTieuDe = new DataGridViewTextBoxColumn();
-            colTieuDe.HeaderText = "Tiêu Đề";
-            colTieuDe.DataPropertyName = "TieuDe";
-            colTieuDe.Width = 180;
-            dataGridView1.Columns.Add(colTieuDe);
+            var colBD = new DataGridViewTextBoxColumn { DataPropertyName = "ThoiGianBatDau", Name = "ThoiGianBatDau", HeaderText = "Bắt Đầu", Width = 120 };
+            colBD.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+            dataGridView1.Columns.Add(colBD);
 
-            DataGridViewTextBoxColumn colDiaDiem = new DataGridViewTextBoxColumn();
-            colDiaDiem.HeaderText = "Địa Điểm";
-            colDiaDiem.DataPropertyName = "DiaDiem";
-            colDiaDiem.Width = 150;
-            dataGridView1.Columns.Add(colDiaDiem);
+            var colKT = new DataGridViewTextBoxColumn { DataPropertyName = "ThoiGianKetThuc", Name = "ThoiGianKetThuc", HeaderText = "Kết Thúc", Width = 120 };
+            colKT.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+            dataGridView1.Columns.Add(colKT);
 
-            DataGridViewTextBoxColumn colMoTa = new DataGridViewTextBoxColumn();
-            colMoTa.HeaderText = "Mô Tả";
-            colMoTa.DataPropertyName = "MoTa";
-            colMoTa.Width = 200;
-            dataGridView1.Columns.Add(colMoTa);
-
-            DataGridViewTextBoxColumn colBatDau = new DataGridViewTextBoxColumn();
-            colBatDau.HeaderText = "Bắt Đầu";
-            colBatDau.DataPropertyName = "ThoiGianBatDau";
-            colBatDau.Width = 140;
-            colBatDau.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-            dataGridView1.Columns.Add(colBatDau);
-
-            DataGridViewTextBoxColumn colKetThuc = new DataGridViewTextBoxColumn();
-            colKetThuc.HeaderText = "Kết Thúc";
-            colKetThuc.DataPropertyName = "ThoiGianKetThuc";
-            colKetThuc.Width = 140;
-            colKetThuc.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-            dataGridView1.Columns.Add(colKetThuc);
-
-            DataGridViewTextBoxColumn colTrangThai = new DataGridViewTextBoxColumn();
-            colTrangThai.HeaderText = "Trạng Thái";
-            colTrangThai.DataPropertyName = "TrangThai";
-            colTrangThai.Width = 130;
-            dataGridView1.Columns.Add(colTrangThai);
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TrangThai", Name = "TrangThai", HeaderText = "Trạng Thái", Width = 120 });
         }
 
-        // ==================== CÀI ĐẶT TRẠNG THÁI MẶC ĐỊNH ====================
-        private void CaiDatTrangThaiMacDinh()
-        {
-            textBox1.ReadOnly = true; // Mã lịch chỉ đọc
-            textBox1.BackColor = SystemColors.Control; // Màu xám cho ô chỉ đọc
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "dd/MM/yyyy HH:mm";
-            dateTimePicker2.Format = DateTimePickerFormat.Custom;
-            dateTimePicker2.CustomFormat = "dd/MM/yyyy HH:mm";
-            dateTimePicker1.Value = DateTime.Now;
-            dateTimePicker2.Value = DateTime.Now.AddHours(1);
-            comboBox1.SelectedIndex = 0; // Mặc định "Chưa Hoàn Thành"
-            button3.Enabled = false; // Nút Cập Nhật ban đầu tắt
-            isSuaMode = false;
-        }
-
-        // ==================== NẠP DỮ LIỆU LÊN DATAGRIDVIEW ====================
+        // ==================== TẢI DỮ LIỆU TỪ SQL LÊN BẢNG ====================\
         private void LoadDanhSachLich()
         {
             try
@@ -115,12 +70,28 @@ namespace _.Net____PCCV
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải danh sách lịch làm việc: " + ex.Message, "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Không thể tải danh sách lịch: " + ex.Message, "Lỗi Hệ Thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ==================== XÓA TRẮNG CÁC Ô NHẬP LIỆU ====================
-        private void XoaTrangNhapLieu()
+        private void CaiDatTrangThaiMacDinh()
+        {
+            textBox1.ReadOnly = true; // Mã lịch tự tăng không cho sửa trực tiếp
+            XoaTrangCacTruong();
+
+            comboBox1.Items.Clear();
+            comboBox1.Items.Add("Chưa Hoàn Thành");
+            comboBox1.Items.Add("Đang Tiến Hành");
+            comboBox1.Items.Add("Đã Hoàn Thành");
+            comboBox1.SelectedIndex = 0;
+
+            button1.Enabled = true;  // Nút Thêm
+            button2.Enabled = false; // Nút Sửa tắt đi khi chưa chọn dòng
+            button3.Enabled = false; // Nút Xóa tắt đi khi chưa chọn dòng
+            isSuaMode = false;
+        }
+
+        private void XoaTrangCacTruong()
         {
             textBox1.Clear();
             textBox2.Clear();
@@ -128,168 +99,102 @@ namespace _.Net____PCCV
             textBox4.Clear();
             dateTimePicker1.Value = DateTime.Now;
             dateTimePicker2.Value = DateTime.Now.AddHours(1);
-            comboBox1.SelectedIndex = 0;
-            isSuaMode = false;
-            button3.Enabled = false;
-            button2.Text = "Sửa Lịch";
+            if (comboBox1.Items.Count > 0) comboBox1.SelectedIndex = 0;
         }
 
-        // ==================== CHUYỂN DỮ LIỆU TỪ FORM SANG DTO ====================
-        private CalendarViewDTO LayDuLieuTuForm()
-        {
-            CalendarViewDTO lich = new CalendarViewDTO();
-            if (!string.IsNullOrEmpty(textBox1.Text))
-                lich.MaLich = int.Parse(textBox1.Text.Trim());
-            lich.TieuDe = textBox2.Text.Trim();
-            lich.DiaDiem = textBox3.Text.Trim();
-            lich.MoTa = textBox4.Text.Trim();
-            lich.ThoiGianBatDau = dateTimePicker1.Value;
-            lich.ThoiGianKetThuc = dateTimePicker2.Value;
-            lich.TrangThai = comboBox1.SelectedItem?.ToString() ?? "Chưa Hoàn Thành";
-            return lich;
-        }
-
-        // ==================== NÚT THÊM LỊCH ====================
+        // ==================== CHỨC NĂNG THÊM MỚI LỊCH ====================\
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                // Validate dữ liệu nhập
                 if (string.IsNullOrWhiteSpace(textBox2.Text))
                 {
-                    MessageBox.Show("Vui lòng nhập Tiêu Đề lịch làm việc!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tiêu đề lịch làm việc không được để trống!", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox2.Focus();
                     return;
                 }
-                if (dateTimePicker2.Value < dateTimePicker1.Value)
-                {
-                    MessageBox.Show("Thời gian kết thúc phải lớn hơn hoặc bằng thời gian bắt đầu!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
-                CalendarViewDTO lich = LayDuLieuTuForm();
-                bool result = calendarBUS.ThemLich(lich);
-
-                if (result)
+                CalendarViewDTO lich = new CalendarViewDTO
                 {
-                    MessageBox.Show("Thêm lịch làm việc thành công!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    TieuDe = textBox2.Text.Trim(),
+                    DiaDiem = textBox3.Text.Trim(),
+                    MoTa = textBox4.Text.Trim(),
+                    ThoiGianBatDau = dateTimePicker1.Value,
+                    ThoiGianKetThuc = dateTimePicker2.Value,
+                    TrangThai = comboBox1.SelectedItem?.ToString() ?? "Chưa Hoàn Thành"
+                };
+
+                if (calendarBUS.ThemLich(lich))
+                {
+                    MessageBox.Show("Thêm lịch làm việc mới thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDanhSachLich();
-                    XoaTrangNhapLieu();
+                    CaiDatTrangThaiMacDinh();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Lỗi Nghiệp Vụ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ==================== NÚT SỬA LỊCH (CHUYỂN SANG CHẾ ĐỘ SỬA) ====================
+        // ==================== CHỨC NĂNG CẬP NHẬT (SỬA) ====================\
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow == null)
-            {
-                MessageBox.Show("Vui lòng chọn một lịch làm việc trong bảng để sửa!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!isSuaMode)
-            {
-                // Chuyển sang chế độ Sửa - nạp dữ liệu từ dòng đang chọn lên form
-                DataGridViewRow row = dataGridView1.CurrentRow;
-                textBox1.Text = row.Cells["MaLich"].Value?.ToString() ?? "";
-                textBox2.Text = row.Cells["TieuDe"].Value?.ToString() ?? "";
-                textBox3.Text = row.Cells["DiaDiem"].Value?.ToString() ?? "";
-                textBox4.Text = row.Cells["MoTa"].Value?.ToString() ?? "";
-
-                if (row.Cells["ThoiGianBatDau"].Value != null && row.Cells["ThoiGianBatDau"].Value != DBNull.Value)
-                    dateTimePicker1.Value = Convert.ToDateTime(row.Cells["ThoiGianBatDau"].Value);
-                if (row.Cells["ThoiGianKetThuc"].Value != null && row.Cells["ThoiGianKetThuc"].Value != DBNull.Value)
-                    dateTimePicker2.Value = Convert.ToDateTime(row.Cells["ThoiGianKetThuc"].Value);
-
-                string trangThai = row.Cells["TrangThai"].Value?.ToString() ?? "Chưa Hoàn Thành";
-                int index = comboBox1.Items.IndexOf(trangThai);
-                comboBox1.SelectedIndex = index >= 0 ? index : 0;
-
-                isSuaMode = true;
-                button3.Enabled = true;
-                button2.Text = "Hủy Sửa";
-            }
-            else
-            {
-                // Hủy chế độ sửa - xóa trắng form
-                XoaTrangNhapLieu();
-            }
-        }
-
-        // ==================== NÚT CẬP NHẬT LỊCH ====================
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (!isSuaMode)
-            {
-                MessageBox.Show("Vui lòng nhấn nút 'Sửa Lịch' trước khi cập nhật!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             try
             {
+                if (string.IsNullOrWhiteSpace(textBox1.Text))
+                {
+                    MessageBox.Show("Vui lòng chọn một lịch làm việc từ danh sách bên dưới trước khi sửa!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (string.IsNullOrWhiteSpace(textBox2.Text))
                 {
-                    MessageBox.Show("Vui lòng nhập Tiêu Đề lịch làm việc!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tiêu đề lịch không được bỏ trống!", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     textBox2.Focus();
                     return;
                 }
-                if (dateTimePicker2.Value < dateTimePicker1.Value)
-                {
-                    MessageBox.Show("Thời gian kết thúc phải lớn hơn hoặc bằng thời gian bắt đầu!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
-                CalendarViewDTO lich = LayDuLieuTuForm();
-                bool result = calendarBUS.SuaLich(lich);
-
-                if (result)
+                CalendarViewDTO lich = new CalendarViewDTO
                 {
-                    MessageBox.Show("Cập nhật lịch làm việc thành công!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MaLich = int.Parse(textBox1.Text),
+                    TieuDe = textBox2.Text.Trim(),
+                    DiaDiem = textBox3.Text.Trim(),
+                    MoTa = textBox4.Text.Trim(),
+                    ThoiGianBatDau = dateTimePicker1.Value,
+                    ThoiGianKetThuc = dateTimePicker2.Value,
+                    TrangThai = comboBox1.SelectedItem?.ToString() ?? "Chưa Hoàn Thành"
+                };
+
+                if (calendarBUS.SuaLich(lich))
+                {
+                    MessageBox.Show("Cập nhật thông tin lịch thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDanhSachLich();
-                    XoaTrangNhapLieu();
+                    CaiDatTrangThaiMacDinh();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Lỗi Nghiệp Vụ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // ==================== NÚT XÓA LỊCH ====================
-        private void button4_Click(object sender, EventArgs e)
+        // ==================== CHỨC NĂNG XÓA LỊCH ====================\
+        private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow == null)
-            {
-                MessageBox.Show("Vui lòng chọn một lịch làm việc trong bảng để xóa!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            if (string.IsNullOrWhiteSpace(textBox1.Text)) return;
 
-            DataGridViewRow row = dataGridView1.CurrentRow;
-            string maLich = row.Cells["MaLich"].Value?.ToString() ?? "";
-            string tieuDe = row.Cells["TieuDe"].Value?.ToString() ?? "";
-
-            DialogResult dlg = MessageBox.Show(
-                "Bạn có chắc chắn muốn xóa lịch làm việc '" + tieuDe + "' (Mã: " + maLich + ")?",
-                "Xác nhận xóa",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (dlg == DialogResult.Yes)
+            DialogResult confirm = MessageBox.Show($"Bạn có chắc chắn muốn xóa lịch làm việc này không?", "Xác Nhận Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
             {
                 try
                 {
-                    bool result = calendarBUS.XoaLich(int.Parse(maLich));
-                    if (result)
+                    int maLich = int.Parse(textBox1.Text);
+                    if (calendarBUS.XoaLich(maLich))
                     {
-                        MessageBox.Show("Xóa lịch làm việc thành công!", "Hệ Thống Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Xóa lịch làm việc thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadDanhSachLich();
-                        XoaTrangNhapLieu();
+                        CaiDatTrangThaiMacDinh();
                     }
                 }
                 catch (Exception ex)
@@ -299,12 +204,31 @@ namespace _.Net____PCCV
             }
         }
 
-        // ==================== CLICK VÀO DÒNG DATAGRIDVIEW ====================
+        // ==================== CHỨC NĂNG LÀM MỚI FORM ====================\
+        private void button4_Click(object sender, EventArgs e)
+        {
+            CaiDatTrangThaiMacDinh();
+            LoadDanhSachLich();
+        }
+
+        // ==================== CLICK CHỌN DÒNG TRÊN BẢNG (AN TOÀN TUYỆT ĐỐI) ====================\
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            DuLieuDongDuocChon(e.RowIndex);
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DuLieuDongDuocChon(e.RowIndex);
+        }
+
+        private void DuLieuDongDuocChon(int rowIndex)
+        {
+            if (rowIndex >= 0 && rowIndex < dataGridView1.Rows.Count)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow row = dataGridView1.Rows[rowIndex];
+                if (row.Cells["MaLich"].Value == null || row.Cells["MaLich"].Value == DBNull.Value) return;
+
                 textBox1.Text = row.Cells["MaLich"].Value?.ToString() ?? "";
                 textBox2.Text = row.Cells["TieuDe"].Value?.ToString() ?? "";
                 textBox3.Text = row.Cells["DiaDiem"].Value?.ToString() ?? "";
@@ -316,8 +240,12 @@ namespace _.Net____PCCV
                     dateTimePicker2.Value = Convert.ToDateTime(row.Cells["ThoiGianKetThuc"].Value);
 
                 string trangThai = row.Cells["TrangThai"].Value?.ToString() ?? "Chưa Hoàn Thành";
-                int index = comboBox1.Items.IndexOf(trangThai);
-                comboBox1.SelectedIndex = index >= 0 ? index : 0;
+                int index = comboBox1.FindStringExact(trangThai);
+                if (index >= 0) comboBox1.SelectedIndex = index;
+                else comboBox1.SelectedIndex = 0;
+
+                button2.Enabled = true; // Bật nút Sửa
+                button3.Enabled = true; // Bật nút Xóa
             }
         }
     }

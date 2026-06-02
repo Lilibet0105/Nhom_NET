@@ -1,4 +1,4 @@
-﻿using _.Net____PCCV;
+﻿using QuanLyCongViec.DTO;
 using QuanLyCongViec.DAL;
 using QuanLyCongViec.BUS;
 using System;
@@ -11,8 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GUI;
 
-namespace GUI
+namespace QuanLyCongViec.GUI
 {
     public partial class frmLogin : Form
     {

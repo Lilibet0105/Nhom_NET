@@ -1,4 +1,4 @@
-namespace _.Net____PCCV
+namespace QuanLyCongViec.GUI
 {
     partial class frmProjectManager
     {

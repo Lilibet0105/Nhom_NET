@@ -67,7 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BUS\CalendarViewBUS.cs" />
-    <Compile Include="BUS\LichLamViecBUS.cs" />
     <Compile Include="BUS\NguoiDungBUS.cs" />
     <Compile Include="BUS\ProjectManagerBUS.cs" />
     <Compile Include="BUS\TaskBUS.cs" />
@@ -76,13 +75,11 @@
     <Compile Include="BUS\UserManagementBUS.cs" />
     <Compile Include="DAL\DataConnection.cs" />
     <Compile Include="DAL\CalendarViewDAL.cs" />
-    <Compile Include="DAL\LichLamViecDAL.cs" />
     <Compile Include="DAL\NguoiDungDAL.cs" />
     <Compile Include="DAL\ProjectManagerDAL.cs" />
     <Compile Include="DAL\TaskDAL.cs" />
     <Compile Include="DAL\ThanhVienDAL.cs" />
     <Compile Include="DTO\CalendarViewDTO.cs" />
-    <Compile Include="DTO\LichLamViecDTO.cs" />
     <Compile Include="DTO\NguoiDungDTO.cs" />
     <Compile Include="DTO\ProjectManagerDTO.cs" />
     <Compile Include="DTO\TaskCommentDTO.cs" />
@@ -90,6 +87,7 @@
     <Compile Include="DTO\ThanhVienDTO.cs" />
     <Compile Include="DTO\ThongKeDTO.cs" />
     <Compile Include="DTO\UserManagementDTO.cs" />
+    <Compile Include="DTO\UserSession.cs" />
     <Compile Include="GUI\frmCalendarView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +174,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmCalendarView.resx">
       <DependentUpon>frmCalendarView.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmProjectManager.resx">
       <DependentUpon>frmProjectManager.cs</DependentUpon>

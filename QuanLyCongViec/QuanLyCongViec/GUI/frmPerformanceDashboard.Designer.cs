@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace _.Net____PCCV
+namespace QuanLyCongViec.GUI // ĐÃ SỬA: Đồng bộ hóa đúng namespace hệ thống để xóa lỗi Dispose
 {
     partial class frmPerformanceDashboard
     {
@@ -241,7 +241,6 @@ namespace _.Net____PCCV
 
         #endregion
 
-        // Khai báo danh sách các biến thành phần (Bị thiếu lúc trước)
         private System.Windows.Forms.Label lblChonThoiGian;
         private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.DateTimePicker dtpTo;

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace _.Net____PCCV
+namespace QuanLyCongViec.GUI
 {
     public partial class frmPerformanceDashboard : Form
     {
