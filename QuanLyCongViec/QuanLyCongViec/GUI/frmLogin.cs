@@ -31,26 +31,40 @@ namespace GUI
 
             try
             {
-                // 2. Tạo câu lệnh truy vấn so khớp chuỗi thô trực tiếp từ Database của anh
+                // Khởi tạo lớp BUS để mượn hàm mã hóa SHA256 đồng bộ với lúc Đăng ký
+                NguoiDungBUS userBUS = new NguoiDungBUS();
+                string hashedPass = userBUS.ComputeSHA256(txtPassword.Text.Trim());
+
+                // 2. Tạo câu lệnh truy vấn so khớp chuỗi đã mã hóa trong Database
                 string query = "SELECT VaiTro, TrangThai FROM TaiKhoan WHERE TenDangNhap = @User AND MatKhau = @Pass";
 
-                // 3. Gán giá trị từ 2 ô TextBox vào tham số Parameter để truyền xuống SQL Server
+                // 3. Gán giá trị vào tham số Parameter để truyền xuống SQL Server
                 SqlParameter[] parameters = new SqlParameter[]
                 {
             new SqlParameter("@User", txtUsername.Text.Trim()),
-            new SqlParameter("@Pass", txtPassword.Text.Trim()) // Đọc chuỗi thô (ví dụ: 123456)
+            new SqlParameter("@Pass", hashedPass) // ĐÃ SỬA: Truyền mật khẩu ĐÃ MÃ HÓA SHA256 thay vì chuỗi thô
                 };
 
-                // 4. Thực thi câu lệnh thông qua lớp kết nối DAL của nhóm anh
+                // 4. Thực thi câu lệnh thông qua lớp kết nối DAL
                 DataTable resultTable = DataConnection.ExecuteQuery(query, parameters);
 
                 // 5. Kiểm tra kết quả trả về từ SQL Server
                 if (resultTable != null && resultTable.Rows.Count > 0)
                 {
-                    UserSession.Username = txtUsername.Text.Trim();
-                    UserSession.Role = resultTable.Rows[0]["VaiTro"].ToString();
                     string vaiTro = resultTable.Rows[0]["VaiTro"].ToString();
                     string trangThai = resultTable.Rows[0]["TrangThai"].ToString();
+
+                    // Kiểm tra điều kiện phê duyệt tài khoản của hệ thống
+                    if (trangThai != "Hoạt động")
+                    {
+                        MessageBox.Show($"Tài khoản của bạn đang ở trạng thái '{trangThai}' và chưa được phép đăng nhập vào hệ thống!",
+                                        "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return; // Chặn lại không cho vào MainDashboard
+                    }
+
+                    // Nếu tài khoản hợp lệ và đã hoạt động:
+                    UserSession.Username = txtUsername.Text.Trim();
+                    UserSession.Role = vaiTro;
 
                     // Hiển thị thông báo chào mừng kèm theo quyền hạn
                     MessageBox.Show($"Đăng nhập thành công! Quyền hạn: {vaiTro}", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -71,7 +85,7 @@ namespace GUI
             }
             catch (Exception ex)
             {
-                // Bắt lỗi nếu chuỗi kết nối Database Connection có vấn đề
+                // Bắt lỗi nếu chuỗi kết nối Database Connection hoặc câu lệnh SQL có vấn đề
                 MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " + ex.Message, "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
