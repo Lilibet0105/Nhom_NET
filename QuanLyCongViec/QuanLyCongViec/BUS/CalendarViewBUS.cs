@@ -18,10 +18,17 @@ namespace QuanLyCongViec.BUS
         // Thêm lịch làm việc mới
         public bool ThemLich(CalendarViewDTO lich)
         {
-            // Validate dữ liệu trước khi thêm
             if (string.IsNullOrWhiteSpace(lich.TieuDe))
             {
                 throw new ArgumentException("Tiêu đề không được để trống!");
+            }
+            if (lich.MaDA <= 0)
+            {
+                throw new ArgumentException("Vui lòng chọn Dự án cho lịch trình này!");
+            }
+            if (lich.MaNguoiThucHien <= 0)
+            {
+                throw new ArgumentException("Vui lòng gán Người thực hiện cho lịch trình này!");
             }
             if (lich.ThoiGianKetThuc < lich.ThoiGianBatDau)
             {

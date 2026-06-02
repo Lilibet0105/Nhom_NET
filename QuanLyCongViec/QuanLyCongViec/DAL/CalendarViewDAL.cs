@@ -10,22 +10,26 @@ namespace QuanLyCongViec.DAL
         // Lấy toàn bộ danh sách công việc làm lịch trình
         public DataTable LayDanhSachLich()
         {
-            string query = "SELECT MaTask AS MaLich, TenTask AS TieuDe, N'' AS DiaDiem, MoTa, Deadline AS ThoiGianBatDau, Deadline AS ThoiGianKetThuc, TrangThai FROM CongViec ORDER BY Deadline DESC";
-
-            // ĐÃ SỬA: Chuyển từ ExecuteNonQuery sang ExecuteQuery để trả về DataTable đúng kiểu dữ liệu
+            string query = "SELECT MaTask AS MaLich, TenTask AS TieuDe, MoTa, " +
+                   "Deadline AS ThoiGianBatDau, Deadline AS ThoiGianKetThuc, TrangThai, " +
+                   "MaDA, MaNguoiThucHien FROM CongViec ORDER BY Deadline DESC";
             return DAL.DataConnection.ExecuteQuery(query);
         }
 
         // Thêm lịch làm việc mới vào bảng công việc
         public bool ThemLich(CalendarViewDTO lich)
         {
-            string query = "INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline) VALUES (@TieuDe, @MoTa, N'Trung bình', @TrangThai, @ThoiGianBatDau)";
+            string query = "INSERT INTO CongViec (TenTask, MoTa, MucDoUuTien, TrangThai, Deadline, MaDA, MaNguoiThucHien) " +
+                   "VALUES (@TieuDe, @MoTa, N'Trung bình', @TrangThai, @ThoiGianBatDau, @MaDA, @MaNguoiThucHien)";
+
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@TieuDe", lich.TieuDe),
-                new SqlParameter("@MoTa", (object)lich.MoTa ?? DBNull.Value),
-                new SqlParameter("@TrangThai", lich.TrangThai),
-                new SqlParameter("@ThoiGianBatDau", lich.ThoiGianBatDau)
+        new SqlParameter("@TieuDe", lich.TieuDe),
+        new SqlParameter("@MoTa", (object)lich.MoTa ?? DBNull.Value),
+        new SqlParameter("@TrangThai", lich.TrangThai),
+        new SqlParameter("@ThoiGianBatDau", lich.ThoiGianBatDau),
+        new SqlParameter("@MaDA", lich.MaDA),
+        new SqlParameter("@MaNguoiThucHien", lich.MaNguoiThucHien)
             };
             return DAL.DataConnection.ExecuteNonQuery(query, parameters);
         }

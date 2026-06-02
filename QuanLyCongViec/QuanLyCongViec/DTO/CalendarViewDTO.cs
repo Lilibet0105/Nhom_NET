@@ -11,6 +11,8 @@ namespace QuanLyCongViec.DTO
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime ThoiGianKetThuc { get; set; }
         public string TrangThai { get; set; }
+        public int MaDA { get; set; }
+        public int MaNguoiThucHien { get; set; }
 
         public CalendarViewDTO()
         {
@@ -21,6 +23,8 @@ namespace QuanLyCongViec.DTO
             ThoiGianBatDau = DateTime.Now;
             ThoiGianKetThuc = DateTime.Now;
             TrangThai = "Chưa Hoàn Thành";
+            MaDA = 0;
+            MaNguoiThucHien = 0;
         }
     }
 }

@@ -50,5 +50,10 @@ namespace QuanLyCongViec.BUS
                 return builder.ToString();
             }
         }
+        public DataTable LayDanhSachNhanVien()
+        {
+            string query = "SELECT MaNV, HoTen FROM NhanVien";
+            return DataConnection.ExecuteQuery(query);
+        }
     }
 }

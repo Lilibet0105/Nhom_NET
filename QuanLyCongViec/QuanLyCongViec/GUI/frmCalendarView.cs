@@ -16,6 +16,8 @@ namespace QuanLyCongViec.GUI
     {
         private CalendarViewBUS calendarBUS = new CalendarViewBUS();
         private bool isSuaMode = false; // Cờ đánh dấu đang ở chế độ Sửa
+        private ProjectManagerBUS projectBUS = new ProjectManagerBUS();
+        private TaiKhoanBUS taiKhoanBUS = new TaiKhoanBUS();
 
         public frmCalendarView()
         {
@@ -28,6 +30,8 @@ namespace QuanLyCongViec.GUI
             LoadDanhSachLich();
             CaiDatDataGridView();
             CaiDatTrangThaiMacDinh();
+            HienThiDanhSachDuAn();
+            HienThiDanhSachNhanVien();
         }
 
         // ==================== CÀI ĐẶT HIỂN THỊ DATAGRIDVIEW ====================\
@@ -46,7 +50,7 @@ namespace QuanLyCongViec.GUI
             // Cấu hình các cột hiển thị đẹp mắt và khớp 100% với SQL dữ liệu
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "MaLich", Name = "MaLich", HeaderText = "Mã Lịch", Width = 70 });
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TieuDe", Name = "TieuDe", HeaderText = "Tiêu Đề", Width = 150 });
-            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DiaDiem", Name = "DiaDiem", HeaderText = "Địa Điểm", Width = 130 });
+            //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DiaDiem", Name = "DiaDiem", HeaderText = "Địa Điểm", Width = 130 });
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "MoTa", Name = "MoTa", HeaderText = "Mô Tả", Width = 180 });
 
             var colBD = new DataGridViewTextBoxColumn { DataPropertyName = "ThoiGianBatDau", Name = "ThoiGianBatDau", HeaderText = "Bắt Đầu", Width = 120 };
@@ -80,9 +84,9 @@ namespace QuanLyCongViec.GUI
             XoaTrangCacTruong();
 
             comboBox1.Items.Clear();
-            comboBox1.Items.Add("Chưa Hoàn Thành");
-            comboBox1.Items.Add("Đang Tiến Hành");
-            comboBox1.Items.Add("Đã Hoàn Thành");
+            comboBox1.Items.Add("To Do");
+            comboBox1.Items.Add("In Progress");
+            comboBox1.Items.Add("Done");
             comboBox1.SelectedIndex = 0;
 
             button1.Enabled = true;  // Nút Thêm
@@ -95,7 +99,6 @@ namespace QuanLyCongViec.GUI
         {
             textBox1.Clear();
             textBox2.Clear();
-            textBox3.Clear();
             textBox4.Clear();
             dateTimePicker1.Value = DateTime.Now;
             dateTimePicker2.Value = DateTime.Now.AddHours(1);
@@ -117,11 +120,12 @@ namespace QuanLyCongViec.GUI
                 CalendarViewDTO lich = new CalendarViewDTO
                 {
                     TieuDe = textBox2.Text.Trim(),
-                    DiaDiem = textBox3.Text.Trim(),
                     MoTa = textBox4.Text.Trim(),
                     ThoiGianBatDau = dateTimePicker1.Value,
                     ThoiGianKetThuc = dateTimePicker2.Value,
-                    TrangThai = comboBox1.SelectedItem?.ToString() ?? "Chưa Hoàn Thành"
+                    TrangThai = comboBox1.SelectedItem?.ToString() ?? "Chưa Hoàn Thành",
+                    MaDA = Convert.ToInt32(cboDuAn.SelectedValue),
+                    MaNguoiThucHien = Convert.ToInt32(cboNhanVien.SelectedValue)
                 };
 
                 if (calendarBUS.ThemLich(lich))
@@ -159,7 +163,6 @@ namespace QuanLyCongViec.GUI
                 {
                     MaLich = int.Parse(textBox1.Text),
                     TieuDe = textBox2.Text.Trim(),
-                    DiaDiem = textBox3.Text.Trim(),
                     MoTa = textBox4.Text.Trim(),
                     ThoiGianBatDau = dateTimePicker1.Value,
                     ThoiGianKetThuc = dateTimePicker2.Value,
@@ -231,7 +234,6 @@ namespace QuanLyCongViec.GUI
 
                 textBox1.Text = row.Cells["MaLich"].Value?.ToString() ?? "";
                 textBox2.Text = row.Cells["TieuDe"].Value?.ToString() ?? "";
-                textBox3.Text = row.Cells["DiaDiem"].Value?.ToString() ?? "";
                 textBox4.Text = row.Cells["MoTa"].Value?.ToString() ?? "";
 
                 if (row.Cells["ThoiGianBatDau"].Value != null && row.Cells["ThoiGianBatDau"].Value != DBNull.Value)
@@ -244,8 +246,52 @@ namespace QuanLyCongViec.GUI
                 if (index >= 0) comboBox1.SelectedIndex = index;
                 else comboBox1.SelectedIndex = 0;
 
+                DataRowView dataRow = (DataRowView)row.DataBoundItem;
+
+                if (dataRow.Row.Table.Columns.Contains("MaDA") && dataRow["MaDA"] != DBNull.Value)
+                {
+                    cboDuAn.SelectedValue = dataRow["MaDA"];
+                }
+                if (dataRow.Row.Table.Columns.Contains("MaNguoiThucHien") && dataRow["MaNguoiThucHien"] != DBNull.Value)
+                {
+                    cboNhanVien.SelectedValue = dataRow["MaNguoiThucHien"];
+                }
+
                 button2.Enabled = true; // Bật nút Sửa
                 button3.Enabled = true; // Bật nút Xóa
+            }
+        }
+        private void HienThiDanhSachDuAn()
+        {
+            try
+            {
+                // Gọi tầng BUS lấy DataTable Dự án (bạn kiểm tra lại tên hàm thật trong ProjectManagerBUS nhé)
+                DataTable dtDuAn = projectBUS.LayDanhSachDuAn();
+
+                cboDuAn.DataSource = dtDuAn;
+                cboDuAn.DisplayMember = "TenDA";  // Hiển thị tên dự án cho người dùng xem
+                cboDuAn.ValueMember = "MaDA";    // Giá trị ngầm hiểu bên dưới là Mã dự án (int)
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi tải danh sách dự án: {ex.Message}");
+            }
+        }
+
+        private void HienThiDanhSachNhanVien()
+        {
+            try
+            {
+                // Gọi tầng BUS lấy DataTable Nhân viên/Người dùng
+                DataTable dtNhanVien = taiKhoanBUS.LayDanhSachNhanVien();
+
+                cboNhanVien.DataSource = dtNhanVien;
+                cboNhanVien.DisplayMember = "HoTen"; // Hiển thị Họ tên nhân viên
+                cboNhanVien.ValueMember = "MaNV";    // Giá trị ngầm hiểu là Mã nhân viên (int)
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi tải danh sách nhân viên: {ex.Message}");
             }
         }
     }
