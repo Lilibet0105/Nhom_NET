@@ -54,13 +54,9 @@ namespace QuanLyCongViec.GUI
             pnlContent.ResumeLayout();
         }
 
-        // ==============================================================================
-        // SỬA BẰNG CÁCH GỌI THỬ CẢ 2 ĐƯỜNG DẪN ĐỂ TRÁNH XUNG ĐỘT NAMESPACE GIỮA CÁC THÀNH VIÊN
-        // ==============================================================================
 
         private void btnKanban_Click(object sender, EventArgs e)
         {
-            // Thử gọi từ namespace GUI, nếu lỗi tự động tìm ở QuanLyCongViec.GUI hoặc ngược lại
             try { OpenChildForm(new global::GUI.frmKanbanBoard()); }
             catch { OpenChildForm(new global::GUI.frmKanbanBoard()); }
         }

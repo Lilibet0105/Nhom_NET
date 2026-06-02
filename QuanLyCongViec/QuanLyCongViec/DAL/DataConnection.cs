@@ -8,17 +8,12 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Configuration;
 
-namespace QuanLyCongViec.DAL // Đồng bộ Namespace về đúng hệ thống gốc của nhóm bạn
+namespace QuanLyCongViec.DAL 
 {
     public class DataConnection
     {
-        // ================================================================================================
-        // ĐÃ SỬA: Chuyển từ kết nối file cứng (AttachDbFilename) sang kết nối qua Instance Server của máy.
-        // Cách này giúp chạy app C# mượt mà mà SSMS không bao giờ bị báo đỏ, báo Recovery Pending nữa.
-        // ================================================================================================
         // private static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ADMIN\QuanLyCongViec.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;";
         private static string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=QuanLyCongViec;Integrated Security=True;Connect Timeout=30";
-        // Hàm khởi tạo kết nối SQL
         public static SqlConnection GetSqlConnection()
         {
             return new SqlConnection(connectionString);

@@ -22,7 +22,6 @@ namespace QuanLyCongViec.GUI
             InitializeComponent();
         }
 
-        // ==================== SỰ KIỆN LOAD FORM ====================
         private void ProjectManager_Load(object sender, EventArgs e)
         {
             LoadDanhSachDuAn();
@@ -30,7 +29,6 @@ namespace QuanLyCongViec.GUI
             CaiDatTrangThaiMacDinh();
         }
 
-        // ==================== CÀI ĐẶT HIỂN THỊ DATAGRIDVIEW ====================
         private void CaiDatDataGridView()
         {
             dataGridView1.AutoGenerateColumns = false;
@@ -89,7 +87,6 @@ namespace QuanLyCongViec.GUI
             dataGridView1.Columns.Add(colTrangThai);
         }
 
-        // ==================== CÀI ĐẶT TRẠNG THÁI MẶC ĐỊNH ====================
         private void CaiDatTrangThaiMacDinh()
         {
             textBox1.ReadOnly = true; // Mã dự án chỉ đọc
@@ -105,7 +102,6 @@ namespace QuanLyCongViec.GUI
             isSuaMode = false;
         }
 
-        // ==================== NẠP DỮ LIỆU LÊN DATAGRIDVIEW ====================
         private void LoadDanhSachDuAn()
         {
             try
@@ -119,7 +115,6 @@ namespace QuanLyCongViec.GUI
             }
         }
 
-        // ==================== XÓA TRẮNG CÁC Ô NHẬP LIỆU ====================
         private void XoaTrangNhapLieu()
         {
             textBox1.Clear();
@@ -133,7 +128,6 @@ namespace QuanLyCongViec.GUI
             button2.Text = "Sửa Dự Án";
         }
 
-        // ==================== CHUYỂN DỮ LIỆU TỪ FORM SANG DTO ====================
         private ProjectManagerDTO LayDuLieuTuForm()
         {
             ProjectManagerDTO duAn = new ProjectManagerDTO();
@@ -147,7 +141,6 @@ namespace QuanLyCongViec.GUI
             return duAn;
         }
 
-        // ==================== NÚT THÊM DỰ ÁN ====================
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -180,7 +173,6 @@ namespace QuanLyCongViec.GUI
             }
         }
 
-        // ==================== NÚT SỬA DỰ ÁN (CHUYỂN SANG CHẾ ĐỘ SỬA) ====================
         private void button2_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow == null)
@@ -191,7 +183,6 @@ namespace QuanLyCongViec.GUI
 
             if (!isSuaMode)
             {
-                // Chuyển sang chế độ Sửa - nạp dữ liệu từ dòng đang chọn lên form
                 DataGridViewRow row = dataGridView1.CurrentRow;
                 textBox1.Text = row.Cells["MaDA"].Value?.ToString() ?? "";
                 textBox2.Text = row.Cells["TenDA"].Value?.ToString() ?? "";
@@ -217,7 +208,6 @@ namespace QuanLyCongViec.GUI
             }
         }
 
-        // ==================== NÚT CẬP NHẬT DỰ ÁN ====================
         private void button3_Click(object sender, EventArgs e)
         {
             if (!isSuaMode)
@@ -256,7 +246,6 @@ namespace QuanLyCongViec.GUI
             }
         }
 
-        // ==================== NÚT XÓA DỰ ÁN ====================
         private void button4_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow == null)
@@ -295,7 +284,6 @@ namespace QuanLyCongViec.GUI
             }
         }
 
-        // ==================== CLICK VÀO DÒNG DATAGRIDVIEW ====================
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)

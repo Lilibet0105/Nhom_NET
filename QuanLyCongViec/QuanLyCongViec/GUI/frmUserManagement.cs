@@ -27,14 +27,14 @@ namespace GUI
         {
             txtUserName.ReadOnly = true; // Khóa không cho sửa Username trực tiếp vì là Khóa chính
 
-            // Cài đặt danh sách lựa chọn cho Quyền hạn (Khớp 100% với định dạng text trong bảng TaiKhoan SQL)
+            // Cài đặt danh sách lựa chọn cho Quyền hạn
             cboVaiTro.Items.Clear();
             cboVaiTro.Items.Add("Admin");
             cboVaiTro.Items.Add("Manager");
             cboVaiTro.Items.Add("Staff");
             cboVaiTro.SelectedIndex = 2; // Mặc định chọn Staff
 
-            // Cài đặt danh sách lựa chọn cho Trạng thái (Khớp 100% với dữ liệu N'Hoạt động', N'Chờ duyệt', N'Bị khóa' trong SQL script)
+            // Cài đặt danh sách lựa chọn cho Trạng thái
             cboTrangThai.Items.Clear();
             cboTrangThai.Items.Add("Chờ duyệt");
             cboTrangThai.Items.Add("Hoạt động");
@@ -55,7 +55,7 @@ namespace GUI
                 {
                     dataGridView1.DataSource = dt;
 
-                    // Định dạng tiêu đề hiển thị cho DataGridView đẹp và rõ ràng
+                    // Định dạng tiêu đề hiển thị cho DataGridView
                     if (dataGridView1.Columns.Count > 0)
                     {
                         if (dataGridView1.Columns["TenDangNhap"] != null) dataGridView1.Columns["TenDangNhap"].HeaderText = "Tên Đăng Nhập";
@@ -85,7 +85,7 @@ namespace GUI
                 DataGridViewRow row = dataGridView1.CurrentRow;
                 txtUserName.Text = row.Cells["TenDangNhap"].Value?.ToString() ?? "";
 
-                // Đồng bộ Vai trò lên ComboBox an toàn
+                // Đồng bộ Vai trò lên ComboBox
                 string vaiTro = row.Cells["VaiTro"].Value?.ToString() ?? "Staff";
                 if (cboVaiTro.Items.Contains(vaiTro))
                 {
@@ -123,7 +123,6 @@ namespace GUI
             }
         }
 
-        // ==================== LẬP TRÌNH NÚT CẬP NHẬT TRẠNG THÁI & VAI TRÒ ====================
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUserName.Text))

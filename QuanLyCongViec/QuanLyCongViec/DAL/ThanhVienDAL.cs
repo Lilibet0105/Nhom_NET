@@ -7,7 +7,6 @@ namespace QuanLyCongViec.DAL
 {
     public class ThanhVienDAL
     {
-        // 1. Tải danh sách nhân sự
         public DataTable LayDanhSach()
         {
             DataTable dt = new DataTable();
@@ -22,7 +21,6 @@ namespace QuanLyCongViec.DAL
             return dt;
         }
 
-        // 2. Thêm mới hồ sơ
         public bool Them(ThanhVienDTO tv)
         {
             using (SqlConnection conn = DataConnection.GetSqlConnection())
@@ -41,7 +39,6 @@ namespace QuanLyCongViec.DAL
             }
         }
 
-        // 3. Sửa thông tin
         public bool Sua(ThanhVienDTO tv)
         {
             using (SqlConnection conn = DataConnection.GetSqlConnection())
@@ -60,7 +57,6 @@ namespace QuanLyCongViec.DAL
             }
         }
 
-        // 4. Xóa hồ sơ
         public bool Xoa(string maTV)
         {
             using (SqlConnection conn = DataConnection.GetSqlConnection())
@@ -75,7 +71,6 @@ namespace QuanLyCongViec.DAL
             }
         }
 
-        // 5. Tìm kiếm theo Tên hoặc Mã
         public DataTable TimKiem(string keyword)
         {
             DataTable dt = new DataTable();

@@ -24,7 +24,6 @@ namespace QuanLyCongViec.GUI
             InitializeComponent();
         }
 
-        // ==================== SỰ KIỆN LOAD FORM ====================\
         private void CalendarView_Load(object sender, EventArgs e)
         {
             LoadDanhSachLich();
@@ -34,7 +33,6 @@ namespace QuanLyCongViec.GUI
             HienThiDanhSachNhanVien();
         }
 
-        // ==================== CÀI ĐẶT HIỂN THỊ DATAGRIDVIEW ====================\
         private void CaiDatDataGridView()
         {
             dataGridView1.AutoGenerateColumns = false;
@@ -47,7 +45,6 @@ namespace QuanLyCongViec.GUI
             // Xóa cột cũ nếu có để tránh trùng lặp khi load lại
             dataGridView1.Columns.Clear();
 
-            // Cấu hình các cột hiển thị đẹp mắt và khớp 100% với SQL dữ liệu
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "MaLich", Name = "MaLich", HeaderText = "Mã Lịch", Width = 70 });
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TieuDe", Name = "TieuDe", HeaderText = "Tiêu Đề", Width = 150 });
             //dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DiaDiem", Name = "DiaDiem", HeaderText = "Địa Điểm", Width = 130 });
@@ -64,7 +61,6 @@ namespace QuanLyCongViec.GUI
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TrangThai", Name = "TrangThai", HeaderText = "Trạng Thái", Width = 120 });
         }
 
-        // ==================== TẢI DỮ LIỆU TỪ SQL LÊN BẢNG ====================\
         private void LoadDanhSachLich()
         {
             try
@@ -105,7 +101,6 @@ namespace QuanLyCongViec.GUI
             if (comboBox1.Items.Count > 0) comboBox1.SelectedIndex = 0;
         }
 
-        // ==================== CHỨC NĂNG THÊM MỚI LỊCH ====================\
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -141,7 +136,6 @@ namespace QuanLyCongViec.GUI
             }
         }
 
-        // ==================== CHỨC NĂNG CẬP NHẬT (SỬA) ====================\
         private void button2_Click(object sender, EventArgs e)
         {
             try
@@ -182,7 +176,6 @@ namespace QuanLyCongViec.GUI
             }
         }
 
-        // ==================== CHỨC NĂNG XÓA LỊCH ====================\
         private void button3_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBox1.Text)) return;
@@ -207,14 +200,12 @@ namespace QuanLyCongViec.GUI
             }
         }
 
-        // ==================== CHỨC NĂNG LÀM MỚI FORM ====================\
         private void button4_Click(object sender, EventArgs e)
         {
             CaiDatTrangThaiMacDinh();
             LoadDanhSachLich();
         }
 
-        // ==================== CLICK CHỌN DÒNG TRÊN BẢNG (AN TOÀN TUYỆT ĐỐI) ====================\
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DuLieuDongDuocChon(e.RowIndex);
@@ -265,7 +256,6 @@ namespace QuanLyCongViec.GUI
         {
             try
             {
-                // Gọi tầng BUS lấy DataTable Dự án (bạn kiểm tra lại tên hàm thật trong ProjectManagerBUS nhé)
                 DataTable dtDuAn = projectBUS.LayDanhSachDuAn();
 
                 cboDuAn.DataSource = dtDuAn;
@@ -282,7 +272,6 @@ namespace QuanLyCongViec.GUI
         {
             try
             {
-                // Gọi tầng BUS lấy DataTable Nhân viên/Người dùng
                 DataTable dtNhanVien = taiKhoanBUS.LayDanhSachNhanVien();
 
                 cboNhanVien.DataSource = dtNhanVien;

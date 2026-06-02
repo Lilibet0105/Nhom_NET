@@ -41,10 +41,8 @@ namespace DAL
             return false;
         }
 
-        // HÀM ĐĂNG KÝ AN TOÀN TUYỆT ĐỐI - CHẠY 1 SCRIPT DUY NHẤT TRÁNH XUNG ĐỘT KHÓA NGOẠI
         public bool InsertRegister(NguoiDungDTO user)
         {
-            // Viết kịch bản T-SQL chạy đồng thời: Chèn Nhân viên -> Lấy mã -> Chèn Tài khoản ngay lập tức dưới DB
             string sqlScript = @"
                 DECLARE @NewMaNV INT;
 
@@ -73,7 +71,7 @@ namespace DAL
                 new SqlParameter("@vaitro", SqlDbType.NVarChar) { Value = "Staff" }
             };
 
-            // Thực thi thông qua hàm ExecuteNonQuery dùng chung cực kỳ vững chắc của dự án
+            // Thực thi thông qua hàm ExecuteNonQuery dùng chung của dự án
             return DataConnection.ExecuteNonQuery(sqlScript, parameters);
         }
     }

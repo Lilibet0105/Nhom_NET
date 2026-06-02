@@ -9,13 +9,12 @@ namespace QuanLyCongViec.DAL
     {
         public DataTable LayDanhSachCongViec(string searchText = null, string mucDoUuTien = null, int? maNhanVien = null)
         {
-            string query = @"
-SELECT *
-FROM v_TaskDetailsAll
-WHERE (@SearchText IS NULL OR TenTask LIKE @SearchText OR MoTa LIKE @SearchText)
-  AND (@MucDoUuTien IS NULL OR MucDoUuTien = @MucDoUuTien)
-  AND (@MaNV IS NULL OR MaNguoiNhan = @MaNV)
-ORDER BY Deadline ASC";
+            string query = @"SELECT *
+                                FROM v_TaskDetailsAll
+                                WHERE (@SearchText IS NULL OR TenTask LIKE @SearchText OR MoTa LIKE @SearchText)
+                                  AND (@MucDoUuTien IS NULL OR MucDoUuTien = @MucDoUuTien)
+                                  AND (@MaNV IS NULL OR MaNguoiNhan = @MaNV)
+                                ORDER BY Deadline ASC";
 
             SqlParameter[] parameters =
             {
@@ -46,15 +45,14 @@ ORDER BY Deadline ASC";
 
         public DataTable LayThanhVienTheoDuAn(int maDA)
         {
-            string query = @"
-SELECT nv.MaNV, nv.HoTen
-FROM NhanVien nv
-LEFT JOIN ThanhVienDuAn tv
-    ON nv.MaNV = tv.MaNV
-   AND tv.MaDA = @MaDA
-ORDER BY
-    CASE WHEN tv.MaNV IS NULL THEN 1 ELSE 0 END,
-    nv.HoTen";
+            string query = @"SELECT nv.MaNV, nv.HoTen
+                                FROM NhanVien nv
+                                LEFT JOIN ThanhVienDuAn tv
+                                    ON nv.MaNV = tv.MaNV
+                                   AND tv.MaDA = @MaDA
+                                ORDER BY
+                                    CASE WHEN tv.MaNV IS NULL THEN 1 ELSE 0 END,
+                                    nv.HoTen";
             SqlParameter[] parameters = { new SqlParameter("@MaDA", maDA) };
             return DataConnection.ExecuteQuery(query, parameters);
         }

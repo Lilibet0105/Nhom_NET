@@ -35,21 +35,21 @@ namespace QuanLyCongViec.GUI
             DateTime tuNgay = dtpFrom.Value;
             DateTime denNgay = dtpTo.Value;
 
-            // 1. Đổ dữ liệu thật lên các thẻ số liệu KPI tổng quan
+            // Đổ dữ liệu lên các thẻ số liệu KPI tổng quan
             QuanLyCongViec.DTO.ThongKeDTO dto = tkBUS.LayThongKeTongQuan(tuNgay, denNgay);
             lblTotalTasks.Text = dto.TongCongViec.ToString();
             lblCompletionRate.Text = dto.TyLeHoanThanh.ToString() + "%";
             lblOverdueTasks.Text = dto.ViecTreHan.ToString();
 
-            // 2. Lấy dữ liệu vẽ Biểu đồ Tròn
+            // Lấy dữ liệu vẽ Biểu đồ Tròn
             DataTable dtStatus = tkBUS.LayThongKeTrangThai(tuNgay, denNgay);
             BuildPieChart(dtStatus);
 
-            // 3. Lấy dữ liệu vẽ Biểu đồ Cột
+            // Lấy dữ liệu vẽ Biểu đồ Cột
             DataTable dtStaff = tkBUS.LayPhanBoCongViecNhanSu(tuNgay, denNgay);
             BuildColumnChart(dtStaff);
 
-            // 4. Đổ dữ liệu hiệu suất thật vào bảng GridView hiển thị
+            // Đổ dữ liệu hiệu suất thật vào bảng GridView hiển thị
             dgvDetails.DataSource = tkBUS.LayChiTietHieuSuatThanhVien(tuNgay, denNgay);
         }
 
@@ -91,9 +91,6 @@ namespace QuanLyCongViec.GUI
             chartColumn.Series.Add(colOverdue);
         }
 
-        // ====================================================================
-        // XUẤT FILE BÁO CÁO EXCEL - SỬ DỤNG INTEROP EXCEL (SẠCH SẼ 100% WARNING)
-        // ====================================================================
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
             DateTime tuNgay = dtpFrom.Value;
@@ -107,7 +104,7 @@ namespace QuanLyCongViec.GUI
                 return;
             }
 
-            // Khởi tạo ứng dụng Excel theo kiến trúc nhóm mẫu của bạn
+            // Khởi tạo ứng dụng Excel
             COMExcel.Application exApp = new COMExcel.Application();
             COMExcel.Workbook exBook = exApp.Workbooks.Add(COMExcel.XlWBATemplate.xlWBATWorksheet);
             COMExcel.Worksheet exSheet = exBook.Worksheets[1];
@@ -118,7 +115,7 @@ namespace QuanLyCongViec.GUI
 
             exSheet.Cells.Font.Name = "Times New Roman";
 
-            // --- 1. Tạo tiêu đề báo cáo ---
+            // Tạo tiêu đề báo cáo
             exRange = exSheet.Range[exSheet.Cells[row, 1], exSheet.Cells[row, colCount]];
             exRange.MergeCells = true;
             exRange.Font.Size = 14;
@@ -127,7 +124,7 @@ namespace QuanLyCongViec.GUI
             exRange.Value = "BÁO CÁO HIỆU SUẤT VÀ TIẾN ĐỘ CÔNG VIỆC";
             row += 2;
 
-            // --- 2. Tạo dòng thời gian lọc ---
+            // Tạo dòng thời gian lọc
             exRange = exSheet.Range[exSheet.Cells[row, 1], exSheet.Cells[row, colCount]];
             exRange.MergeCells = true;
             exRange.Font.Italic = true;
@@ -135,7 +132,7 @@ namespace QuanLyCongViec.GUI
             exRange.Value = $"Khoảng thời gian: Từ ngày {tuNgay.ToString("dd/MM/yyyy")} đến ngày {denNgay.ToString("dd/MM/yyyy")}";
             row += 2;
 
-            // --- 3. Đẩy danh sách Tiêu đề cột ---
+            // Đẩy danh sách Tiêu đề cột
             exRange = exSheet.Range[exSheet.Cells[row, 1], exSheet.Cells[row, colCount]];
             exRange.Font.Bold = true;
             object[,] headers = new object[1, colCount];
@@ -146,7 +143,7 @@ namespace QuanLyCongViec.GUI
             exRange.Value2 = headers;
             row++;
 
-            // --- 4. Đổ dữ liệu chi tiết từ SQL vào bảng tính ---
+            // Đổ dữ liệu chi tiết từ SQL vào bảng tính
             foreach (DataRow r in dtReport.Rows)
             {
                 for (int c = 0; c < colCount; c++)
@@ -156,7 +153,7 @@ namespace QuanLyCongViec.GUI
                 row++;
             }
 
-            // --- 5. Đổ thông tin chữ ký ngày lập dưới chân trang ---
+            // Đổ thông tin chữ ký ngày lập dưới chân trang
             row += 2;
             exRange = exSheet.Range[exSheet.Cells[row, colCount - 2], exSheet.Cells[row, colCount]];
             exRange.MergeCells = true;
@@ -170,7 +167,7 @@ namespace QuanLyCongViec.GUI
             exRange.Font.Bold = true;
             exRange.Value = "Người lập báo cáo";
 
-            // Bật ứng dụng Excel lên màn hình để người dùng xem trực tiếp và bấm lưu tùy thích
+            // Bật ứng dụng Excel
             exSheet.Name = "BaoCaoHieuSuat";
             exApp.Visible = true;
         }

@@ -24,7 +24,7 @@ namespace QuanLyCongViec.GUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // 1. Kiểm tra người dùng không được bỏ trống thông tin nhập vào
+            // Kiểm tra người dùng không được bỏ trống thông tin nhập vào
             if (string.IsNullOrEmpty(txtUsername.Text.Trim()) || string.IsNullOrEmpty(txtPassword.Text.Trim()))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ Tài khoản và Mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -37,20 +37,20 @@ namespace QuanLyCongViec.GUI
                 TaiKhoanBUS userBUS = new TaiKhoanBUS();
                 string hashedPass = userBUS.ComputeSHA256(txtPassword.Text.Trim());
 
-                // 2. Tạo câu lệnh truy vấn so khớp chuỗi đã mã hóa trong Database
+                // Tạo câu lệnh truy vấn so khớp chuỗi đã mã hóa trong Database
                 string query = "SELECT VaiTro, TrangThai FROM TaiKhoan WHERE TenDangNhap = @User AND MatKhau = @Pass";
 
-                // 3. Gán giá trị vào tham số Parameter để truyền xuống SQL Server
+                // Gán giá trị vào tham số Parameter để truyền xuống SQL Server
                 SqlParameter[] parameters = new SqlParameter[]
                 {
             new SqlParameter("@User", txtUsername.Text.Trim()),
             new SqlParameter("@Pass", hashedPass) // ĐÃ SỬA: Truyền mật khẩu ĐÃ MÃ HÓA SHA256 thay vì chuỗi thô
                 };
 
-                // 4. Thực thi câu lệnh thông qua lớp kết nối DAL
+                // Thực thi câu lệnh thông qua lớp kết nối DAL
                 DataTable resultTable = DataConnection.ExecuteQuery(query, parameters);
 
-                // 5. Kiểm tra kết quả trả về từ SQL Server
+                // Kiểm tra kết quả trả về từ SQL Server
                 if (resultTable != null && resultTable.Rows.Count > 0)
                 {
                     string vaiTro = resultTable.Rows[0]["VaiTro"].ToString();
@@ -71,7 +71,7 @@ namespace QuanLyCongViec.GUI
                     // Hiển thị thông báo chào mừng kèm theo quyền hạn
                     MessageBox.Show($"Đăng nhập thành công! Quyền hạn: {vaiTro}", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // 6. Chuyển tiếp sang giao diện frmMainDashboard
+                    // Chuyển tiếp sang giao diện frmMainDashboard
                     this.Hide();
                     using (frmMainDashboard mainForm = new frmMainDashboard())
                     {

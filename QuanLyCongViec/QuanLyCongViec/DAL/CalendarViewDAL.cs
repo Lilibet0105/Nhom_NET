@@ -58,7 +58,6 @@ namespace QuanLyCongViec.DAL
                 new SqlParameter("@MaLich", maLich)
             };
 
-            // ĐÃ SỬA: Chuyển từ ExecuteQuery sang ExecuteNonQuery để trả về kiểu bool đúng với hàm
             return DAL.DataConnection.ExecuteNonQuery(query, parameters);
         }
 

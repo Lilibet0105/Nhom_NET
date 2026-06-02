@@ -9,9 +9,7 @@ namespace QuanLyCongViec.BUS
     {
         private ThongKeDAL tkDAL = new ThongKeDAL();
 
-        /// <summary>
-        /// Tính toán các chỉ số KPI thực tế tổng quan
-        /// </summary>
+        // Tính toán các chỉ số KPI thực tế tổng quan
         public ThongKeDTO LayThongKeTongQuan(DateTime tuNgay, DateTime denNgay)
         {
             ThongKeDTO dto = new ThongKeDTO();
@@ -52,9 +50,7 @@ namespace QuanLyCongViec.BUS
             return dto;
         }
 
-        /// <summary>
-        /// Lấy bảng hiệu suất chi tiết đổ vào DataGridView đầu ra
-        /// </summary>
+        // Lấy bảng hiệu suất chi tiết đổ vào DataGridView đầu ra
         public DataTable LayChiTietHieuSuatThanhVien(DateTime tuNgay, DateTime denNgay)
         {
             DataTable dtStaff = tkDAL.LayPhanBoCongViecNhanSu(tuNgay, denNgay);

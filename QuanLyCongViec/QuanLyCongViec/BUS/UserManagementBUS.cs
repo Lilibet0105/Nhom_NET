@@ -1,9 +1,9 @@
-﻿using QuanLyCongViec.DAL; // Để gọi được lớp DataConnection
-using QuanLyCongViec.DTO; // Để gọi được lớp ThanhVienDTO và TaiKhoanDTO
+﻿using QuanLyCongViec.DAL; 
+using QuanLyCongViec.DTO; 
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Security.Cryptography; // BẮT BUỘC PHẢI CÓ DÒNG NÀY ĐỂ DÙNG SHA256
+using System.Security.Cryptography; 
 using System.Text;
 
 namespace QuanLyCongViec.BUS
@@ -12,14 +12,14 @@ namespace QuanLyCongViec.BUS
 
     public class TaiKhoanBUS
     {
-        // 1. Hàm lấy danh sách tài khoản thực tế đổ lên lưới DataGridView
+        // Lấy danh sách tài khoản thực tế đổ lên lưới DataGridView
         public DataTable LayDanhSachTaiKhoan()
         {
             string query = "SELECT TenDangNhap, VaiTro, TrangThai FROM TaiKhoan";
             return DataConnection.ExecuteQuery(query);
         }
 
-        // 2. Hàm cập nhật quyền và trạng thái thực tế xuống Database
+        // Cập nhật quyền và trạng thái thực tế xuống Database
         public bool CapNhatQuyenVaTrangThai(TaiKhoanDTO tk)
         {
             string query = "UPDATE TaiKhoan SET VaiTro = @VaiTro, TrangThai = @TrangThai WHERE TenDangNhap = @TenDangNhap";

@@ -6,9 +6,6 @@ namespace QuanLyCongViec.DAL
 {
     public class ThongKeDAL
     {
-        /// <summary>
-        /// Lấy toàn bộ danh sách công việc chi tiết phục vụ hiển thị Grid và xuất Excel
-        /// </summary>
         public DataTable LayDuLieuBaoCao(DateTime tuNgay, DateTime denNgay)
         {
             string query = @"SELECT 
@@ -33,9 +30,6 @@ namespace QuanLyCongViec.DAL
             return DataConnection.ExecuteQuery(query, parameters);
         }
 
-        /// <summary>
-        /// Lấy bảng thống kê số lượng trạng thái công việc để vẽ biểu đồ tròn
-        /// </summary>
         public DataTable LayThongKeTrangThai(DateTime tuNgay, DateTime denNgay)
         {
             string query = @"SELECT ISNULL(TrangThai, N'Chưa rõ') AS TrangThai, COUNT(*) AS SoLuong 
@@ -51,9 +45,6 @@ namespace QuanLyCongViec.DAL
             return DataConnection.ExecuteQuery(query, parameters);
         }
 
-        /// <summary>
-        /// Lấy số liệu phân bổ công việc của từng nhân sự để vẽ biểu đồ cột
-        /// </summary>
         public DataTable LayPhanBoCongViecNhanSu(DateTime tuNgay, DateTime denNgay)
         {
             string query = @"SELECT 
